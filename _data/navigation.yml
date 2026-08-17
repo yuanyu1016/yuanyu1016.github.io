@@ -3,5 +3,9 @@ main:
     url: /about/
   - title: "项目"
     url: /projects/
+  - title: "经历"
+    url: /experience/
+  - title: "简历"
+    url: /resume/
   - title: "联系"
     url: /contact/

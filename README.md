@@ -19,6 +19,8 @@ https://github.com/mmistakes/minimal-mistakes
 - 首页：`index.md`
 - 关于我：`_pages/about.md`
 - 项目：`_pages/projects.md`
+- 经历：`_pages/experience.md`
+- 简历：`_pages/resume.md`
 - 联系：`_pages/contact.md`
 - 导航：`_data/navigation.yml`
 - 站点配置：`_config.yml`
