@@ -11,11 +11,9 @@
 把本目录内容推送到仓库根目录：
 
 ```powershell
-git remote add origin https://github.com/yuanyu1016/yuanyu1016.github.io.git
-git branch -M main
 git add .
-git commit -m "Create minimal GitHub Pages site"
-git push -u origin main
+git commit -m "Update site"
+git push
 ```
 
 部署完成后访问：
