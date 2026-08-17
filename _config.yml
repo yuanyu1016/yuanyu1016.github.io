@@ -1,7 +1,7 @@
 title: Yuanyu He
-subtitle: Personal Website
+subtitle: 个人网站
 name: Yuanyu He
-description: Personal website powered by GitHub Pages and Minimal Mistakes.
+description: Yuanyu He 的个人网站，记录项目、论文、经历、简历与 AI 原生思考。
 url: "https://yuanyu1016.github.io"
 repository: "yuanyu1016/yuanyu1016.github.io"
 remote_theme: "mmistakes/minimal-mistakes@4.28.1"
@@ -14,7 +14,7 @@ plugins:
 author:
   name: "Yuanyu He"
   avatar: "https://github.com/yuanyu1016.png"
-  bio: "AI-native builder focused on agents, workflow automation, and intelligent products."
+  bio: "关注 AI Agent、工作流自动化与智能产品。"
   location: "上海"
   links:
     - label: "GitHub"

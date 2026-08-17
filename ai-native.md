@@ -1,9 +1,9 @@
 ---
-title: "AI Native"
+title: "AI 原生"
 permalink: /ai-native/
 ---
 
-我把 AI-native 理解为一种新的工作方式：不是把 AI 当作偶尔使用的聊天工具，而是把它嵌入信息获取、任务拆解、内容生成、代码实现、验证反馈和长期沉淀的完整流程中。
+我把 AI 原生理解为一种新的工作方式：不是把 AI 当作偶尔使用的聊天工具，而是把它嵌入信息获取、任务拆解、内容生成、代码实现、验证反馈和长期沉淀的完整流程中。
 
 ## 我关注的问题
 
@@ -22,14 +22,14 @@ AI 的价值不只在于更快生成文本或代码，而在于帮助个人更�
 ## 我正在探索的方向
 
 - AI Agent 如何处理长期、多步骤任务
-- 如何设计可靠的 Agent workflow
+- 如何设计可靠的 Agent 工作流
 - 如何把个人知识、项目和经历组织成可持续更新的系统
 - 如何让 AI 辅助研究、写作、代码实现和内容维护
-- 如何构建更贴近真实工作场景的 AI-native 产品体验
+- 如何构建更贴近真实工作场景的 AI 原生产品体验
 
 ## 我的 AI 工具链
 
-- LLM assistants for reasoning, writing, coding, and review
-- Git and GitHub for versioned knowledge and project management
-- Markdown and static sites for durable personal publishing
-- Structured prompts and checklists for repeatable workflows
+- 大语言模型助手：用于推理、写作、代码实现和审查
+- Git 与 GitHub：用于版本化知识管理和项目管理
+- Markdown 与静态网站：用于长期稳定的个人发布
+- 结构化提示词与检查清单：用于构建可复用的工作流

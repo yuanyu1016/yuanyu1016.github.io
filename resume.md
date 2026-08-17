@@ -3,15 +3,15 @@ title: "简历"
 permalink: /resume/
 ---
 
-## Profile
+## 个人简介
 
-Yuanyu He is an AI-native builder focused on AI Agents, workflow automation, backend systems, and intelligent products. He has experience in Spring AI / LangChain4j-based Agent applications, RAG systems, backend engineering, and deep-learning research.
+我关注 AI Agent、工作流自动化、后端系统与智能产品，具备 Spring AI / LangChain4j 大模型应用、RAG 系统、后端工程和深度学习科研经验。相比单点模型能力，我更关注如何把模型、工具、数据和工程系统组织成稳定可用的产品能力。
 
 ## 技术技能
 
 - 编程语言：Java、Python；掌握 C/C++
-- AI 开发：Spring AI、LangChain4j、RAG、Agent、Tool Calling、PyTorch、Transformer
-- Agent 与自动化工程：Agentic Workflow、任务拆解、工具调用、上下文/状态管理、执行反馈、循环验证、多 Agent 协作编排
+- AI 开发：Spring AI、LangChain4j、RAG、Agent、工具调用、PyTorch、Transformer
+- Agent 与自动化工程：Agentic 工作流、任务拆解、工具调用、上下文/状态管理、执行反馈、循环验证、多 Agent 协作编排
 - 后端开发：Spring Boot、Spring IoC/AOP、MyBatis、MySQL、Redis、RabbitMQ、Elasticsearch、Nginx、Spring Cloud
 - 工程基础：Linux、Docker、Git、计算机网络、数据结构与算法
 - 写作与研究：英文技术文献阅读、英文论文写作
@@ -93,6 +93,6 @@ Yuanyu He is an AI-native builder focused on AI Agents, workflow automation, bac
 
 ## 联系方式
 
-- Email：heyuanyu@mail.ustc.edu.cn
+- 邮箱：heyuanyu@mail.ustc.edu.cn
 - GitHub：[yuanyu1016](https://github.com/yuanyu1016)
-- Contact page：[/contact/](/contact/)
+- 联系页面：[/contact/](/contact/)
