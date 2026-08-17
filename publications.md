@@ -7,15 +7,11 @@ permalink: /publications/
 
 ## 发表论文
 
-### Enhancing SEEG-Based Speech Decoding Using Brain–Speech Representation Alignment
+### Enhancing SEEG-Based Speech Decoding via Convolutional Encoder-Decoder and Scale-Recursive Reconstructor
 
-**Yuanyu He**, Qiang Zheng, Kaifu Zhang, and Tzyy-Ping Jung.
+Vincent Yuanyu He; Aiping Liu; Shengcai Duan; Yikai Gao; Ruobing Qian; Xun Chen.
 
-IEEE Sensors Journal, 2025.
-
-- DOI：[10.1109/JSEN.2025.3563587](https://doi.org/10.1109/JSEN.2025.3563587)
-- IEEE Xplore：[10980144](https://ieeexplore.ieee.org/document/10980144)
-- Code：[ConvED-SR](https://github.com/yuanyu1016/ConvED-SR)
+Publisher: IEEE.
 
 ## 学术主页
 
