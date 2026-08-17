@@ -40,13 +40,13 @@ Yuanyu He is an AI-native builder with backgrounds in automation, electronic eng
 
 ## 教育背景
 
-### University of Science and Technology of China
+### 中国科学技术大学
 
 2022.09 - 2026.06
 
 - Department of Electronic Engineering and Information Science
 
-### University of Science and Technology of China
+### 中国科学技术大学
 
 2018.09 - 2022.06
 
