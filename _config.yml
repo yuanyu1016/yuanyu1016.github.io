@@ -11,9 +11,6 @@ locale: "zh-CN"
 plugins:
   - jekyll-include-cache
 
-include:
-  - _pages
-
 author:
   name: "Yuanyu He"
   avatar: ""
