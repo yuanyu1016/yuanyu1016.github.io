@@ -44,7 +44,7 @@ Yuanyu He is an AI-native builder with backgrounds in automation, electronic eng
 
 2022.09 - 2026.06
 
-- Department of Electronic Engineering and Information Science
+- 信息与通信工程
 
 ### 中国科学技术大学
 
