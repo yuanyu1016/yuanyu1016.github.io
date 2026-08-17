@@ -3,6 +3,8 @@ main:
     url: /about/
   - title: "项目"
     url: /projects/
+  - title: "论文"
+    url: /publications/
   - title: "经历"
     url: /experience/
   - title: "简历"

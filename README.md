@@ -19,6 +19,7 @@ https://github.com/mmistakes/minimal-mistakes
 - 首页：`index.md`
 - 关于我：`about.md`
 - 项目：`projects.md`
+- 论文：`publications.md`
 - 经历：`experience.md`
 - 简历：`resume.md`
 - 联系：`contact.md`
