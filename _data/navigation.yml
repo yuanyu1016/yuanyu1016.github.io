@@ -7,6 +7,8 @@ main:
     url: /publications/
   - title: "经历"
     url: /experience/
+  - title: "理想"
+    url: /dreams/
   - title: "简历"
     url: /resume/
   - title: "联系"

@@ -21,6 +21,7 @@ https://github.com/mmistakes/minimal-mistakes
 - 项目：`projects.md`
 - 论文：`publications.md`
 - 经历：`experience.md`
+- 理想：`dreams.md`
 - 简历：`resume.md`
 - 联系：`contact.md`
 - 导航：`_data/navigation.yml`
