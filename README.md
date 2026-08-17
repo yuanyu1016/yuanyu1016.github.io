@@ -1,22 +1,39 @@
 # yuanyu1016.github.io
 
-这是 Yuanyu 的个人网站，使用 GitHub Pages 托管。
+这是 Yuanyu 的个人网站，使用 GitHub Pages + Jekyll + Minimal Mistakes 搭建。
 
-## 本地预览
+## 技术基础
 
-直接用浏览器打开 `index.html` 即可查看页面。
+- GitHub Pages
+- Jekyll
+- Minimal Mistakes remote theme
+
+主题仓库：
+
+```text
+https://github.com/mmistakes/minimal-mistakes
+```
+
+## 页面结构
+
+- 首页：`index.md`
+- 关于我：`_pages/about.md`
+- 项目：`_pages/projects.md`
+- 联系：`_pages/contact.md`
+- 导航：`_data/navigation.yml`
+- 站点配置：`_config.yml`
 
 ## 部署
 
-把本目录内容推送到仓库根目录：
+提交并推送到 GitHub 后，GitHub Pages 会自动构建并发布：
 
 ```powershell
 git add .
-git commit -m "Update site"
+git commit -m "Use Minimal Mistakes theme"
 git push
 ```
 
-部署完成后访问：
+发布地址：
 
 ```text
 https://yuanyu1016.github.io/

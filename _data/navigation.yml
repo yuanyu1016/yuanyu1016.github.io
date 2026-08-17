@@ -1,0 +1,7 @@
+main:
+  - title: "关于我"
+    url: /about/
+  - title: "项目"
+    url: /projects/
+  - title: "联系"
+    url: /contact/

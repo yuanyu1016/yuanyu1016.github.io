@@ -1,0 +1,42 @@
+title: Yuanyu He
+subtitle: Personal Website
+name: Yuanyu He
+description: Personal website powered by GitHub Pages and Minimal Mistakes.
+url: "https://yuanyu1016.github.io"
+repository: "yuanyu1016/yuanyu1016.github.io"
+remote_theme: "mmistakes/minimal-mistakes@4.28.1"
+minimal_mistakes_skin: "default"
+locale: "zh-CN"
+
+plugins:
+  - jekyll-include-cache
+
+include:
+  - _pages
+
+author:
+  name: "Yuanyu He"
+  avatar: ""
+  bio: "Personal website under construction."
+  location: "China"
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/yuanyu1016"
+
+footer:
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/yuanyu1016"
+
+defaults:
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
+      author_profile: true
+
+atom_feed:
+  hide: true
