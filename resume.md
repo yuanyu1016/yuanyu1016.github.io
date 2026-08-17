@@ -38,7 +38,7 @@ Yuanyu He is an AI-native builder with backgrounds in automation, electronic eng
 
 - Teaching assistant for Microcomputer Principles and Embedded Systems.
 
-## Education
+## 教育背景
 
 ### University of Science and Technology of China
 
