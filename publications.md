@@ -11,7 +11,7 @@ permalink: /publications/
 
 Vincent Yuanyu He; Aiping Liu; Shengcai Duan; Yikai Gao; Ruobing Qian; Xun Chen.
 
-Publisher: IEEE.
+IEEE Sensors Journal.
 
 ## 学术主页
 
