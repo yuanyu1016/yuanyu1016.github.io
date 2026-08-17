@@ -5,6 +5,8 @@ main:
     url: /projects/
   - title: "论文"
     url: /publications/
+  - title: "AI Native"
+    url: /ai-native/
   - title: "经历"
     url: /experience/
   - title: "理想"

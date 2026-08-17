@@ -20,6 +20,7 @@ https://github.com/mmistakes/minimal-mistakes
 - 关于我：`about.md`
 - 项目：`projects.md`
 - 论文：`publications.md`
+- AI Native：`ai-native.md`
 - 经历：`experience.md`
 - 理想：`dreams.md`
 - 简历：`resume.md`
