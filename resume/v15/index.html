@@ -1,0 +1,2149 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="何元玉 - AI Agent、大模型应用、后端工程与智能系统一页简历">
+  <meta name="theme-color" content="#123f49">
+  <meta property="og:title" content="何元玉｜AI Agent 与后端工程简历">
+  <meta property="og:description" content="聚焦 AI Agent、大模型应用、后端工程与智能系统的单页简历">
+  <meta property="og:type" content="profile">
+  <meta property="og:image" content="../../assets/profile-photo.jpg">
+  <link rel="icon" href="../../assets/ustc-logo.png" type="image/png">
+  <title>何元玉｜单页简历 V15</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #18282d;
+      --text: #34464b;
+      --muted: #66777b;
+      --line: #d6dfde;
+      --line-strong: #aebfbd;
+      --accent: #123f49;
+      --accent-soft: #e9f0ef;
+      --paper: #fdfdfb;
+      --canvas: #e8eeed;
+      --focus: #287687;
+      --shadow: rgb(19 56 63 / 16%);
+      --z-skip: 20;
+      --z-texture: 30;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: var(--canvas);
+      color: var(--ink);
+      font-family: "Noto Sans SC", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+      font-size: 10pt;
+      letter-spacing: 0;
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      min-width: 320px;
+      margin: 0;
+      padding: 12mm 0;
+    }
+
+    body::before {
+      position: fixed;
+      z-index: var(--z-texture);
+      inset: 0;
+      pointer-events: none;
+      content: "";
+      opacity: .12;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h1,
+    h2,
+    h3 {
+      text-wrap: balance;
+    }
+
+    p,
+    li {
+      text-wrap: pretty;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a,
+    .contact-item {
+      transition: color 220ms ease, border-color 220ms ease, background-color 220ms ease, transform 220ms ease;
+    }
+
+    a:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    a:active {
+      transform: translateY(1px);
+    }
+
+    .skip-link {
+      position: fixed;
+      z-index: var(--z-skip);
+      top: 10px;
+      left: 10px;
+      padding: 8px 12px;
+      color: var(--paper);
+      background: var(--accent);
+      transform: translateY(-150%);
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .page {
+      position: relative;
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      padding: 9.5mm 10.5mm 8.5mm 12mm;
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: 0 4mm 14mm var(--shadow);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page::before {
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 2mm;
+      content: "";
+      background: var(--accent);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 32mm minmax(0, 1fr) 19mm;
+      grid-template-areas:
+        "mark identity photo"
+        "contact contact photo";
+      gap: 1.6mm 5.5mm;
+      align-items: center;
+      padding-bottom: 3.6mm;
+      border-bottom: 1px solid var(--accent);
+    }
+
+    .institution {
+      grid-area: mark;
+      align-self: center;
+    }
+
+    .school-logo {
+      display: block;
+      width: 32mm;
+      height: auto;
+    }
+
+    .identity {
+      grid-area: identity;
+      min-width: 0;
+      padding-left: 5mm;
+      border-left: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      color: var(--muted);
+      font-family: "Noto Sans SC", "Microsoft YaHei UI", sans-serif;
+      font-size: 5.6pt;
+      font-weight: 650;
+      line-height: 1.2;
+    }
+
+    .name {
+      margin-top: .5mm;
+      font-family: "Noto Serif SC", "SimSun", serif;
+      font-size: 25pt;
+      font-weight: 850;
+      line-height: 1;
+    }
+
+    .positioning {
+      margin-top: 1.2mm;
+      color: var(--accent);
+      font-size: 8.5pt;
+      font-weight: 750;
+      line-height: 1.3;
+    }
+
+    .photo {
+      grid-area: photo;
+      width: 19mm;
+      height: 27mm;
+      object-fit: cover;
+      object-position: center 20%;
+      align-self: center;
+      border: 1px solid var(--line-strong);
+      border-radius: 1.2mm;
+      box-shadow: 0 1.2mm 3mm rgb(19 56 63 / 12%);
+    }
+
+    .contact {
+      grid-area: contact;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1mm 4.6mm;
+      margin: 0;
+      color: var(--muted);
+      font-size: 6.35pt;
+      font-style: normal;
+      line-height: 1.35;
+    }
+
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 1mm;
+      white-space: nowrap;
+    }
+
+    a.contact-item:hover {
+      color: var(--accent);
+    }
+
+    .contact-label {
+      color: var(--accent);
+      font-family: "Noto Sans SC", "Microsoft YaHei UI", sans-serif;
+      font-size: 5.1pt;
+      font-weight: 850;
+    }
+
+    .brand-icon {
+      display: block;
+      width: 2.7mm;
+      height: 2.7mm;
+      object-fit: contain;
+    }
+
+    .profile {
+      display: grid;
+      grid-template-columns: 18mm minmax(0, 1fr);
+      gap: 4mm;
+      align-items: baseline;
+      padding: 3.2mm 0 3.1mm;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .label,
+    .section-title {
+      color: var(--accent);
+      font-size: 8.1pt;
+      font-weight: 800;
+      line-height: 1.25;
+    }
+
+    .profile p {
+      max-width: 72em;
+      color: var(--text);
+      font-size: 7.65pt;
+      line-height: 1.55;
+    }
+
+    .proof-bar {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin: 3mm 0 3.7mm;
+      padding: 2.1mm 0 2.3mm;
+      border-top: 1px solid var(--accent);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .proof {
+      min-width: 0;
+      padding: 0 3.4mm;
+      border-left: 1px solid var(--line);
+    }
+
+    .proof:first-child {
+      padding-left: 0;
+      border-left: 0;
+    }
+
+    .proof:last-child {
+      padding-right: 0;
+    }
+
+    .proof-kicker {
+      color: var(--muted);
+      font-size: 5.45pt;
+      font-weight: 650;
+      line-height: 1.2;
+    }
+
+    .proof-value {
+      margin-top: .65mm;
+      font-size: 8.1pt;
+      font-weight: 850;
+      line-height: 1.24;
+    }
+
+    .proof-detail {
+      display: block;
+      margin-top: .4mm;
+      color: var(--accent);
+      font-size: 6.15pt;
+      font-weight: 750;
+      line-height: 1.3;
+    }
+
+    .columns {
+      display: grid;
+      grid-template-columns: 52mm minmax(0, 1fr);
+      gap: 6mm;
+      align-items: start;
+    }
+
+    .main-column {
+      grid-column: 2;
+      grid-row: 1;
+      min-width: 0;
+    }
+
+    .sidebar {
+      grid-column: 1;
+      grid-row: 1;
+      min-width: 0;
+      padding-right: 5mm;
+      border-right: 1px solid var(--line);
+    }
+
+    .section {
+      margin-top: 3.8mm;
+    }
+
+    .section:first-child {
+      margin-top: 0;
+    }
+
+    .section-heading {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.8mm;
+      align-items: center;
+      margin-bottom: 2.2mm;
+    }
+
+    .section-heading::after {
+      height: 1px;
+      content: "";
+      background: var(--line);
+    }
+
+    .entry {
+      margin-top: 3.15mm;
+      break-inside: avoid;
+    }
+
+    .entry:first-of-type {
+      margin-top: 0;
+    }
+
+    .entry-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 3mm;
+      align-items: baseline;
+    }
+
+    .entry-title {
+      font-size: 8.5pt;
+      font-weight: 850;
+      line-height: 1.3;
+    }
+
+    .date {
+      color: var(--muted);
+      font-family: "Cascadia Mono", Consolas, monospace;
+      font-size: 5.85pt;
+      font-weight: 650;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .role {
+      margin-top: .45mm;
+      color: var(--accent);
+      font-size: 6.7pt;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .project-link-line {
+      display: grid;
+      grid-template-columns: 12mm minmax(0, 1fr);
+      gap: 1.4mm;
+      align-items: baseline;
+      margin-top: .55mm;
+      font-size: 5.85pt;
+      line-height: 1.3;
+    }
+
+    .project-link-label {
+      color: var(--muted);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .project-link {
+      width: fit-content;
+      max-width: 100%;
+      color: var(--accent);
+      font-weight: 750;
+      border-bottom: 1px solid var(--line-strong);
+    }
+
+    .project-link:hover {
+      border-color: var(--accent);
+    }
+
+    .scope {
+      margin-top: 1mm;
+      color: var(--text);
+      font-size: 6.95pt;
+      line-height: 1.45;
+    }
+
+    .scope strong,
+    .metric {
+      color: var(--accent);
+      font-weight: 850;
+    }
+
+    ul {
+      margin: .9mm 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    li {
+      position: relative;
+      margin-top: .7mm;
+      padding-left: 3mm;
+      color: var(--text);
+      font-size: 6.9pt;
+      line-height: 1.45;
+    }
+
+    li::before {
+      position: absolute;
+      top: .58em;
+      left: .4mm;
+      width: 1mm;
+      height: 1mm;
+      content: "";
+      background: var(--accent);
+    }
+
+    li strong {
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    .stack {
+      margin-top: .9mm;
+      color: var(--muted);
+      font-size: 5.95pt;
+      line-height: 1.4;
+    }
+
+    .stack strong {
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .edu-item {
+      margin-top: 2.5mm;
+    }
+
+    .edu-item:first-of-type {
+      margin-top: 0;
+    }
+
+    .edu-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 2mm;
+      align-items: baseline;
+    }
+
+    .school {
+      font-size: 7.85pt;
+      font-weight: 850;
+      line-height: 1.3;
+    }
+
+    .edu-detail {
+      margin-top: .55mm;
+      color: var(--text);
+      font-size: 6.45pt;
+      line-height: 1.45;
+    }
+
+    .publication {
+      padding: 2.3mm 2.5mm;
+      border-left: .8mm solid var(--accent);
+      border-radius: 0 1mm 1mm 0;
+      background: var(--accent-soft);
+    }
+
+    .publication-title {
+      font-family: "Noto Sans SC", Arial, sans-serif;
+      font-size: 6.35pt;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .publication-meta {
+      margin-top: .8mm;
+      color: var(--muted);
+      font-size: 5.85pt;
+      line-height: 1.45;
+    }
+
+    .skill-group {
+      margin-top: 1.55mm;
+      padding-bottom: 1.45mm;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .skill-label {
+      color: var(--accent);
+      font-size: 6.25pt;
+      font-weight: 850;
+    }
+
+    .skill-list {
+      margin-top: .4mm;
+      color: var(--text);
+      font-size: 6.1pt;
+      line-height: 1.45;
+    }
+
+    .sidebar li {
+      margin-top: .65mm;
+      font-size: 6.25pt;
+      line-height: 1.45;
+    }
+
+    .focus-list {
+      border-top: 1px solid var(--accent);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .focus-line {
+      display: grid;
+      grid-template-columns: 13mm minmax(0, 1fr);
+      gap: 1.5mm;
+      padding: 1mm 0;
+      border-top: 1px solid var(--line);
+      font-size: 6pt;
+      line-height: 1.35;
+    }
+
+    .focus-line:first-child {
+      border-top: 0;
+    }
+
+    .focus-line strong {
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .footer {
+      position: absolute;
+      right: 10.5mm;
+      bottom: 3.7mm;
+      color: var(--muted);
+      font-family: "Cascadia Mono", Consolas, monospace;
+      font-size: 5.35pt;
+      font-variant-numeric: tabular-nums;
+    }
+
+    @media screen and (max-width: 850px) {
+      html,
+      body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+
+      body {
+        padding: 0;
+      }
+
+      body::before {
+        display: none;
+      }
+
+      .page {
+        width: 100%;
+        min-width: 0;
+        min-height: auto;
+        padding: 20px 18px 34px 24px;
+        overflow-x: hidden;
+        box-shadow: none;
+      }
+
+      .hero {
+        grid-template-columns: minmax(0, 1fr) 62px;
+        grid-template-areas:
+          "mark photo"
+          "identity photo"
+          "contact contact";
+        gap: 9px 14px;
+        align-items: start;
+        padding-bottom: 16px;
+      }
+
+      .school-logo {
+        width: min(35mm, 100%);
+        max-width: 100%;
+      }
+
+      .identity {
+        padding-left: 0;
+        border-left: 0;
+      }
+
+      .name {
+        font-size: 23pt;
+      }
+
+      .positioning {
+        font-size: 8.2pt;
+      }
+
+      .photo {
+        width: 62px;
+        height: 88px;
+        justify-self: end;
+      }
+
+      .contact {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px 14px;
+        width: 100%;
+        min-width: 0;
+        font-size: 7pt;
+      }
+
+      .contact-item,
+      .contact-item span {
+        min-width: 0;
+      }
+
+      .contact-item span {
+        overflow-wrap: anywhere;
+      }
+
+      .profile {
+        grid-template-columns: 1fr;
+        gap: 6px;
+        padding: 14px 0;
+      }
+
+      .profile p {
+        font-size: 8.2pt;
+      }
+
+      .label,
+      .section-title {
+        font-size: 8.8pt;
+      }
+
+      .proof-bar {
+        grid-template-columns: 1fr;
+        padding: 0;
+      }
+
+      .proof,
+      .proof:first-child,
+      .proof:last-child {
+        padding: 10px 0;
+        border-top: 1px solid var(--line);
+        border-left: 0;
+      }
+
+      .proof:first-child {
+        border-top: 0;
+      }
+
+      .proof-kicker {
+        font-size: 5.9pt;
+      }
+
+      .proof-value {
+        font-size: 8.9pt;
+      }
+
+      .proof-detail {
+        font-size: 6.7pt;
+      }
+
+      .columns {
+        grid-template-columns: 1fr;
+      }
+
+      .main-column,
+      .sidebar {
+        grid-column: auto;
+        grid-row: auto;
+      }
+
+      .sidebar {
+        padding-right: 0;
+        border-right: 0;
+      }
+
+      .section {
+        margin-top: 18px;
+      }
+
+      .section-heading {
+        margin-bottom: 9px;
+      }
+
+      .entry {
+        margin-top: 16px;
+      }
+
+      .entry-title {
+        font-size: 9.7pt;
+      }
+
+      .date {
+        font-size: 6.7pt;
+      }
+
+      .role {
+        font-size: 7.45pt;
+      }
+
+      .project-link-line {
+        font-size: 6.6pt;
+      }
+
+      .scope,
+      li {
+        font-size: 7.45pt;
+        line-height: 1.52;
+      }
+
+      li {
+        margin-top: 3px;
+      }
+
+      .stack {
+        font-size: 6.55pt;
+        line-height: 1.5;
+      }
+
+      .school {
+        font-size: 8.8pt;
+      }
+
+      .edu-detail,
+      .skill-list,
+      .sidebar li,
+      .focus-line {
+        font-size: 7.1pt;
+      }
+
+      .publication-title {
+        font-size: 7.25pt;
+      }
+
+      .publication-meta,
+      .skill-label {
+        font-size: 6.8pt;
+      }
+
+      .entry-head {
+        grid-template-columns: minmax(0, 1fr) auto;
+      }
+
+      .project-link-line {
+        grid-template-columns: auto minmax(0, 1fr);
+      }
+
+      .project-link {
+        width: auto;
+        overflow-wrap: anywhere;
+      }
+
+      .profile p,
+      .publication-title,
+      .publication-meta,
+      .scope,
+      li,
+      .stack {
+        min-width: 0;
+        overflow-wrap: anywhere;
+      }
+
+      .edu-head {
+        flex-wrap: wrap;
+      }
+
+      .footer {
+        position: static;
+        margin-top: 18px;
+        text-align: right;
+      }
+    }
+
+    @media screen and (max-width: 430px) {
+      .page {
+        padding-right: 16px;
+        padding-left: 22px;
+      }
+
+      .contact {
+        grid-template-columns: 1fr;
+      }
+
+      .entry-head {
+        grid-template-columns: 1fr;
+        gap: 3px;
+      }
+    }
+
+    .taste-nav,
+    .screen-only,
+    .hero-actions,
+    .screen-title {
+      display: none;
+    }
+
+    @media screen {
+      html {
+        background: #08110f;
+        font-family: "Geist", "Noto Sans SC", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+        font-size: 16px;
+      }
+
+      body {
+        width: 100%;
+        max-width: 100%;
+        min-width: 320px;
+        padding: 0;
+        overflow-x: hidden;
+        background:
+          radial-gradient(circle at 12% 6%, rgb(18 111 98 / 34%), transparent 31rem),
+          radial-gradient(circle at 88% 18%, rgb(199 105 58 / 28%), transparent 25rem),
+          linear-gradient(135deg, #08110f 0%, #121819 48%, #ece8dc 100%);
+        color: #f8f3e8;
+      }
+
+      body::before {
+        z-index: 1;
+        opacity: .18;
+        mix-blend-mode: overlay;
+      }
+
+      .skip-link {
+        z-index: 80;
+        border-radius: 999px;
+        background: #f8f3e8;
+        color: #08110f;
+      }
+
+      .taste-nav {
+        position: fixed;
+        z-index: 70;
+        top: 18px;
+        left: 50%;
+        display: flex;
+        width: min(1080px, calc(100vw - 32px));
+        min-height: 54px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 22px;
+        padding: 9px 12px 9px 22px;
+        border: 1px solid rgb(248 243 232 / 20%);
+        border-radius: 999px;
+        background: rgb(8 17 15 / 72%);
+        box-shadow: 0 18px 60px rgb(0 0 0 / 28%);
+        backdrop-filter: blur(18px);
+        transform: translateX(-50%);
+      }
+
+      .nav-brand {
+        color: #f8f3e8;
+        font-size: .78rem;
+        font-weight: 800;
+        line-height: 1;
+        white-space: nowrap;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: rgb(248 243 232 / 72%);
+        font-size: .72rem;
+        font-weight: 700;
+      }
+
+      .nav-links a {
+        padding: 8px 10px;
+        border-radius: 999px;
+      }
+
+      .nav-links a:hover {
+        background: rgb(248 243 232 / 12%);
+        color: #fff;
+      }
+
+      .nav-cta {
+        display: inline-flex;
+        min-height: 36px;
+        align-items: center;
+        justify-content: center;
+        padding: 0 16px;
+        border-radius: 999px;
+        background: #f8f3e8;
+        color: #08110f;
+        font-size: .72rem;
+        font-weight: 850;
+        white-space: nowrap;
+      }
+
+      .screen-only,
+      .hero-actions,
+      .screen-title {
+        display: block;
+      }
+
+      .taste-nav.screen-only {
+        display: flex;
+      }
+
+      .print-name {
+        display: none;
+      }
+
+      .page.taste-page {
+        width: min(1180px, calc(100vw - 40px));
+        max-width: 100%;
+        min-height: auto;
+        margin: 0 auto;
+        padding: 118px 0 54px;
+        overflow-x: hidden;
+        background: transparent;
+        box-shadow: none;
+      }
+
+      .page.taste-page::before {
+        display: none;
+      }
+
+      .hero {
+        position: relative;
+        min-height: 660px;
+        grid-template-columns: minmax(0, 1fr) minmax(250px, 360px);
+        grid-template-areas:
+          "mark photo"
+          "identity photo"
+          "contact photo";
+        gap: 28px 46px;
+        align-items: end;
+        padding: clamp(44px, 7vw, 88px);
+        overflow: hidden;
+        border: 1px solid rgb(248 243 232 / 16%);
+        border-radius: 8px;
+        background:
+          radial-gradient(circle at 68% 34%, rgb(248 243 232 / 14%), transparent 24rem),
+          linear-gradient(90deg, rgb(8 17 15 / 88%) 0%, rgb(8 17 15 / 68%) 48%, rgb(8 17 15 / 28%) 100%),
+          url("https://picsum.photos/seed/agent-workflow-console/1920/1080");
+        background-position: center;
+        background-size: cover;
+      }
+
+      .hero::before {
+        position: absolute;
+        inset: 0;
+        content: "";
+        background:
+          linear-gradient(180deg, transparent 0%, rgb(8 17 15 / 72%) 100%),
+          radial-gradient(circle at 18% 78%, rgb(18 111 98 / 42%), transparent 24rem);
+        pointer-events: none;
+      }
+
+      .hero::after {
+        position: absolute;
+        right: -20%;
+        bottom: -32%;
+        width: 62%;
+        aspect-ratio: 1;
+        content: "";
+        border-radius: 999px;
+        background: radial-gradient(circle, rgb(199 105 58 / 32%), transparent 66%);
+        filter: blur(18px);
+        pointer-events: none;
+      }
+
+      .hero > * {
+        position: relative;
+        z-index: 2;
+      }
+
+      .institution {
+        align-self: start;
+      }
+
+      .school-logo {
+        width: 172px;
+        max-width: 45vw;
+        filter: brightness(0) invert(1);
+        opacity: .9;
+      }
+
+      .identity {
+        max-width: 980px;
+        padding-left: 0;
+        border-left: 0;
+      }
+
+      .eyebrow {
+        color: rgb(248 243 232 / 70%);
+        font-size: .78rem;
+        font-weight: 800;
+      }
+
+      .name {
+        max-width: 980px;
+        margin-top: 18px;
+        color: #fffdf6;
+        font-family: "Geist", "Noto Sans SC", "Microsoft YaHei UI", sans-serif;
+        font-size: clamp(3rem, 5vw, 5.45rem);
+        font-weight: 900;
+        line-height: .96;
+        letter-spacing: 0;
+      }
+
+      .screen-title-line {
+        display: block;
+      }
+
+      .screen-title-line:nth-child(2) {
+        font-size: .78em;
+        white-space: nowrap;
+      }
+
+      .inline-visual {
+        display: inline-block;
+        width: clamp(78px, 9vw, 118px);
+        height: clamp(32px, 3.3vw, 46px);
+        margin: 0 .18em;
+        border: 1px solid rgb(248 243 232 / 28%);
+        border-radius: 999px;
+        background-image: url("https://picsum.photos/seed/retrieval-system/420/180");
+        background-position: center;
+        background-size: cover;
+        filter: grayscale(1) contrast(1.25);
+        vertical-align: middle;
+      }
+
+      .positioning {
+        max-width: 820px;
+        margin-top: 22px;
+        color: rgb(248 243 232 / 82%);
+        font-size: 1.05rem;
+        font-weight: 650;
+        line-height: 1.65;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 30px;
+      }
+
+      .hero-actions a {
+        display: inline-flex;
+        min-height: 48px;
+        align-items: center;
+        justify-content: center;
+        padding: 0 22px;
+        border: 1px solid rgb(248 243 232 / 22%);
+        border-radius: 999px;
+        font-size: .84rem;
+        font-weight: 850;
+      }
+
+      .hero-actions a:first-child {
+        background: #f8f3e8;
+        color: #08110f;
+      }
+
+      .hero-actions a:last-child {
+        background: rgb(8 17 15 / 42%);
+        color: #f8f3e8;
+      }
+
+      .photo {
+        width: min(330px, 28vw);
+        height: 430px;
+        justify-self: end;
+        align-self: end;
+        border: 1px solid rgb(248 243 232 / 24%);
+        border-radius: 8px;
+        box-shadow: 0 34px 100px rgb(0 0 0 / 42%);
+        filter: grayscale(.18) contrast(1.05);
+        transition: transform 700ms ease, filter 700ms ease;
+      }
+
+      .hero:hover .photo {
+        transform: translateY(-8px) scale(1.035);
+        filter: grayscale(0) contrast(1.1);
+      }
+
+      .contact {
+        gap: 10px 24px;
+        margin-top: 16px;
+        color: rgb(248 243 232 / 68%);
+        font-size: .78rem;
+      }
+
+      .contact-label {
+        color: #f0b27a;
+        font-size: .67rem;
+      }
+
+      .brand-icon {
+        width: 15px;
+        height: 15px;
+        filter: brightness(0) invert(1);
+        opacity: .86;
+      }
+
+      .profile {
+        display: grid;
+        grid-template-columns: 190px minmax(0, 1fr);
+        gap: 58px;
+        padding: 120px 0 102px;
+        border-bottom: 1px solid rgb(248 243 232 / 18%);
+      }
+
+      .label,
+      .section-title {
+        color: #f8f3e8;
+        font-size: clamp(1.65rem, 2.6vw, 2.85rem);
+        font-weight: 900;
+        line-height: 1.04;
+      }
+
+      .profile p {
+        max-width: 920px;
+        color: rgb(248 243 232 / 78%);
+        font-size: clamp(1.15rem, 1.55vw, 1.58rem);
+        line-height: 1.72;
+      }
+
+      .proof-bar {
+        display: grid;
+        grid-auto-flow: dense;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        grid-template-rows: repeat(2, minmax(188px, auto));
+        gap: 0;
+        margin: 0;
+        padding: 104px 0 120px;
+        border: 0;
+      }
+
+      .proof {
+        position: relative;
+        min-height: 188px;
+        padding: 28px;
+        overflow: hidden;
+        border: 1px solid rgb(248 243 232 / 16%);
+        background: rgb(248 243 232 / 8%);
+        transition: transform 700ms ease, background-color 700ms ease, border-color 700ms ease;
+      }
+
+      .proof:first-child,
+      .proof:last-child {
+        padding: 28px;
+        border-left: 1px solid rgb(248 243 232 / 16%);
+      }
+
+      .proof:nth-child(1) {
+        grid-column: span 8;
+      }
+
+      .proof:nth-child(2) {
+        grid-column: span 4;
+      }
+
+      .proof:nth-child(3) {
+        grid-column: span 4;
+      }
+
+      .proof:nth-child(4) {
+        grid-column: span 8;
+      }
+
+      .proof::after {
+        position: absolute;
+        inset: auto 0 0;
+        height: 46%;
+        content: "";
+        background: linear-gradient(180deg, transparent, rgb(18 111 98 / 22%));
+        transform: translateY(34%);
+        transition: transform 700ms ease;
+      }
+
+      .proof:hover {
+        z-index: 3;
+        background: rgb(248 243 232 / 12%);
+        border-color: rgb(248 243 232 / 36%);
+        transform: translateY(-6px);
+      }
+
+      .proof:hover::after {
+        transform: translateY(10%);
+      }
+
+      .proof-kicker {
+        position: relative;
+        z-index: 2;
+        color: #f0b27a;
+        font-size: .72rem;
+        font-weight: 850;
+      }
+
+      .proof-value {
+        position: relative;
+        z-index: 2;
+        max-width: 13em;
+        margin-top: 18px;
+        color: #fffdf6;
+        font-size: clamp(1.55rem, 2.8vw, 3rem);
+        line-height: 1.02;
+      }
+
+      .proof-detail {
+        margin-top: 14px;
+        color: rgb(248 243 232 / 72%);
+        font-size: .95rem;
+        line-height: 1.5;
+      }
+
+      .accordion-section,
+      .desire-pin,
+      .marquee,
+      .action-panel {
+        padding: 112px 0;
+        border-top: 1px solid rgb(248 243 232 / 15%);
+      }
+
+      .accordion-title,
+      .pin-copy h2,
+      .action-panel h2 {
+        max-width: 920px;
+        color: #fffdf6;
+        font-size: clamp(2.4rem, 4vw, 4.75rem);
+        font-weight: 900;
+        line-height: 1.02;
+      }
+
+      .accordion-list {
+        display: flex;
+        min-height: 420px;
+        margin-top: 42px;
+        overflow: hidden;
+        border: 1px solid rgb(248 243 232 / 16%);
+        border-radius: 8px;
+      }
+
+      .accordion-card {
+        position: relative;
+        flex: 1 1 0;
+        min-width: 0;
+        overflow: hidden;
+        border-left: 1px solid rgb(248 243 232 / 14%);
+        background-position: center;
+        background-size: cover;
+        cursor: pointer;
+        transition: flex 700ms ease, filter 700ms ease;
+      }
+
+      .accordion-card:first-child {
+        border-left: 0;
+      }
+
+      .accordion-card:nth-child(1) {
+        background-image: linear-gradient(rgb(8 17 15 / 44%), rgb(8 17 15 / 72%)), url("https://picsum.photos/seed/agent-routing/900/1200");
+      }
+
+      .accordion-card:nth-child(2) {
+        background-image: linear-gradient(rgb(8 17 15 / 40%), rgb(8 17 15 / 76%)), url("https://picsum.photos/seed/vector-retrieval/900/1200");
+      }
+
+      .accordion-card:nth-child(3) {
+        background-image: linear-gradient(rgb(8 17 15 / 42%), rgb(8 17 15 / 72%)), url("https://picsum.photos/seed/backend-queues/900/1200");
+      }
+
+      .accordion-card:hover,
+      .accordion-card:focus-within {
+        flex: 2.35 1 0;
+        filter: contrast(1.15);
+      }
+
+      .accordion-card > div {
+        position: absolute;
+        right: 24px;
+        bottom: 26px;
+        left: 24px;
+      }
+
+      .accordion-card h3 {
+        color: #fffdf6;
+        font-size: clamp(1.2rem, 2vw, 2rem);
+        line-height: 1.08;
+      }
+
+      .accordion-card p {
+        max-width: 34em;
+        margin-top: 14px;
+        color: rgb(248 243 232 / 78%);
+        font-size: .95rem;
+        line-height: 1.58;
+      }
+
+      .desire-pin {
+        display: grid;
+        grid-template-columns: minmax(260px, 36%) minmax(0, 1fr);
+        gap: 72px;
+        align-items: start;
+      }
+
+      .pin-copy {
+        top: 110px;
+      }
+
+      .reveal-text {
+        max-width: 540px;
+        margin-top: 28px;
+        color: rgb(248 243 232 / 78%);
+        font-size: 1.1rem;
+        line-height: 1.8;
+      }
+
+      .reveal-word {
+        opacity: .16;
+      }
+
+      .pin-stack {
+        display: grid;
+        gap: 18px;
+      }
+
+      .motion-card {
+        min-height: 250px;
+        padding: 30px;
+        overflow: hidden;
+        border: 1px solid rgb(248 243 232 / 15%);
+        border-radius: 8px;
+        background:
+          linear-gradient(135deg, rgb(248 243 232 / 10%), rgb(248 243 232 / 4%)),
+          url("https://picsum.photos/seed/system-verification/1200/720");
+        background-position: center;
+        background-size: cover;
+      }
+
+      .motion-card:nth-child(2) {
+        background-image:
+          linear-gradient(135deg, rgb(8 17 15 / 35%), rgb(8 17 15 / 76%)),
+          url("https://picsum.photos/seed/teacher-agent-platform/1200/720");
+      }
+
+      .motion-card:nth-child(3) {
+        background-image:
+          linear-gradient(135deg, rgb(8 17 15 / 32%), rgb(8 17 15 / 78%)),
+          url("https://picsum.photos/seed/seeg-decoder-research/1200/720");
+      }
+
+      .motion-card h3 {
+        max-width: 560px;
+        color: #fffdf6;
+        font-size: clamp(1.45rem, 2.45vw, 2.7rem);
+        line-height: 1.04;
+      }
+
+      .motion-card p {
+        max-width: 600px;
+        margin-top: 22px;
+        color: rgb(248 243 232 / 78%);
+        font-size: 1rem;
+        line-height: 1.68;
+      }
+
+      .columns {
+        grid-template-columns: minmax(270px, 34%) minmax(0, 1fr);
+        gap: 72px;
+        padding: 116px 0 126px;
+        border-top: 1px solid rgb(248 243 232 / 15%);
+      }
+
+      .main-column {
+        grid-column: 2;
+      }
+
+      .sidebar {
+        grid-column: 1;
+        padding-right: 0;
+        border-right: 0;
+      }
+
+      .section {
+        margin-top: 70px;
+      }
+
+      .section:first-child {
+        margin-top: 0;
+      }
+
+      .section-heading {
+        grid-template-columns: auto 1fr;
+        gap: 22px;
+        margin-bottom: 22px;
+      }
+
+      .section-heading::after {
+        background: rgb(248 243 232 / 14%);
+      }
+
+      .entry {
+        margin-top: 38px;
+        padding-bottom: 34px;
+        border-bottom: 1px solid rgb(248 243 232 / 12%);
+      }
+
+      .entry-title,
+      .school {
+        color: #fffdf6;
+        font-size: 1.28rem;
+        line-height: 1.25;
+      }
+
+      .date {
+        color: rgb(248 243 232 / 52%);
+        font-size: .75rem;
+      }
+
+      .role,
+      .project-link,
+      .scope strong,
+      .metric,
+      .skill-label,
+      .focus-line strong {
+        color: #f0b27a;
+      }
+
+      .role {
+        font-size: .92rem;
+      }
+
+      .scope,
+      li,
+      .stack,
+      .edu-detail,
+      .skill-list,
+      .publication-title,
+      .publication-meta,
+      .focus-line {
+        color: rgb(248 243 232 / 72%);
+        font-size: .93rem;
+        line-height: 1.65;
+      }
+
+      li::before {
+        background: #f0b27a;
+      }
+
+      .publication {
+        border-left-color: #f0b27a;
+        background: rgb(248 243 232 / 8%);
+      }
+
+      .focus-list,
+      .focus-line,
+      .skill-group {
+        border-color: rgb(248 243 232 / 14%);
+      }
+
+      .marquee {
+        overflow: hidden;
+      }
+
+      .marquee-track {
+        display: flex;
+        width: max-content;
+        gap: 34px;
+        color: rgb(248 243 232 / 88%);
+        font-size: clamp(2.2rem, 5vw, 5.3rem);
+        font-weight: 900;
+        line-height: 1;
+        white-space: nowrap;
+        animation: marquee 28s linear infinite;
+      }
+
+      .marquee-track span:nth-child(even) {
+        color: transparent;
+        -webkit-text-stroke: 1px rgb(248 243 232 / 42%);
+      }
+
+      .action-panel {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 34px;
+        align-items: end;
+      }
+
+      .action-panel p {
+        max-width: 620px;
+        margin-top: 24px;
+        color: rgb(248 243 232 / 72%);
+        font-size: 1.08rem;
+        line-height: 1.7;
+      }
+
+      .action-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 12px;
+      }
+
+      .action-links a {
+        display: inline-flex;
+        min-height: 48px;
+        align-items: center;
+        justify-content: center;
+        padding: 0 20px;
+        border: 1px solid rgb(248 243 232 / 18%);
+        border-radius: 999px;
+        color: #f8f3e8;
+        font-size: .84rem;
+        font-weight: 850;
+      }
+
+      .action-links a:first-child {
+        background: #f8f3e8;
+        color: #08110f;
+      }
+
+      .footer {
+        position: static;
+        padding-top: 28px;
+        border-top: 1px solid rgb(248 243 232 / 14%);
+        color: rgb(248 243 232 / 52%);
+        font-size: .72rem;
+        text-align: right;
+      }
+
+      @keyframes marquee {
+        from {
+          transform: translateX(0);
+        }
+
+        to {
+          transform: translateX(-50%);
+        }
+      }
+    }
+
+    @media screen and (max-width: 850px) {
+      .taste-nav {
+        top: 10px;
+        width: calc(100vw - 20px);
+        padding-left: 16px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .page.taste-page {
+        width: 100%;
+        padding: 82px 16px 32px;
+      }
+
+      .hero {
+        min-height: auto;
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+          "mark"
+          "identity"
+          "photo"
+          "contact";
+        gap: 24px;
+        padding: 34px 22px;
+      }
+
+      .name {
+        font-size: clamp(2.35rem, 13vw, 3.6rem);
+      }
+
+      .screen-title-line:nth-child(2) {
+        max-width: 8.8em;
+        font-size: .72em;
+        white-space: normal;
+      }
+
+      .inline-visual {
+        display: none;
+      }
+
+      .photo {
+        width: 100%;
+        height: 360px;
+        justify-self: stretch;
+      }
+
+      .contact {
+        grid-template-columns: 1fr;
+      }
+
+      .profile,
+      .desire-pin,
+      .columns,
+      .action-panel {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .profile,
+      .proof-bar,
+      .accordion-section,
+      .desire-pin,
+      .marquee,
+      .columns,
+      .action-panel {
+        padding: 72px 0;
+      }
+
+      .proof-bar {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+      }
+
+      .proof:nth-child(n) {
+        grid-column: auto;
+      }
+
+      .accordion-list {
+        flex-direction: column;
+        min-height: 720px;
+      }
+
+      .accordion-card:hover,
+      .accordion-card:focus-within {
+        flex: 1.4 1 0;
+      }
+
+      .main-column,
+      .sidebar {
+        grid-column: auto;
+      }
+
+      .entry-head {
+        grid-template-columns: 1fr;
+        gap: 7px;
+      }
+
+      .action-links {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: .01ms !important;
+      }
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    @media print {
+      html,
+      body {
+        background: #fff;
+      }
+
+      body {
+        min-width: 0;
+        padding: 0;
+      }
+
+      body::before,
+      .skip-link,
+      .taste-nav,
+      .screen-only,
+      .hero-actions,
+      .screen-title {
+        display: none;
+      }
+
+      .print-name {
+        display: inline;
+      }
+
+      .page {
+        width: 210mm;
+        height: 297mm;
+        min-height: 297mm;
+        margin: 0;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#resume-content">跳到简历正文</a>
+  <nav class="taste-nav screen-only" aria-label="简历导航">
+    <a class="nav-brand" href="/">HE YUANYU</a>
+    <div class="nav-links" aria-label="页面章节">
+      <a href="/">站点</a>
+      <a href="#profile-title">简介</a>
+      <a href="#projects-title">项目</a>
+      <a href="#delivery-title">交付</a>
+      <a href="#skills-title">技能</a>
+    </div>
+    <a class="nav-cta" href="mailto:heyuanyu@mail.ustc.edu.cn">联系</a>
+  </nav>
+  <main id="resume-content" class="page taste-page overflow-x-hidden w-full max-w-full" aria-label="何元玉一页简历">
+    <header class="hero">
+      <div class="institution">
+        <img class="school-logo" src="../../assets/ustc-logo.png" alt="中国科学技术大学校徽与中英文校名">
+      </div>
+      <div class="identity">
+        <p class="eyebrow">AI SYSTEMS · BACKEND ENGINEERING</p>
+        <h1 class="name">
+          <span class="print-name">何元玉</span>
+          <span class="screen-title">
+            <span class="screen-title-line">何元玉</span>
+            <span class="screen-title-line">把 AI Agent <span class="inline-visual"></span><wbr>做成可靠系统</span>
+          </span>
+        </h1>
+        <p class="positioning">AI Agent · 大模型应用 · 后端工程</p>
+        <div class="hero-actions" aria-label="主要操作">
+          <a href="mailto:heyuanyu@mail.ustc.edu.cn">联系候选人</a>
+          <a href="../../assets/resume/Yuanyu_He_Resume_v15.pdf">下载 PDF</a>
+        </div>
+      </div>
+      <address class="contact" aria-label="联系方式">
+        <a class="contact-item" href="tel:+8613083066971" aria-label="电话 13083066971">
+          <span class="contact-label">TEL</span>
+          <span>13083066971</span>
+        </a>
+        <a class="contact-item" href="mailto:heyuanyu@mail.ustc.edu.cn" aria-label="邮箱 heyuanyu@mail.ustc.edu.cn">
+          <span class="contact-label">MAIL</span>
+          <span>heyuanyu@mail.ustc.edu.cn</span>
+        </a>
+        <span class="contact-item" aria-label="微信 YUANYU_1016">
+          <img class="brand-icon" src="../../assets/wechat.svg" alt="" aria-hidden="true">
+          <span>YUANYU_1016</span>
+        </span>
+        <a class="contact-item" href="https://yuanyu1016.github.io" target="_blank" rel="noopener noreferrer" aria-label="个人网站 yuanyu1016.github.io，在新窗口打开">
+          <img class="brand-icon" src="../../assets/github.svg" alt="" aria-hidden="true">
+          <span>yuanyu1016.github.io</span>
+        </a>
+      </address>
+      <img class="photo" src="../../assets/profile-photo.jpg" alt="何元玉证件照">
+    </header>
+
+    <section class="profile" aria-labelledby="profile-title">
+      <h2 id="profile-title" class="label">个人简介</h2>
+      <p>面向 AI Agent、工作流自动化与智能系统的工程实践者，具备 Spring AI / LangChain4j、RAG、后端工程与深度学习科研经验；擅长把模型、工具、数据、状态和反馈机制组织为可追踪、可验证、可复用的产品链路。</p>
+    </section>
+
+    <section class="proof-bar" aria-label="核心成果">
+      <div class="proof">
+        <div class="proof-kicker">AI-NATIVE STARTUP</div>
+        <div class="proof-value">教育 Agent 产品全栈研发<span class="proof-detail">核心产品入选 WAIC 2026 参展</span></div>
+      </div>
+      <div class="proof">
+        <div class="proof-kicker">AI 协作开发</div>
+        <div class="proof-value">Agentic Engineering<span class="proof-detail">Harness · Loop · 多 Agent 协作编排</span></div>
+      </div>
+      <div class="proof">
+        <div class="proof-kicker">科研工程</div>
+        <div class="proof-value">SEEG 语音解码算法<span class="proof-detail">IEEE Sensors Journal · 第一作者</span></div>
+      </div>
+      <div class="proof">
+        <div class="proof-kicker">后端系统</div>
+        <div class="proof-value">高并发与协同产品交付<span class="proof-detail">队列 · 缓存 · 检索 · 权限 · 实时通信</span></div>
+      </div>
+    </section>
+
+    <section class="accordion-section screen-only" aria-labelledby="systems-title">
+      <h2 id="systems-title" class="accordion-title">系统能力不是堆技术栈，而是把不确定的模型过程落到可执行链路。</h2>
+      <div class="accordion-list" aria-label="系统能力展开">
+        <article class="accordion-card" tabindex="0">
+          <div>
+            <h3>Agent Routing</h3>
+            <p>把意图识别、任务拆解、工具选择和状态回传接成清晰流程，减少模型输出与业务动作之间的断层。</p>
+          </div>
+        </article>
+        <article class="accordion-card" tabindex="0">
+          <div>
+            <h3>Retrieval Grounding</h3>
+            <p>用可信源、PGvector、多维过滤、查询重写和事实核验，把生成结果锚定到可追溯的数据上下文。</p>
+          </div>
+        </article>
+        <article class="accordion-card" tabindex="0">
+          <div>
+            <h3>Backend Reliability</h3>
+            <p>用队列、缓存、限流、权限和实时协同机制，把 AI 功能放进能部署、能扩缩、能维护的工程系统。</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="desire-pin screen-only" aria-labelledby="delivery-title">
+      <div class="pin-copy">
+        <h2 id="delivery-title">从模型能力到可验证交付</h2>
+        <p class="reveal-text" aria-label="交付方法">
+          <span class="reveal-word">需求</span>
+          <span class="reveal-word">进入</span>
+          <span class="reveal-word">系统后，</span>
+          <span class="reveal-word">我会</span>
+          <span class="reveal-word">先定义</span>
+          <span class="reveal-word">任务边界、</span>
+          <span class="reveal-word">数据来源、</span>
+          <span class="reveal-word">工具能力、</span>
+          <span class="reveal-word">失败回退</span>
+          <span class="reveal-word">与验证指标，</span>
+          <span class="reveal-word">再把</span>
+          <span class="reveal-word">模型调用</span>
+          <span class="reveal-word">沉入</span>
+          <span class="reveal-word">稳定的</span>
+          <span class="reveal-word">工程链路。</span>
+        </p>
+      </div>
+      <div class="pin-stack">
+        <article class="motion-card">
+          <h3>健康对话 Agent</h3>
+          <p>从知识检索、实时信息、多步规划到工具执行，构建个性化饮食和健身计划生成链路。</p>
+        </article>
+        <article class="motion-card">
+          <h3>AI 教育产品工作流</h3>
+          <p>围绕教案、课件、教师 Agent 和工具开放能力，拆解生成流程并增强任务队列、重试和状态管理。</p>
+        </article>
+        <article class="motion-card">
+          <h3>SEEG 语音解码研究</h3>
+          <p>从神经信号表征到频谱重建与跨模态对齐，完成模型设计、实验验证和论文交付。</p>
+        </article>
+      </div>
+    </section>
+
+    <div class="columns">
+      <div class="main-column">
+        <section class="section" aria-labelledby="experience-title">
+          <div class="section-heading">
+            <h2 id="experience-title" class="section-title">实习经历</h2>
+          </div>
+          <article class="entry">
+            <div class="entry-head">
+              <h3 class="entry-title">智学星途｜AI 教育 B/C 端产品研发</h3>
+              <time class="date" datetime="2026-06/2026-08">2026.06 – 2026.08</time>
+            </div>
+            <p class="role">Agent 开发实习生 · 教师 Agent / AI 教案 / AI 课件 / 工具开放能力</p>
+            <p class="scope"><strong>业务范围：</strong>覆盖教师备课、教案/课件生成、学情分析与外部 Agent 工具调用；公司产品在 WAIC 2026 参展展示。</p>
+            <ul>
+              <li><strong>模块负责人｜MAIC PPT Agent：</strong>拆分需求解析 → 大纲确认 → 页面规划 → 图片生成 → 预览编辑，优化提示词、结构化输出、重试、任务队列与工作节点调度。</li>
+              <li><strong>0→1 建设｜教学 Agent 工作流：</strong>参与普通教案、目标驱动教案、新教材理解等场景，串联意图识别、任务路由、资料上传、过程状态与历史管理。</li>
+              <li><strong>可信工具链：</strong>接入可信源、用户/平台资料、网页回退与事实核验；参与 MCP / Skill、API 密钥、Token 审核、附件工具及接入文档建设。</li>
+            </ul>
+            <p class="stack"><strong>技术链</strong>　Java · Spring Boot · Next.js · Agent 工作流 · Tool Calling · MCP · Skill · MySQL · Redis</p>
+          </article>
+        </section>
+
+        <section class="section" aria-labelledby="projects-title">
+          <div class="section-heading">
+            <h2 id="projects-title" class="section-title">代表项目</h2>
+          </div>
+          <article class="entry">
+            <div class="entry-head">
+              <h3 class="entry-title">基于大模型的智能健康对话 Agent 系统</h3>
+            </div>
+            <p class="role">0→1 核心模块负责人 · RAG / Agent 规划 / 工具体系</p>
+            <div class="project-link-line">
+              <span class="project-link-label">项目链接</span>
+              <a class="project-link" href="https://github.com/yuanyu1016/ai-agent" target="_blank" rel="noopener noreferrer">github.com/yuanyu1016/ai-agent ↗</a>
+            </div>
+            <p class="scope"><strong>系统范围：</strong>打通知识库、实时信息、多步规划、工具执行与弹性部署，为用户生成个性化饮食及健身计划。</p>
+            <ul>
+              <li><strong>RAG：</strong>基于 PGvector 0→1 设计检索链路，以查询重写和多维过滤优化准确度与召回率，有效应答率提升 <span class="metric">37%</span>。</li>
+              <li><strong>Agent 与工具：</strong>基于 ReAct + CoT 构建分层规划架构，集成联网搜索、抓取、文件、邮件、地图及图片搜索等 Tool Calling / MCP 能力。</li>
+              <li><strong>工程交付：</strong>使用 Dockerfile 容器化并部署至无服务器（Serverless）平台，支持按需扩缩容。</li>
+            </ul>
+            <p class="stack"><strong>技术链</strong>　Spring AI · PGvector · RAG · ReAct · CoT · Tool Calling · MCP · Docker · Serverless</p>
+          </article>
+
+          <article class="entry">
+            <div class="entry-head">
+              <h3 class="entry-title">云端存储智能协同图库管理平台</h3>
+            </div>
+            <p class="role">0→1 后端核心模块负责人 · 数据治理 / 异步任务 / 实时协同</p>
+            <div class="project-link-line">
+              <span class="project-link-label">项目链接</span>
+              <a class="project-link" href="https://github.com/yuanyu1016/picture-backend-ddd" target="_blank" rel="noopener noreferrer">github.com/yuanyu1016/picture-backend-ddd ↗</a>
+            </div>
+            <p class="scope"><strong>系统范围：</strong>覆盖图片高并发存储、检索、AI 编辑、团队空间、多端同步与资源成本管控。</p>
+            <ul>
+              <li><strong>数据链：</strong>以 DDD 划分领域，组合 ShardingSphere 分库分表、Elasticsearch 检索及 Redis + Caffeine 多级缓存。</li>
+              <li><strong>任务/协同链：</strong>RabbitMQ 削峰解耦 AI 扩图和批量编辑，Redisson 限流控成本；WebSocket + Sa-Token RBAC + Disruptor 支撑团队协同。</li>
+            </ul>
+            <p class="stack"><strong>技术链</strong>　Spring Boot · DDD · ShardingSphere · Elasticsearch · Redis · Caffeine · RabbitMQ · Redisson · WebSocket · Sa-Token · Disruptor</p>
+          </article>
+        </section>
+
+        <section class="section" aria-labelledby="research-title">
+          <div class="section-heading">
+            <h2 id="research-title" class="section-title">科研经历</h2>
+          </div>
+          <article class="entry">
+            <div class="entry-head">
+              <h3 class="entry-title">基于深度学习的脑电语音解码研究</h3>
+            </div>
+            <p class="role">第一作者 · 研究与模型模块负责人 · SEEG 语音解码</p>
+            <div class="project-link-line">
+              <span class="project-link-label">项目链接</span>
+              <a class="project-link" href="https://github.com/yuanyu1016/ConvED-SR" target="_blank" rel="noopener noreferrer">github.com/yuanyu1016/ConvED-SR ↗</a>
+            </div>
+            <p class="scope"><strong>研究范围：</strong>覆盖 SEEG 信号表征、模型设计、频谱重建、跨模态对齐与论文交付。</p>
+            <ul>
+              <li><strong>0→1 模型：</strong>设计 ConvED-SR 卷积编码器-解码器，缓解稀疏数据条件下的过拟合。</li>
+              <li><strong>重建模块：</strong>构建 Scale-Recursive Reconstructor，以多尺度频谱融合将 MCD 降低 <span class="metric">2.38 dB</span>。</li>
+              <li><strong>跨模态：</strong>探索 Hifi-Codec + Transformer 脑电-语音特征对齐；第一作者论文被 IEEE Sensors Journal 接收（SCI Q1 / 中科院二区 / IF 4.5）。</li>
+            </ul>
+            <p class="stack"><strong>技术链</strong>　Python · PyTorch · ConvED-SR · Scale-Recursive Reconstructor · Hifi-Codec · Transformer · SEEG</p>
+          </article>
+        </section>
+      </div>
+
+      <aside class="sidebar" aria-label="教育、论文、技能与荣誉">
+        <section class="section" aria-labelledby="education-title">
+          <div class="section-heading">
+            <h2 id="education-title" class="section-title">教育背景</h2>
+          </div>
+          <article class="edu-item">
+            <div class="edu-head">
+              <h3 class="school">中国科学技术大学</h3>
+              <time class="date" datetime="2022-09/2027-03">2022.09 – 2027.03</time>
+            </div>
+            <p class="edu-detail">信息与通信工程 · 硕士（推免）<br>类脑智能技术及应用国家工程实验室</p>
+          </article>
+          <article class="edu-item">
+            <div class="edu-head">
+              <h3 class="school">中国科学技术大学</h3>
+              <time class="date" datetime="2018-09/2022-07">2018.09 – 2022.07</time>
+            </div>
+            <p class="edu-detail">自动化 · 学士 · 优秀毕业生</p>
+          </article>
+        </section>
+
+        <section class="section" aria-labelledby="publication-title">
+          <div class="section-heading">
+            <h2 id="publication-title" class="section-title">论文成果</h2>
+          </div>
+          <article class="publication">
+            <h3 class="publication-title">Enhancing SEEG-Based Speech Decoding via Convolutional Encoder-Decoder and Scale-Recursive Reconstructor</h3>
+            <p class="publication-meta"><strong>Vincent Yuanyu He</strong>; Aiping Liu; Shengcai Duan; Yikai Gao; Ruobing Qian; Xun Chen.<br><em>IEEE Sensors Journal</em>.</p>
+          </article>
+        </section>
+
+        <section class="section" aria-labelledby="skills-title">
+          <div class="section-heading">
+            <h2 id="skills-title" class="section-title">技术能力</h2>
+          </div>
+          <div class="skill-group">
+            <h3 class="skill-label">AI / Agent</h3>
+            <p class="skill-list">Spring AI, LangChain4j, RAG, Agent 工作流, ReAct, Tool Calling, MCP, 提示词工程, PyTorch, Transformer</p>
+          </div>
+          <div class="skill-group">
+            <h3 class="skill-label">后端工程</h3>
+            <p class="skill-list">Spring Boot, MyBatis, MySQL, Redis, RabbitMQ, Elasticsearch, Nginx, Spring Cloud, WebSocket</p>
+          </div>
+          <div class="skill-group">
+            <h3 class="skill-label">编程语言</h3>
+            <p class="skill-list">Java, Python；掌握 C/C++</p>
+          </div>
+          <div class="skill-group">
+            <h3 class="skill-label">工程能力</h3>
+            <p class="skill-list">Linux, Docker, Git, Serverless, 任务拆解, 状态管理, 执行反馈, 循环验证</p>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="honors-title">
+          <div class="section-heading">
+            <h2 id="honors-title" class="section-title">荣誉与实践</h2>
+          </div>
+          <ul>
+            <li><strong>教育部港澳台学生奖学金</strong> · 2 次</li>
+            <li><strong>研究生学业奖学金</strong> · 3 次</li>
+            <li><strong>优秀学生奖学金</strong> · 2 次</li>
+            <li><strong>第十九届 RoboGame 机器人大赛</strong> · 亚军</li>
+            <li><strong>学生工作：</strong>本科连续四年担任班委</li>
+            <li><strong>教学：</strong>《微机原理和嵌入式系统》课程助教</li>
+          </ul>
+        </section>
+
+        <section class="section" aria-labelledby="range-title">
+          <div class="section-heading">
+            <h2 id="range-title" class="section-title">端到端系统能力</h2>
+          </div>
+          <div class="focus-list">
+            <div class="focus-line"><strong>规划</strong><span>意图识别 · 任务拆解 · 路由</span></div>
+            <div class="focus-line"><strong>检索增强</strong><span>RAG · 可信源 · 上下文管理</span></div>
+            <div class="focus-line"><strong>工具执行</strong><span>Tool Calling · MCP · Skill</span></div>
+            <div class="focus-line"><strong>后端服务</strong><span>Spring Boot · 数据 · 队列</span></div>
+            <div class="focus-line"><strong>验证闭环</strong><span>结构化输出 · 重试 · 指标 · 部署</span></div>
+          </div>
+        </section>
+      </aside>
+    </div>
+
+    <section class="marquee screen-only" aria-label="技术关键词流">
+      <div class="marquee-track" aria-hidden="true">
+        <span>SPRING AI</span>
+        <span>RAG</span>
+        <span>TOOL CALLING</span>
+        <span>MCP</span>
+        <span>PGVECTOR</span>
+        <span>REDIS</span>
+        <span>PYTORCH</span>
+        <span>SEEG</span>
+        <span>SPRING AI</span>
+        <span>RAG</span>
+        <span>TOOL CALLING</span>
+        <span>MCP</span>
+        <span>PGVECTOR</span>
+        <span>REDIS</span>
+        <span>PYTORCH</span>
+        <span>SEEG</span>
+      </div>
+    </section>
+
+    <section class="action-panel screen-only" aria-label="联系与查看">
+      <div>
+        <h2>需要一个能把 AI 应用落到工程系统的人。</h2>
+        <p>欢迎联系我讨论 AI Agent、RAG、工作流编排、后端工程和科研工程相关岗位机会。</p>
+      </div>
+      <div class="action-links">
+        <a href="mailto:heyuanyu@mail.ustc.edu.cn">发送邮件</a>
+        <a href="https://yuanyu1016.github.io" target="_blank" rel="noopener noreferrer">个人网站</a>
+      </div>
+    </section>
+
+    <footer class="footer">HE YUANYU · RESUME · V15</footer>
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    (() => {
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const printMedia = window.matchMedia("print").matches;
+
+      if (!window.gsap || !window.ScrollTrigger || reduceMotion || printMedia) {
+        return;
+      }
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      gsap.from(".hero .identity", {
+        y: 34,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out"
+      });
+
+      gsap.from(".hero .photo", {
+        y: 52,
+        scale: .88,
+        opacity: 0,
+        duration: 1.15,
+        delay: .12,
+        ease: "power3.out"
+      });
+
+      gsap.utils.toArray(".proof, .accordion-card, .motion-card").forEach((item) => {
+        gsap.fromTo(item, {
+          y: 44,
+          scale: .92,
+          opacity: .2
+        }, {
+          y: 0,
+          scale: 1,
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: item,
+            start: "top 88%",
+            end: "bottom 42%",
+            scrub: true
+          }
+        });
+      });
+
+      ScrollTrigger.create({
+        trigger: ".desire-pin",
+        start: "top 90px",
+        end: "bottom bottom",
+        pin: ".pin-copy",
+        pinSpacing: false
+      });
+
+      gsap.to(".reveal-word", {
+        opacity: 1,
+        stagger: .08,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".reveal-text",
+          start: "top 78%",
+          end: "bottom 38%",
+          scrub: true
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

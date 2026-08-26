@@ -7,3 +7,65 @@
     <a href="https://eeis.ustc.edu.cn/" rel="nofollow noopener noreferrer">电子工程与信息科学系</a>
   </div>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+  (() => {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (!window.gsap || !window.ScrollTrigger || reduceMotion) {
+      return;
+    }
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.utils.toArray(".taste-hero > *, .taste-card, .taste-accordion article, .taste-stack article, .taste-list article").forEach((item) => {
+      gsap.fromTo(item, {
+        y: 42,
+        scale: .94,
+        opacity: .2
+      }, {
+        y: 0,
+        scale: 1,
+        opacity: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: item,
+          start: "top 88%",
+          end: "bottom 42%",
+          scrub: true
+        }
+      });
+    });
+
+    gsap.utils.toArray(".taste-reveal").forEach((line) => {
+      gsap.to(line.querySelectorAll("span"), {
+        opacity: 1,
+        stagger: .08,
+        ease: "none",
+        scrollTrigger: {
+          trigger: line,
+          start: "top 78%",
+          end: "bottom 38%",
+          scrub: true
+        }
+      });
+    });
+
+    gsap.utils.toArray(".taste-pin").forEach((section) => {
+      const copy = section.querySelector(".taste-pin-copy");
+      if (!copy || window.matchMedia("(max-width: 900px)").matches) {
+        return;
+      }
+
+      ScrollTrigger.create({
+        trigger: section,
+        start: "top 110px",
+        end: "bottom bottom",
+        pin: copy,
+        pinSpacing: false
+      });
+    });
+  })();
+</script>

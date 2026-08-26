@@ -1,0 +1,592 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --taste-ink: #f8f3e8;
+    --taste-paper: #f5efe3;
+    --taste-night: #08110f;
+    --taste-panel: rgb(248 243 232 / 8%);
+    --taste-line: rgb(248 243 232 / 16%);
+    --taste-muted: rgb(248 243 232 / 70%);
+    --taste-accent: #d88755;
+    --taste-cyan: #69c7b7;
+    --taste-forest: #123f49;
+  }
+
+  html {
+    background: var(--taste-night);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    overflow-x: hidden;
+    background:
+      radial-gradient(circle at 9% 8%, rgb(18 111 98 / 34%), transparent 34rem),
+      radial-gradient(circle at 86% 18%, rgb(216 135 85 / 26%), transparent 27rem),
+      linear-gradient(135deg, #08110f 0%, #111b1a 48%, #251c19 100%);
+    color: var(--taste-ink);
+    font-family: "Geist", "Noto Sans SC", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+    letter-spacing: 0;
+  }
+
+  body::before {
+    position: fixed;
+    z-index: 0;
+    inset: 0;
+    pointer-events: none;
+    content: "";
+    opacity: .14;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.24'/%3E%3C/svg%3E");
+  }
+
+  .masthead {
+    position: sticky;
+    z-index: 30;
+    top: 18px;
+    width: min(1120px, calc(100vw - 32px));
+    margin: 18px auto 0;
+    border: 1px solid var(--taste-line);
+    border-radius: 999px;
+    background: rgb(8 17 15 / 72%);
+    box-shadow: 0 18px 60px rgb(0 0 0 / 28%);
+    backdrop-filter: blur(18px);
+  }
+
+  .masthead__inner-wrap {
+    padding: 0 16px;
+  }
+
+  .greedy-nav {
+    min-height: 58px;
+    background: transparent;
+  }
+
+  .site-title,
+  .greedy-nav a,
+  .greedy-nav .visible-links a::before {
+    color: var(--taste-ink);
+  }
+
+  .site-title {
+    font-weight: 900;
+  }
+
+  .greedy-nav .visible-links a {
+    border-radius: 999px;
+    color: var(--taste-muted);
+    font-size: .78rem;
+    font-weight: 750;
+  }
+
+  .greedy-nav .visible-links a:hover {
+    background: rgb(248 243 232 / 12%);
+    color: #fff;
+  }
+
+  .initial-content,
+  .page,
+  .archive {
+    position: relative;
+    z-index: 1;
+  }
+
+  .page {
+    float: none;
+    width: min(1180px, calc(100vw - 40px));
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .page__inner-wrap {
+    float: none;
+  }
+
+  .page__content {
+    max-width: none;
+    color: var(--taste-ink);
+  }
+
+  .page__title,
+  .page__meta,
+  .sidebar,
+  .breadcrumbs {
+    display: none;
+  }
+
+  .taste-site {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    padding: 7rem 0 4rem;
+  }
+
+  .taste-section {
+    padding: 8rem 0;
+  }
+
+  .taste-hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 430px);
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: end;
+    min-height: 68vh;
+    padding-top: 3rem;
+  }
+
+  .taste-hero::before {
+    position: absolute;
+    inset: 6% -10% auto auto;
+    width: min(44vw, 520px);
+    aspect-ratio: 1;
+    content: "";
+    border-radius: 50%;
+    background: radial-gradient(circle, rgb(105 199 183 / 23%), transparent 66%);
+    filter: blur(12px);
+  }
+
+  .taste-kicker {
+    max-width: 58rem;
+    margin: 0 0 1.6rem;
+    color: var(--taste-cyan);
+    font-size: .82rem;
+    font-weight: 850;
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+
+  .taste-hero h1,
+  .taste-wide-heading {
+    max-width: min(1120px, 100%);
+    margin: 0;
+    color: var(--taste-ink);
+    font-size: clamp(2.8rem, 7vw, 6.2rem);
+    font-weight: 900;
+    letter-spacing: 0;
+    line-height: .96;
+    text-wrap: balance;
+  }
+
+  .taste-hero p,
+  .taste-lede {
+    max-width: 760px;
+    margin: 1.8rem 0 0;
+    color: var(--taste-muted);
+    font-size: clamp(1.02rem, 1.6vw, 1.22rem);
+    line-height: 1.8;
+  }
+
+  .taste-inline-image {
+    display: inline-block;
+    width: clamp(4.6rem, 10vw, 8rem);
+    height: clamp(2.1rem, 4vw, 3.4rem);
+    margin: 0 .35rem;
+    border: 1px solid var(--taste-line);
+    border-radius: 999px;
+    vertical-align: middle;
+    background-position: center;
+    background-size: cover;
+    filter: grayscale(.2) contrast(1.18) saturate(.85);
+  }
+
+  .taste-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .9rem;
+    margin-top: 2.2rem;
+  }
+
+  .taste-button {
+    display: inline-flex;
+    min-height: 46px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1.3rem;
+    border: 1px solid rgb(248 243 232 / 28%);
+    border-radius: 999px;
+    font-size: .88rem;
+    font-weight: 850;
+    text-decoration: none;
+  }
+
+  .taste-button.primary {
+    background: var(--taste-paper);
+    color: var(--taste-night);
+  }
+
+  .taste-button.secondary {
+    background: rgb(8 17 15 / 48%);
+    color: var(--taste-ink);
+  }
+
+  .taste-portrait {
+    position: relative;
+    min-height: 520px;
+    overflow: hidden;
+    border: 1px solid var(--taste-line);
+    border-radius: 8px;
+    background:
+      linear-gradient(180deg, rgb(8 17 15 / 2%), rgb(8 17 15 / 74%)),
+      var(--taste-image);
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0 24px 90px rgb(0 0 0 / 30%);
+  }
+
+  .taste-portrait::after {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    left: 1rem;
+    color: rgb(248 243 232 / 78%);
+    content: attr(data-caption);
+    font-size: .76rem;
+    font-weight: 800;
+    line-height: 1.5;
+  }
+
+  .taste-bento {
+    display: grid;
+    grid-auto-flow: dense;
+    grid-auto-rows: minmax(132px, auto);
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1px;
+    overflow: hidden;
+    border: 1px solid var(--taste-line);
+    border-radius: 8px;
+    background: var(--taste-line);
+  }
+
+  .taste-card {
+    position: relative;
+    min-height: 180px;
+    overflow: hidden;
+    padding: clamp(1.2rem, 2.5vw, 2rem);
+    background: rgb(248 243 232 / 7%);
+    color: var(--taste-ink);
+    text-decoration: none;
+  }
+
+  .taste-card.large {
+    grid-column: span 6;
+    grid-row: span 2;
+  }
+
+  .taste-card.medium {
+    grid-column: span 3;
+    grid-row: span 2;
+  }
+
+  .taste-card.small {
+    grid-column: span 4;
+  }
+
+  .taste-card.image {
+    background:
+      linear-gradient(180deg, rgb(8 17 15 / 12%), rgb(8 17 15 / 76%)),
+      var(--taste-image);
+    background-position: center;
+    background-size: cover;
+  }
+
+  .taste-card h2,
+  .taste-card h3 {
+    max-width: 18ch;
+    margin: 0;
+    color: var(--taste-ink);
+    font-size: clamp(1.4rem, 2.5vw, 2.4rem);
+    line-height: 1;
+  }
+
+  .taste-card p {
+    max-width: 34rem;
+    margin: 1rem 0 0;
+    color: var(--taste-muted);
+    font-size: .98rem;
+    line-height: 1.7;
+  }
+
+  .taste-card::before {
+    position: absolute;
+    inset: 0;
+    content: "";
+    opacity: 0;
+    background: radial-gradient(circle at 70% 10%, rgb(216 135 85 / 18%), transparent 36%);
+    transition: opacity 700ms ease;
+  }
+
+  .taste-card:hover::before {
+    opacity: 1;
+  }
+
+  .taste-card > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .taste-card:hover,
+  .taste-accordion article:hover,
+  .taste-button:hover {
+    transform: translateY(-2px);
+  }
+
+  .taste-card,
+  .taste-accordion article,
+  .taste-button {
+    transition: transform 700ms ease, background-color 700ms ease, border-color 700ms ease;
+  }
+
+  .taste-pin {
+    display: grid;
+    grid-template-columns: minmax(260px, 38%) minmax(0, 1fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: start;
+  }
+
+  .taste-pin-copy {
+    top: 110px;
+  }
+
+  .taste-pin-copy h2 {
+    max-width: 11ch;
+    margin: 0;
+    color: var(--taste-ink);
+    font-size: clamp(2.2rem, 5vw, 4.8rem);
+    line-height: .98;
+  }
+
+  .taste-reveal {
+    margin-top: 2rem;
+    color: var(--taste-muted);
+    font-size: clamp(1.1rem, 2vw, 1.7rem);
+    font-weight: 750;
+    line-height: 1.55;
+  }
+
+  .taste-reveal span {
+    opacity: .16;
+  }
+
+  .taste-stack {
+    display: grid;
+    gap: 1px;
+    overflow: hidden;
+    border: 1px solid var(--taste-line);
+    border-radius: 8px;
+    background: var(--taste-line);
+  }
+
+  .taste-stack article {
+    min-height: 210px;
+    padding: clamp(1.5rem, 3vw, 2.6rem);
+    background: rgb(8 17 15 / 60%);
+  }
+
+  .taste-stack h3,
+  .taste-accordion h3 {
+    margin: 0;
+    color: var(--taste-ink);
+    font-size: clamp(1.35rem, 2.3vw, 2.2rem);
+  }
+
+  .taste-stack p,
+  .taste-accordion p,
+  .taste-list p {
+    color: var(--taste-muted);
+    line-height: 1.75;
+  }
+
+  .taste-accordion {
+    display: flex;
+    min-height: 440px;
+    gap: 1px;
+    overflow: hidden;
+    border: 1px solid var(--taste-line);
+    border-radius: 8px;
+    background: var(--taste-line);
+  }
+
+  .taste-accordion article {
+    flex: 1;
+    display: flex;
+    align-items: end;
+    min-width: 0;
+    padding: 1.5rem;
+    background:
+      linear-gradient(180deg, rgb(8 17 15 / 24%), rgb(8 17 15 / 82%)),
+      var(--taste-image);
+    background-position: center;
+    background-size: cover;
+    filter: grayscale(.15) contrast(1.12);
+  }
+
+  .taste-accordion article:hover {
+    flex: 2.1;
+  }
+
+  .taste-list {
+    display: grid;
+    gap: 1px;
+    overflow: hidden;
+    border: 1px solid var(--taste-line);
+    border-radius: 8px;
+    background: var(--taste-line);
+  }
+
+  .taste-list article {
+    display: grid;
+    grid-template-columns: minmax(9rem, 18rem) minmax(0, 1fr);
+    gap: 2rem;
+    padding: clamp(1.3rem, 3vw, 2.3rem);
+    background: rgb(248 243 232 / 7%);
+  }
+
+  .taste-list time,
+  .taste-list strong {
+    color: var(--taste-cyan);
+    font-weight: 850;
+  }
+
+  .taste-list h2,
+  .taste-list h3 {
+    margin: 0;
+    color: var(--taste-ink);
+  }
+
+  .taste-marquee {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    overflow: hidden;
+    border-block: 1px solid var(--taste-line);
+    background: rgb(248 243 232 / 5%);
+  }
+
+  .taste-marquee-track {
+    display: flex;
+    width: max-content;
+    animation: tasteMarquee 28s linear infinite;
+  }
+
+  .taste-marquee span {
+    padding: 1.4rem 2.1rem;
+    color: rgb(248 243 232 / 74%);
+    font-size: clamp(1.4rem, 4vw, 3.6rem);
+    font-weight: 900;
+    white-space: nowrap;
+  }
+
+  .taste-cta {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 2rem;
+    align-items: end;
+    padding: clamp(2rem, 5vw, 4rem);
+    border: 1px solid var(--taste-line);
+    border-radius: 8px;
+    background: var(--taste-paper);
+    color: var(--taste-night);
+  }
+
+  .taste-cta h2 {
+    max-width: 13ch;
+    margin: 0;
+    color: var(--taste-night);
+    font-size: clamp(2.1rem, 5vw, 5rem);
+    line-height: .96;
+  }
+
+  .taste-cta p {
+    max-width: 44rem;
+    color: rgb(8 17 15 / 72%);
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .taste-cta .taste-button.primary {
+    background: var(--taste-night);
+    color: var(--taste-ink);
+  }
+
+  .taste-cta .taste-button.secondary {
+    border-color: rgb(8 17 15 / 20%);
+    background: transparent;
+    color: var(--taste-night);
+  }
+
+  .page__footer {
+    position: relative;
+    z-index: 1;
+    background: #060b0a;
+  }
+
+  .page__footer-follow,
+  .page__footer-copyright {
+    color: rgb(248 243 232 / 70%);
+  }
+
+  .page__footer a {
+    color: var(--taste-ink);
+  }
+
+  @keyframes tasteMarquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (max-width: 900px) {
+    .masthead {
+      top: 10px;
+      width: min(100% - 20px, 1120px);
+    }
+
+    .page {
+      width: min(100% - 28px, 1180px);
+    }
+
+    .taste-site {
+      padding-top: 4rem;
+    }
+
+    .taste-section {
+      padding: 5.5rem 0;
+    }
+
+    .taste-hero,
+    .taste-pin,
+    .taste-cta,
+    .taste-list article {
+      grid-template-columns: 1fr;
+    }
+
+    .taste-portrait {
+      min-height: 360px;
+    }
+
+    .taste-bento {
+      grid-template-columns: 1fr;
+    }
+
+    .taste-card.large,
+    .taste-card.medium,
+    .taste-card.small {
+      grid-column: auto;
+      grid-row: auto;
+    }
+
+    .taste-accordion {
+      flex-direction: column;
+      min-height: auto;
+    }
+
+    .taste-accordion article {
+      min-height: 260px;
+    }
+  }
+</style>
