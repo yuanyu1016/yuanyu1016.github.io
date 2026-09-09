@@ -19,7 +19,9 @@ https://github.com/mmistakes/minimal-mistakes
 - 首页：`index.md`
 - 关于我：`about.md`
 - 项目：`projects.md`
-- 论文：`publications.md`
+- 项目与研究：`projects.md`
+- 文章：`posts.md`
+- 文章内容：`_posts/`
 - AI 原生：`ai-native.md`
 - 经历：`experience.md`
 - 理想：`dreams.md`

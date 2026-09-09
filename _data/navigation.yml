@@ -3,10 +3,10 @@ main:
     url: /about/
   - title: "项目"
     url: /projects/
-  - title: "论文"
-    url: /publications/
   - title: "AI 原生"
     url: /ai-native/
+  - title: "文章"
+    url: /posts/
   - title: "经历"
     url: /experience/
   - title: "理想"

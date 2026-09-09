@@ -13,7 +13,8 @@ author_profile: false
     <p class="hyy-home-note">关注模型如何接入数据、工具、状态、权限与反馈机制，并最终变成稳定可交付的产品系统。</p>
     <nav class="hyy-home-links" aria-label="快速入口">
       <a class="hyy-link" href="/projects/">Projects</a>
-      <a class="hyy-link" href="/publications/">Research</a>
+      <a class="hyy-link" href="/projects/#research">Research</a>
+      <a class="hyy-link" href="/posts/">Writing</a>
       <a class="hyy-link" href="/resume/v15/">Resume</a>
       <a class="hyy-link" href="mailto:heyuanyu@mail.ustc.edu.cn">Email</a>
     </nav>
@@ -46,6 +47,13 @@ author_profile: false
       <div>
         <h2>联系入口</h2>
         <p>面向 AI Agent、RAG、后端工程、科研工程与技术写作相关机会。</p>
+      </div>
+    </a>
+    <a class="hyy-index-row" href="/posts/">
+      <span class="hyy-row-meta">05 Writing</span>
+      <div>
+        <h2>文章与通信</h2>
+        <p>记录正在形成的想法，也留出一条和读者开始通信的入口。</p>
       </div>
     </a>
   </section>

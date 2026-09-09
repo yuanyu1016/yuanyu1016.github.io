@@ -9,7 +9,7 @@ author_profile: false
     <header class="hyy-doc-header">
       <p class="hyy-kicker">Resume</p>
       <h1>完整简历集中在一个独立页面。</h1>
-      <p class="hyy-lede">为减少重复，本页只保留入口。项目、论文、经历和联系方式分别在对应页面维护；完整叙事和打印版内容集中到 V15 简历。</p>
+      <p class="hyy-lede">为减少重复，本页只保留入口。项目、研究、经历和联系方式分别在对应页面维护；完整叙事和打印版内容集中到 V15 简历。</p>
       <div class="hyy-actions">
         <a href="/resume/v15/">打开视觉版简历</a>
         <a href="/assets/resume/Yuanyu_He_Resume_v15.pdf">下载 PDF</a>
@@ -24,11 +24,11 @@ author_profile: false
           <p>AI 教育工作流、健康 Agent、云图库和 SEEG 研究。</p>
         </div>
       </a>
-      <a class="hyy-index-row" href="/publications/">
+      <a class="hyy-index-row" href="/projects/#research">
         <span class="hyy-row-meta">Research</span>
         <div>
-          <h2>论文成果</h2>
-          <p>IEEE Sensors Journal 第一作者论文。</p>
+          <h2>研究项目与论文</h2>
+          <p>SEEG 语音解码研究和 IEEE Sensors Journal 第一作者论文。</p>
         </div>
       </a>
       <a class="hyy-index-row" href="/experience/">

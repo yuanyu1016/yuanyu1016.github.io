@@ -461,6 +461,136 @@
     color: var(--hyy-accent);
   }
 
+  .hyy-visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .hyy-posts-header {
+    margin-bottom: clamp(2.25rem, 6vw, 4.5rem);
+  }
+
+  .hyy-posts-list {
+    width: var(--hyy-prose);
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+  }
+
+  .hyy-posts-list li {
+    margin: 0;
+  }
+
+  .hyy-posts-list a {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: 0.75rem;
+    align-items: baseline;
+    padding: 0.28rem 0;
+    color: inherit;
+    font-family: var(--hyy-ui);
+    font-size: 0.9rem;
+    line-height: 1.55;
+    text-decoration: none;
+  }
+
+  .hyy-posts-list time {
+    color: var(--hyy-muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .hyy-posts-list span {
+    color: var(--hyy-ink);
+  }
+
+  .hyy-posts-list a:hover span,
+  .hyy-posts-list a:focus-visible span {
+    color: var(--hyy-accent);
+    text-decoration-line: underline;
+    text-decoration-style: dotted;
+    text-decoration-thickness: 0.06em;
+    text-underline-offset: 0.16em;
+  }
+
+  .hyy-posts-action {
+    width: var(--hyy-prose);
+    margin: 1.8rem auto 0;
+    font-family: var(--hyy-ui);
+    font-size: 0.82rem;
+    line-height: 1.6;
+    text-transform: uppercase;
+  }
+
+  .hyy-posts-action a {
+    color: inherit;
+    text-decoration-line: underline;
+    text-decoration-style: dotted;
+    text-decoration-thickness: 0.06em;
+    text-underline-offset: 0.16em;
+  }
+
+  .hyy-email-meta {
+    width: var(--hyy-prose);
+    margin: 0 auto clamp(2rem, 5vw, 3rem);
+    padding-bottom: clamp(1.3rem, 3vw, 1.8rem);
+    border-bottom: 1px solid var(--hyy-line);
+    color: var(--hyy-muted);
+    font-family: var(--hyy-ui);
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+
+  .hyy-email-meta p {
+    display: grid;
+    grid-template-columns: 5.5rem minmax(0, 1fr);
+    gap: 0.8rem;
+    margin: 0;
+  }
+
+  .hyy-email-meta span:first-child {
+    color: var(--hyy-ink);
+  }
+
+  .hyy-email-meta a,
+  .hyy-post-footer a {
+    color: inherit;
+    text-decoration-line: underline;
+    text-decoration-style: dotted;
+    text-decoration-thickness: 0.06em;
+    text-underline-offset: 0.16em;
+  }
+
+  .hyy-email-meta a:hover,
+  .hyy-post-footer a:hover,
+  .hyy-posts-action a:hover {
+    color: var(--hyy-accent);
+    text-decoration-style: solid;
+  }
+
+  .hyy-post-body p {
+    margin-bottom: 1.45rem;
+  }
+
+  .hyy-post-footer {
+    margin-top: clamp(2.5rem, 6vw, 4rem);
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--hyy-line);
+  }
+
+  .hyy-post-footer p {
+    color: var(--hyy-muted);
+    font-family: var(--hyy-ui);
+    font-size: 0.82rem;
+    line-height: 1.7;
+  }
+
   .page__footer {
     padding: 0 var(--hyy-frame-x) var(--hyy-frame-y);
     color: var(--hyy-muted);
@@ -558,6 +688,12 @@
 
     .hyy-social-grid {
       grid-template-columns: 1fr;
+    }
+
+    .hyy-posts-list a,
+    .hyy-email-meta p {
+      grid-template-columns: 1fr;
+      gap: 0.1rem;
     }
   }
 </style>

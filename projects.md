@@ -43,12 +43,17 @@ author_profile: false
         </div>
       </article>
 
-      <article class="hyy-entry">
+      <article id="research" class="hyy-entry">
         <p class="hyy-meta">2023.07 - 2026.03</p>
         <div>
           <h2>基于深度学习的脑电语音解码研究</h2>
           <p>设计 ConvED-SR 和 Scale-Recursive Reconstructor，面向 SEEG 语音解码解决稀疏数据、过拟合和频谱重建问题，MCD 降低 2.38 dB。</p>
-          <p><a href="https://github.com/yuanyu1016/ConvED-SR" target="_blank" rel="noopener noreferrer">查看实现</a></p>
+          <p>第一作者论文 <em>Enhancing SEEG-Based Speech Decoding via Convolutional Encoder-Decoder and Scale-Recursive Reconstructor</em> 被 IEEE Sensors Journal 接收。作者包括 Vincent Yuanyu He、Aiping Liu、Shengcai Duan、Yikai Gao、Ruobing Qian 和 Xun Chen。</p>
+          <p>
+            <a href="https://github.com/yuanyu1016/ConvED-SR" target="_blank" rel="noopener noreferrer">查看研究实现</a>
+            · <a href="https://scholar.google.com/citations?hl=zh-CN&user=rf3t-9MAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+            · <a href="https://orcid.org/0009-0003-8024-9892" target="_blank" rel="noopener noreferrer">ORCID</a>
+          </p>
         </div>
       </article>
     </section>
