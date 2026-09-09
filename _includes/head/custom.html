@@ -194,9 +194,26 @@
   }
 
   .hyy-home {
+    position: relative;
+    isolation: isolate;
     display: grid;
     align-content: center;
     gap: clamp(4.5rem, 9vw, 8rem);
+  }
+
+  .hyy-home--wave {
+    min-height: calc(100dvh - 7rem);
+  }
+
+  .hyy-wave-canvas {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    display: block;
+    width: 100vw;
+    height: 100dvh;
+    pointer-events: none;
+    opacity: 0.72;
   }
 
   .hyy-home-hero,
@@ -207,7 +224,7 @@
   }
 
   .hyy-home-hero {
-    min-height: min(54dvh, 38rem);
+    min-height: min(62dvh, 42rem);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -499,6 +516,14 @@
     .hyy-home-hero {
       min-height: auto;
       text-align: left;
+    }
+
+    .hyy-home--wave .hyy-home-hero {
+      min-height: min(58dvh, 34rem);
+    }
+
+    .hyy-wave-canvas {
+      opacity: 0.58;
     }
 
     .hyy-home-note,

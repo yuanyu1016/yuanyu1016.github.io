@@ -5,3 +5,107 @@
 <div>
   <a href="https://eeis.ustc.edu.cn/" rel="nofollow noopener noreferrer">电子工程与信息科学系</a>
 </div>
+
+<script>
+  (() => {
+    const canvas = document.querySelector("[data-hyy-wave]");
+
+    if (!canvas) {
+      return;
+    }
+
+    const ctx = canvas.getContext("2d", { alpha: true });
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const state = {
+      width: 0,
+      height: 0,
+      dpr: 1,
+      raf: 0,
+      start: performance.now()
+    };
+
+    function resize() {
+      state.dpr = Math.min(window.devicePixelRatio || 1, 2);
+      state.width = window.innerWidth;
+      state.height = window.innerHeight;
+      canvas.width = Math.round(state.width * state.dpr);
+      canvas.height = Math.round(state.height * state.dpr);
+      canvas.style.width = `${state.width}px`;
+      canvas.style.height = `${state.height}px`;
+      ctx.setTransform(state.dpr, 0, 0, state.dpr, 0, 0);
+    }
+
+    function waveY(x, base, amplitude, frequency, phase) {
+      return base
+        + Math.sin((x * frequency) + phase) * amplitude
+        + Math.sin((x * frequency * 0.42) - phase * 0.7) * amplitude * 0.42;
+    }
+
+    function drawBand(base, amplitude, frequency, phase, color, width) {
+      ctx.beginPath();
+      ctx.moveTo(-24, waveY(-24, base, amplitude, frequency, phase));
+
+      for (let x = -24; x <= state.width + 24; x += 18) {
+        ctx.lineTo(x, waveY(x, base, amplitude, frequency, phase));
+      }
+
+      ctx.strokeStyle = color;
+      ctx.lineWidth = width;
+      ctx.lineCap = "round";
+      ctx.lineJoin = "round";
+      ctx.stroke();
+    }
+
+    function draw(now) {
+      const elapsed = reduceMotion ? 0 : (now - state.start) / 1000;
+      const horizon = state.height * 0.58;
+      const lower = ctx.createLinearGradient(0, horizon - 120, 0, state.height);
+      lower.addColorStop(0, "rgba(122, 63, 43, 0)");
+      lower.addColorStop(0.42, "rgba(122, 63, 43, 0.055)");
+      lower.addColorStop(1, "rgba(54, 52, 47, 0.085)");
+
+      ctx.clearRect(0, 0, state.width, state.height);
+      ctx.fillStyle = lower;
+      ctx.fillRect(0, horizon - 140, state.width, state.height - horizon + 140);
+
+      drawBand(
+        horizon,
+        Math.max(8, state.height * 0.014),
+        0.010,
+        elapsed * 0.22,
+        "rgba(54, 52, 47, 0.18)",
+        1
+      );
+
+      const bands = [
+        [0.10, 18, 0.0080, 0.30, "rgba(122, 63, 43, 0.105)", 1.1],
+        [0.18, 24, 0.0062, 0.22, "rgba(54, 52, 47, 0.100)", 1.0],
+        [0.28, 32, 0.0054, 0.18, "rgba(122, 63, 43, 0.082)", 1.0],
+        [0.40, 42, 0.0047, 0.15, "rgba(54, 52, 47, 0.075)", 0.9],
+        [0.54, 54, 0.0040, 0.12, "rgba(122, 63, 43, 0.064)", 0.9]
+      ];
+
+      bands.forEach(([offset, amp, freq, speed, color, width], index) => {
+        drawBand(
+          horizon + state.height * offset,
+          Math.max(10, amp * (state.width / 1440)),
+          freq,
+          elapsed * speed + index * 1.7,
+          color,
+          width
+        );
+      });
+
+      if (!reduceMotion) {
+        state.raf = requestAnimationFrame(draw);
+      }
+    }
+
+    resize();
+    draw(performance.now());
+
+    if (!reduceMotion) {
+      window.addEventListener("resize", resize, { passive: true });
+    }
+  })();
+</script>

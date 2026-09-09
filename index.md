@@ -4,7 +4,9 @@ layout: single
 author_profile: false
 ---
 
-<main class="hyy-site hyy-home">
+<main class="hyy-site hyy-home hyy-home--wave">
+  <canvas class="hyy-wave-canvas" data-hyy-wave aria-hidden="true"></canvas>
+
   <section class="hyy-home-hero" aria-label="Yuanyu He">
     <p class="hyy-kicker">Yuanyu He</p>
     <h1>我把 AI Agent、后端系统与研究工程放在同一条可验证的链路里。</h1>
