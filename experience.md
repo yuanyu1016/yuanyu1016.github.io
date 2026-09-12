@@ -62,6 +62,6 @@ author_profile: false
       </article>
     </section>
 
-    <p class="hyy-footnote"><a href="/resume/v15/">查看完整简历</a></p>
+    <p class="hyy-footnote"><a href="/resume/">查看完整简历</a></p>
   </article>
 </main>

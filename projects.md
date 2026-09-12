@@ -11,7 +11,7 @@ author_profile: false
       <h1>项目不是陈列品，而是能力边界的证据。</h1>
       <p class="hyy-lede">这里保留四类最能说明方向的项目：AI 教育工作流、健康对话 Agent、云图库后端系统和 SEEG 语音解码研究。</p>
       <div class="hyy-actions">
-        <a href="/resume/v15/">视觉版简历</a>
+        <a href="/resume/">视觉版简历</a>
         <a href="https://github.com/yuanyu1016" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
     </header>

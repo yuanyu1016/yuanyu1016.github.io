@@ -1,0 +1,1248 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="何元玉 - AI Agent · 大模型应用 · 后端工程 resume">
+  <meta name="theme-color" content="#123f49">
+  <meta property="og:title" content="何元玉｜AI Agent · 大模型应用 · 后端工程">
+  <meta property="og:description" content="何元玉 - AI Agent · 大模型应用 · 后端工程 resume">
+  <meta property="og:type" content="profile">
+  <meta property="og:image" content="../profile-photo.jpg">
+  <link rel="icon" href="../ustc-logo.png" type="image/png">
+  <title>何元玉｜单页简历</title>
+  <style>
+    :root {
+      --ink: #18282d;
+      --text: #34464b;
+      --muted: #66777b;
+      --line: #d6dfde;
+      --line-strong: #aebfbd;
+      --accent: #123f49;
+      --accent-soft: #e9f0ef;
+      --paper: #fdfdfb;
+      --canvas: #e8eeed;
+      --focus: #287687;
+      --shadow: rgb(19 56 63 / 16%);
+      --z-skip: 20;
+      --z-texture: 30;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: var(--canvas);
+      color: var(--ink);
+      font-family: "Noto Sans SC", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+      font-size: 10pt;
+      letter-spacing: 0;
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      min-width: 320px;
+      margin: 0;
+      padding: 12mm 0;
+    }
+
+    body::before {
+      position: fixed;
+      z-index: var(--z-texture);
+      inset: 0;
+      pointer-events: none;
+      content: "";
+      opacity: .12;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h1,
+    h2,
+    h3 {
+      text-wrap: balance;
+    }
+
+    p,
+    li {
+      text-wrap: pretty;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a,
+    .contact-item {
+      transition: color 220ms ease, border-color 220ms ease, background-color 220ms ease, transform 220ms ease;
+    }
+
+    a:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    a:active {
+      transform: translateY(1px);
+    }
+
+    .skip-link {
+      position: fixed;
+      z-index: var(--z-skip);
+      top: 10px;
+      left: 10px;
+      padding: 8px 12px;
+      color: var(--paper);
+      background: var(--accent);
+      transform: translateY(-150%);
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .page {
+      position: relative;
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      padding: 9.5mm 10.5mm 8.5mm 12mm;
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: 0 4mm 14mm var(--shadow);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page::before {
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 2mm;
+      content: "";
+      background: var(--accent);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 32mm minmax(0, 1fr) 19mm;
+      grid-template-areas:
+        "mark identity photo"
+        "contact contact photo";
+      gap: 1.6mm 5.5mm;
+      align-items: center;
+      padding-bottom: 3.6mm;
+      border-bottom: 1px solid var(--accent);
+    }
+
+    .institution {
+      grid-area: mark;
+      align-self: center;
+    }
+
+    .school-logo {
+      display: block;
+      width: 32mm;
+      height: auto;
+    }
+
+    .identity {
+      grid-area: identity;
+      min-width: 0;
+      padding-left: 5mm;
+      border-left: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      color: var(--muted);
+      font-family: "Noto Sans SC", "Microsoft YaHei UI", sans-serif;
+      font-size: 5.6pt;
+      font-weight: 650;
+      line-height: 1.2;
+    }
+
+    .name {
+      margin-top: .5mm;
+      font-family: "Noto Serif SC", "SimSun", serif;
+      font-size: 25pt;
+      font-weight: 850;
+      line-height: 1;
+    }
+
+    .positioning {
+      margin-top: 1.2mm;
+      color: var(--accent);
+      font-size: 8.5pt;
+      font-weight: 750;
+      line-height: 1.3;
+    }
+
+    .photo {
+      grid-area: photo;
+      width: 19mm;
+      height: 27mm;
+      object-fit: cover;
+      object-position: center 20%;
+      align-self: center;
+      border: 1px solid var(--line-strong);
+      border-radius: 1.2mm;
+      box-shadow: 0 1.2mm 3mm rgb(19 56 63 / 12%);
+    }
+
+    .contact {
+      grid-area: contact;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1mm 4.6mm;
+      margin: 0;
+      color: var(--muted);
+      font-size: 6.35pt;
+      font-style: normal;
+      line-height: 1.35;
+    }
+
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 1mm;
+      white-space: nowrap;
+    }
+
+    a.contact-item:hover {
+      color: var(--accent);
+    }
+
+    .contact-label {
+      color: var(--accent);
+      font-family: "Noto Sans SC", "Microsoft YaHei UI", sans-serif;
+      font-size: 5.1pt;
+      font-weight: 850;
+    }
+
+    .brand-icon {
+      display: block;
+      width: 2.7mm;
+      height: 2.7mm;
+      object-fit: contain;
+    }
+
+    .profile {
+      display: grid;
+      grid-template-columns: 18mm minmax(0, 1fr);
+      gap: 4mm;
+      align-items: baseline;
+      padding: 3.2mm 0 3.1mm;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .label,
+    .section-title {
+      color: var(--accent);
+      font-size: 8.1pt;
+      font-weight: 800;
+      line-height: 1.25;
+    }
+
+    .profile p {
+      max-width: 72em;
+      color: var(--text);
+      font-size: 7.65pt;
+      line-height: 1.55;
+    }
+
+    .proof-bar {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin: 3mm 0 3.7mm;
+      padding: 2.1mm 0 2.3mm;
+      border-top: 1px solid var(--accent);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .proof {
+      min-width: 0;
+      padding: 0 3.4mm;
+      border-left: 1px solid var(--line);
+    }
+
+    .proof:first-child {
+      padding-left: 0;
+      border-left: 0;
+    }
+
+    .proof:last-child {
+      padding-right: 0;
+    }
+
+    .proof-kicker {
+      color: var(--muted);
+      font-size: 5.45pt;
+      font-weight: 650;
+      line-height: 1.2;
+    }
+
+    .proof-value {
+      margin-top: .65mm;
+      font-size: 8.1pt;
+      font-weight: 850;
+      line-height: 1.24;
+    }
+
+    .proof-detail {
+      display: block;
+      margin-top: .4mm;
+      color: var(--accent);
+      font-size: 6.15pt;
+      font-weight: 750;
+      line-height: 1.3;
+    }
+
+    .columns {
+      display: grid;
+      grid-template-columns: 52mm minmax(0, 1fr);
+      gap: 6mm;
+      align-items: start;
+    }
+
+    .main-column {
+      grid-column: 2;
+      grid-row: 1;
+      min-width: 0;
+    }
+
+    .sidebar {
+      grid-column: 1;
+      grid-row: 1;
+      min-width: 0;
+      padding-right: 5mm;
+      border-right: 1px solid var(--line);
+    }
+
+    .section {
+      margin-top: 3.2mm;
+    }
+
+    .section:first-child {
+      margin-top: 0;
+    }
+
+    .section-heading {
+      display: grid;
+      grid-template-columns: auto auto 1fr;
+      gap: 1.8mm;
+      align-items: center;
+      margin-bottom: 1.8mm;
+    }
+
+    .section-index {
+      color: var(--line-strong);
+      font-family: "Cascadia Mono", Consolas, monospace;
+      font-size: 5.4pt;
+      font-weight: 650;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .section-heading::after {
+      height: 1px;
+      content: "";
+      background: var(--line);
+    }
+
+    .entry {
+      margin-top: 2.6mm;
+      break-inside: avoid;
+    }
+
+    .entry:first-of-type {
+      margin-top: 0;
+    }
+
+    .entry-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 3mm;
+      align-items: baseline;
+    }
+
+    .entry-head.has-brand {
+      display: block;
+      position: relative;
+      min-height: 4mm;
+      padding-right: 42mm;
+      align-items: start;
+    }
+
+    .entry-title {
+      font-size: 8.5pt;
+      font-weight: 850;
+      line-height: 1.3;
+    }
+
+    .entry-title .date {
+      display: inline-block;
+      margin-left: 2.4mm;
+      vertical-align: .15mm;
+    }
+
+    .date {
+      color: var(--muted);
+      font-family: "Cascadia Mono", Consolas, monospace;
+      font-size: 5.85pt;
+      font-weight: 650;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .entry-meta {
+      display: inline-flex;
+      align-items: center;
+      justify-self: end;
+      gap: 1.35mm;
+      white-space: nowrap;
+    }
+
+    .entry-meta.logo-stack {
+      position: absolute;
+      top: .05mm;
+      right: 0;
+      width: 40mm;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: .45mm;
+    }
+
+    .brand-pair {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 1.75mm;
+      height: 4.1mm;
+    }
+
+    .brand-divider {
+      width: 0;
+      height: 3.8mm;
+      border-left: .25mm solid color-mix(in srgb, var(--line-strong) 68%, transparent);
+    }
+
+    .brand-lockup {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 4.1mm;
+      min-height: 4.1mm;
+      padding: 0;
+      line-height: 1;
+      white-space: nowrap;
+      opacity: .96;
+    }
+
+    .entry-head.has-brand > .brand-lockup {
+      position: absolute;
+      top: .35mm;
+      right: 0;
+    }
+
+    .brand-lockup img {
+      display: block;
+      flex: 0 0 auto;
+      object-fit: contain;
+    }
+
+    .waic-lockup img {
+      width: auto;
+      height: 4.1mm;
+      max-width: 17mm;
+    }
+
+    .zhixue-lockup img {
+      width: auto;
+      height: 3.3mm;
+      max-width: 6.8mm;
+      align-self: center;
+      transform: translateY(-.1mm);
+    }
+
+    .ieee-lockup img {
+      width: auto;
+      height: 4.1mm;
+      max-height: 4.1mm;
+      max-width: 27mm;
+    }
+
+    .lab-lockup img {
+      width: auto;
+      height: 4.1mm;
+      max-width: 4.8mm;
+    }
+
+    .role {
+      margin-top: .45mm;
+      color: var(--accent);
+      font-size: 6.7pt;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .project-link-line {
+      display: grid;
+      grid-template-columns: 12mm minmax(0, 1fr);
+      gap: 1.4mm;
+      align-items: baseline;
+      margin-top: .55mm;
+      font-size: 5.85pt;
+      line-height: 1.3;
+    }
+
+    .project-link-label {
+      color: var(--muted);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .project-link {
+      width: fit-content;
+      max-width: 100%;
+      color: var(--accent);
+      font-weight: 750;
+      border-bottom: 1px solid var(--line-strong);
+    }
+
+    .project-link:hover {
+      border-color: var(--accent);
+    }
+
+    .scope {
+      margin-top: .75mm;
+      color: var(--text);
+      font-size: 6.45pt;
+      line-height: 1.38;
+    }
+
+    .scope strong,
+    .metric {
+      color: var(--accent);
+      font-weight: 850;
+    }
+
+    ul {
+      margin: .65mm 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    li {
+      position: relative;
+      margin-top: .5mm;
+      padding-left: 2.7mm;
+      color: var(--text);
+      font-size: 6.35pt;
+      line-height: 1.36;
+    }
+
+    li::before {
+      position: absolute;
+      top: .58em;
+      left: .4mm;
+      width: 1mm;
+      height: 1mm;
+      content: "";
+      background: var(--accent);
+    }
+
+    li strong {
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    .stack {
+      margin-top: .65mm;
+      color: var(--muted);
+      font-size: 5.65pt;
+      line-height: 1.32;
+    }
+
+    .stack strong {
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .vision-item {
+      margin-top: 0;
+    }
+
+    .vision-text {
+      color: var(--text);
+      font-size: 6.35pt;
+      font-weight: 650;
+      line-height: 1.48;
+    }
+
+    .vision-text + .vision-text {
+      margin-top: .65mm;
+    }
+
+    .edu-item {
+      margin-top: 2.5mm;
+    }
+
+    .edu-item:first-of-type {
+      margin-top: 0;
+    }
+
+    .edu-head {
+      display: block;
+    }
+
+    .school {
+      font-size: 7.85pt;
+      font-weight: 850;
+      line-height: 1.3;
+    }
+
+    .edu-head .date {
+      display: block;
+      margin-top: .45mm;
+    }
+
+    .edu-detail {
+      margin-top: .55mm;
+      color: var(--text);
+      font-size: 6.45pt;
+      line-height: 1.45;
+    }
+
+    .publication {
+      padding: 2.3mm 2.5mm;
+      border-left: .8mm solid var(--accent);
+      border-radius: 0 1mm 1mm 0;
+      background: var(--accent-soft);
+    }
+
+    .publication-title {
+      font-family: "Noto Sans SC", Arial, sans-serif;
+      font-size: 6.35pt;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .publication-meta {
+      margin-top: .8mm;
+      color: var(--muted);
+      font-size: 5.85pt;
+      line-height: 1.45;
+    }
+
+    .skill-group {
+      margin-top: 1.55mm;
+      padding-bottom: 1.45mm;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .skill-label {
+      color: var(--accent);
+      font-size: 6.25pt;
+      font-weight: 850;
+    }
+
+    .skill-list {
+      margin-top: .4mm;
+      color: var(--text);
+      font-size: 6.1pt;
+      line-height: 1.45;
+    }
+
+    .sidebar li {
+      margin-top: .65mm;
+      font-size: 6.25pt;
+      line-height: 1.45;
+    }
+
+    .focus-list {
+      border-top: 1px solid var(--accent);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .focus-line {
+      display: grid;
+      grid-template-columns: 13mm minmax(0, 1fr);
+      gap: 1.5mm;
+      padding: 1mm 0;
+      border-top: 1px solid var(--line);
+      font-size: 6pt;
+      line-height: 1.35;
+    }
+
+    .focus-line:first-child {
+      border-top: 0;
+    }
+
+    .focus-line strong {
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .footer {
+      position: absolute;
+      right: 10.5mm;
+      bottom: 3.7mm;
+      color: var(--muted);
+      font-family: "Cascadia Mono", Consolas, monospace;
+      font-size: 5.35pt;
+      font-variant-numeric: tabular-nums;
+    }
+
+    @media screen and (max-width: 850px) {
+      html,
+      body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+
+      body {
+        padding: 0;
+      }
+
+      body::before {
+        display: none;
+      }
+
+      .page {
+        width: 100%;
+        min-width: 0;
+        min-height: auto;
+        padding: 20px 18px 34px 24px;
+        overflow-x: hidden;
+        box-shadow: none;
+      }
+
+      .hero {
+        grid-template-columns: minmax(0, 1fr) 62px;
+        grid-template-areas:
+          "mark photo"
+          "identity photo"
+          "contact contact";
+        gap: 9px 14px;
+        align-items: start;
+        padding-bottom: 16px;
+      }
+
+      .school-logo {
+        width: min(35mm, 100%);
+        max-width: 100%;
+      }
+
+      .identity {
+        padding-left: 0;
+        border-left: 0;
+      }
+
+      .name {
+        font-size: 23pt;
+      }
+
+      .positioning {
+        font-size: 8.2pt;
+      }
+
+      .photo {
+        width: 62px;
+        height: 88px;
+        justify-self: end;
+      }
+
+      .contact {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px 14px;
+        width: 100%;
+        min-width: 0;
+        font-size: 7pt;
+      }
+
+      .contact-item,
+      .contact-item span {
+        min-width: 0;
+      }
+
+      .contact-item span {
+        overflow-wrap: anywhere;
+      }
+
+      .profile {
+        grid-template-columns: 1fr;
+        gap: 6px;
+        padding: 14px 0;
+      }
+
+      .profile p {
+        font-size: 8.2pt;
+      }
+
+      .label,
+      .section-title {
+        font-size: 8.8pt;
+      }
+
+      .proof-bar {
+        grid-template-columns: 1fr;
+        padding: 0;
+      }
+
+      .proof,
+      .proof:first-child,
+      .proof:last-child {
+        padding: 10px 0;
+        border-top: 1px solid var(--line);
+        border-left: 0;
+      }
+
+      .proof:first-child {
+        border-top: 0;
+      }
+
+      .proof-kicker {
+        font-size: 5.9pt;
+      }
+
+      .proof-value {
+        font-size: 8.9pt;
+      }
+
+      .proof-detail {
+        font-size: 6.7pt;
+      }
+
+      .columns {
+        grid-template-columns: 1fr;
+      }
+
+      .main-column,
+      .sidebar {
+        grid-column: auto;
+        grid-row: auto;
+      }
+
+      .sidebar {
+        padding-right: 0;
+        border-right: 0;
+      }
+
+      .section {
+        margin-top: 18px;
+      }
+
+      .section-heading {
+        margin-bottom: 9px;
+      }
+
+      .entry {
+        margin-top: 16px;
+      }
+
+      .entry-title {
+        font-size: 9.7pt;
+      }
+
+      .date {
+        font-size: 6.7pt;
+      }
+
+      .role {
+        font-size: 7.45pt;
+      }
+
+      .project-link-line {
+        font-size: 6.6pt;
+      }
+
+      .scope,
+      li {
+        font-size: 7.45pt;
+        line-height: 1.52;
+      }
+
+      li {
+        margin-top: 3px;
+      }
+
+      .stack {
+        font-size: 6.55pt;
+        line-height: 1.5;
+      }
+
+      .school {
+        font-size: 8.8pt;
+      }
+
+      .edu-detail,
+      .skill-list,
+      .sidebar li,
+      .focus-line {
+        font-size: 7.1pt;
+      }
+
+      .publication-title {
+        font-size: 7.25pt;
+      }
+
+      .publication-meta,
+      .skill-label {
+        font-size: 6.8pt;
+      }
+
+      .entry-head {
+        grid-template-columns: minmax(0, 1fr) auto;
+      }
+
+      .project-link-line {
+        grid-template-columns: auto minmax(0, 1fr);
+      }
+
+      .project-link {
+        width: auto;
+        overflow-wrap: anywhere;
+      }
+
+      .profile p,
+      .publication-title,
+      .publication-meta,
+      .scope,
+      li,
+      .stack {
+        min-width: 0;
+        overflow-wrap: anywhere;
+      }
+
+      .edu-head {
+        flex-wrap: wrap;
+      }
+
+      .footer {
+        position: static;
+        margin-top: 18px;
+        text-align: right;
+      }
+    }
+
+    @media screen and (max-width: 430px) {
+      .page {
+        padding-right: 16px;
+        padding-left: 22px;
+      }
+
+      .contact {
+        grid-template-columns: 1fr;
+      }
+
+      .entry-head {
+        grid-template-columns: 1fr;
+        gap: 3px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: .01ms !important;
+      }
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    @media print {
+      html,
+      body {
+        background: #fff;
+      }
+
+      body {
+        min-width: 0;
+        padding: 0;
+      }
+
+      body::before,
+      .skip-link {
+        display: none;
+      }
+
+      .page {
+        width: 210mm;
+        height: 297mm;
+        min-height: 297mm;
+        margin: 0;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#resume-content">跳到简历正文</a>
+  <main id="resume-content" class="page" aria-label="何元玉一页简历">
+    <header class="hero">
+      <div class="institution">
+        <img class="school-logo" src="../ustc-logo.png" alt="中国科学技术大学校徽与中英文校名">
+      </div>
+      <div class="identity">
+        <h1 class="name">何元玉</h1>
+        <p class="positioning">AI Agent · 大模型应用 · 后端工程</p>
+      </div>
+      <address class="contact" aria-label="联系方式">
+        <span class="contact-item" aria-label="上海">
+          <svg class="brand-icon" fill="#0D5C8B" role="img" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 0C7.03 0 3 4.03 3 9c0 6.75 9 15 9 15s9-8.25 9-15c0-4.97-4.03-9-9-9zm0 13.2A4.2 4.2 0 1 1 12 4.8a4.2 4.2 0 0 1 0 8.4z"/>
+          </svg>
+          <span>上海</span>
+        </span>
+        <a class="contact-item" href="tel:+8613083066971" aria-label="手机 13083066971">
+          <span class="contact-label">TEL</span>
+          <span>13083066971</span>
+        </a>
+        <a class="contact-item" href="mailto:heyuanyu@mail.ustc.edu.cn" aria-label="邮箱 heyuanyu@mail.ustc.edu.cn">
+          <span class="contact-label">MAIL</span>
+          <span>heyuanyu@mail.ustc.edu.cn</span>
+        </a>
+        <span class="contact-item" aria-label="微信 YUANYU_1016">
+          <img class="brand-icon" src="../wechat.svg" alt="" aria-hidden="true">
+          <span>YUANYU_1016</span>
+        </span>
+        <a class="contact-item" href="https://yuanyu1016.github.io" target="_blank" rel="noopener noreferrer" aria-label="个人网站 yuanyu1016.github.io，在新窗口打开">
+          <img class="brand-icon" src="../github.svg" alt="" aria-hidden="true">
+          <span>yuanyu1016.github.io</span>
+        </a>
+      </address>
+      <img class="photo" src="../profile-photo.jpg" alt="何元玉证件照">
+    </header>
+    <section class="profile" aria-labelledby="profile-title">
+      <h2 id="profile-title" class="label">个人简介</h2>
+      <p>面向 AI Agent 与大模型应用工程化的开发者，擅长将不确定的模型输出组织为可路由、可追踪、可回退、可验证的工程系统；具备后端系统、任务队列、工具调用、状态管理、稳定性治理经验，能够在复杂业务场景中推进从模型能力到产品链路的落地。</p>
+    </section>
+    <section class="proof-bar" aria-label="核心成果">
+      <div class="proof">
+        <div class="proof-kicker">AI-NATIVE STARTUP</div>
+        <div class="proof-value">教育 Agent 产品全栈研发<span class="proof-detail">核心产品入选 WAIC 2026 参展</span></div>
+      </div>
+      <div class="proof">
+        <div class="proof-kicker">AI 协作开发</div>
+        <div class="proof-value">Agentic Engineering<span class="proof-detail">Harness · Loop · 多 Agent 协作编排</span></div>
+      </div>
+      <div class="proof">
+        <div class="proof-kicker">模型工程</div>
+        <div class="proof-value">SEEG 语音解码算法<span class="proof-detail">IEEE Sensors Journal · 第一作者</span></div>
+      </div>
+    </section>
+    <div class="columns">
+      <div class="main-column">
+        <section class="section" aria-labelledby="experience-title">
+          <div class="section-heading">
+            <span class="section-index">01</span>
+            <h2 id="experience-title" class="section-title">实习经历</h2>
+          </div>
+          <article class="entry waic-entry">
+            <div class="entry-head has-brand">
+              <h3 class="entry-title">智学星途｜AI 教育 B/C 端产品研发 <time class="date" datetime="2026-06/2026-09">2026.06 – 2026.09</time></h3>
+              <div class="entry-meta logo-stack">
+                <div class="brand-pair" aria-label="WAIC 与智学星途">
+                  <span class="brand-lockup waic-lockup">
+                    <img src="../waic_logo_4.png" alt="WAIC 世界人工智能大会" />
+                  </span>
+                  <span class="brand-divider" aria-hidden="true"></span>
+                  <span class="brand-lockup zhixue-lockup">
+                    <img src="../logo_zhixue.png" alt="智学星途" />
+                  </span>
+                </div>
+              </div>
+            </div>
+            <p class="role">Agent 开发实习生 · 0→1 核心链路负责人 · 教师 Agent / AI 课件 / 工具开放</p>
+            <p class="scope"><strong>业务范围：</strong>参与 <span class="metric">2026</span> WAIC 亮相 AI 教育产品研发，覆盖教师备课、AI 教案、PPT/HTML 课件生成、学情分析与外部 Agent 工具调用；产品获 CGTN、华夏时报等媒体关注，并已进入真实教学场景使用，日活跃用户达到 <span class="metric">200+</span>。</p>
+            <ul>
+              <li><strong>多 Agent｜PPT Blocks 链路：</strong>优化 MAIC PPT 多 Agent 生成链路，将长课件生成拆解为需求解析 → 大纲确认 → 页/块级规划 → 子 Agent 生成 → 媒体入队 → 预览导出，并治理 block fallback、页面同构、风格套用和配图规划稳定性；<span class="metric">15</span> 页课件平均耗时由约 <span class="metric">19.21</span> 分钟降至 <span class="metric">14.49</span> 分钟，降幅约 <span class="metric">24.5%</span>。</li>
+              <li><strong>自进化 Agent Loop｜PPT AI 版式：</strong>围绕 ai 版式质量建立自动迭代闭环，隔离独立 prompt / pipeline / 风格库，在生成前注入页面类型、整套课件上下文、相邻页反重复、内容密度、视觉焦点和安全区约束，并通过自动提交、JSON/几何审计和后处理修复持续回归；扩展<span class="metric">15</span>-<span class="metric">20</span> 页长课件稳定性自动测试通过。</li>
+              <li><strong>工具开放｜Agent / MCP：</strong>教师 Agent / MCP 对外开放能力建设，明确 Skill 负责使用说明与编排、MCP / Agent Gateway 负责工具暴露和鉴权、后端服务负责真实业务生成；封装 AI 教案、PPT 课件、HTML 互动课件工具，补齐工具调用、状态轮询、课件确认、结果下载、Token 申请审核、续期撤销和官网接入文档。</li>
+              <li><strong>可信建模｜PPT / HTML 课件：</strong>针对数理化课件中公式、几何关系和 3D 空间易被模型误表达的问题，建设“确定性建模科学结构 + AI 负责视觉表达”的可信建模方案，接入科学约束、结构化描述、PPT 与 HTML 课件 Canvas 2D / Three.js 3D 受控渲染。</li>
+              <li><strong>AI 任务调度｜模型治理：</strong>建设长耗时 AI 任务调度与模型治理体系，将教师批改、课件生成等任务改造为 PostgreSQL 持久化队列 + 后台 worker 异步执行链路；基于 Redis Lua 按业务场景、AI 能力、供应商、具体模型四层管控请求数与 Token 用量限额，支持幂等入队、领取续租、模型许可、失败重试、超时恢复、进度观测和多维公平调度。</li>
+              <li><strong>学情数据看板｜快照可用性：</strong>将学校管理学情看板视图改造为页面级快照，沉淀“权限/筛选校验 -&gt; 最新 + 历史快照兜底 -&gt; 缺失组合实时兜底并定向补齐”的数据链路；新增快照表和任务清单，支持跳过已完成快照、失败重试、运行中任务租约恢复和超时控制，提升看板在任务中断、慢 SQL 和快照缺失场景下的数据可用性。</li>
+            </ul>
+            <p class="stack"><strong>技术链</strong>　Java · Spring Boot · Next.js · Agent 工作流 · MCP · Skill · Multi-agent · Prompt Engineering · PostgreSQL · Redis</p>
+          </article>
+        </section>
+        <section class="section" aria-labelledby="research-title">
+          <div class="section-heading">
+            <span class="section-index">02</span>
+            <h2 id="research-title" class="section-title">代表成果</h2>
+          </div>
+          <article class="entry ieee-entry">
+            <div class="entry-head has-brand">
+              <h3 class="entry-title">面向高保真语音重建的 SEEG 脑电解码系统</h3>
+              <div class="entry-meta logo-stack">
+                <div class="brand-pair" aria-label="IEEE Sensors Journal 与 NEL-BITA">
+                  <span class="brand-lockup ieee-lockup">
+                    <img src="../logos/ieee-sensors-journal-logo.webp" alt="IEEE Sensors Journal" />
+                  </span>
+                  <span class="brand-divider" aria-hidden="true"></span>
+                  <span class="brand-lockup lab-lockup">
+                    <img src="../lab_logo.png" alt="NEL-BITA" />
+                  </span>
+                </div>
+              </div>
+            </div>
+            <p class="role">第一作者 · 研究与模型模块负责人 · SEEG 语音解码</p>
+            <div class="project-link-line">
+              <span class="project-link-label">项目链接</span>
+              <a class="project-link" href="https://github.com/yuanyu1016/ConvED-SR" target="_blank" rel="noopener noreferrer">github.com/yuanyu1016/ConvED-SR ↗</a>
+            </div>
+            <p class="scope"><strong>研究范围：</strong>覆盖 SEEG 信号表征、模型设计、频谱重建、跨模态对齐与论文交付。</p>
+            <ul>
+              <li><strong>模型方法｜ConvED-SR：</strong>提出 ConvED-SR 卷积编解码与尺度递归重建方法，通过紧凑潜在空间、多尺度频谱融合和 CBAM 注意力机制增强重建梅尔频谱图细节，并通过 Hifi-GAN 从频谱合成语音；平均 PCC 达到 <span class="metric">0.75</span>，MCD 降至 <span class="metric">3.38</span> dB，推理耗时 <span class="metric">5.26</span> ms，相比基线模型参数量降低 <span class="metric">86.79%</span>。</li>
+              <li><strong>跨模态｜TranSEEG2speech：</strong>进一步提出 TranSEEG2speech，将 HiFi-Codec 深层语音表征作为中间目标，结合 Patching + Transformer 和跨模态特征对齐器，将任务从梅尔频谱预测推进到脑电-语音语义特征对齐；平均 PCC 提升至 <span class="metric">0.78</span>，MCD 降至 <span class="metric">3.08</span> dB，推理耗时 <span class="metric">4.35</span> ms。</li>
+              <li><strong>SCI 成果：</strong>第一作者论文被 IEEE Sensors Journal 接收；研究形成从人工声学频谱特征到深层语义特征、从直接映射到跨模态对齐的两阶段技术路线，为实时、轻量化语音脑机接口提供算法基础。</li>
+            </ul>
+            <p class="stack"><strong>技术链</strong>　Python · PyTorch · ConvED-SR · Scale-Recursive Reconstructor · Hifi-Codec · Transformer · SEEG</p>
+          </article>
+        </section>
+        <section class="section" aria-labelledby="projects-title">
+          <div class="section-heading">
+            <span class="section-index">03</span>
+            <h2 id="projects-title" class="section-title">项目实践</h2>
+          </div>
+          <article class="entry">
+            <div class="entry-head">
+              <h3 class="entry-title">面向个性化健康计划生成的自主规划 Agent</h3>
+
+            </div>
+            <p class="role">0→1 核心模块负责人 · RAG / Agent 规划 / 工具体系</p>
+            <div class="project-link-line">
+              <span class="project-link-label">项目链接</span>
+              <a class="project-link" href="https://github.com/yuanyu1016/ai-agent" target="_blank" rel="noopener noreferrer">github.com/yuanyu1016/ai-agent ↗</a>
+            </div>
+            <p class="scope"><strong>系统范围：</strong>打通知识库、实时信息、多步规划与工具执行链路，为用户生成个性化饮食及健身计划。</p>
+            <ul>
+              <li><strong>Agent 规划与工具调用：</strong>基于 ReAct + CoT 模式构建可自主规划、任务分解的分层 Agent 架构，并集成联网搜索、文件操作、地图和图片搜索等 Tool Calling / MCP 能力，扩展智能体在饮食与健身计划生成场景中的信息获取和任务执行边界。</li>
+              <li><strong>RAG 查询增强：</strong>实现基于 PGvector 的检索增强生成（RAG）系统，完成健康知识向量化入库、语义检索链路搭建与查询增强策略设计；通过查询重写、上下文补全等方式优化用户提问理解、知识检索准确度与信息召回率，将有效应答率提升 <span class="metric">37%</span>。</li>
+            </ul>
+            <p class="stack"><strong>技术链</strong>　Spring AI · PGvector · RAG · ReAct · CoT · Tool Calling · MCP · Docker · Serverless</p>
+          </article>
+
+          <article class="entry">
+            <div class="entry-head">
+              <h3 class="entry-title">云端存储智能协同图库管理平台</h3>
+
+            </div>
+            <p class="role">0→1 后端核心模块负责人 · 数据治理 / 异步任务 / 实时协同</p>
+            <div class="project-link-line">
+              <span class="project-link-label">项目链接</span>
+              <a class="project-link" href="https://github.com/yuanyu1016/picture-backend-ddd" target="_blank" rel="noopener noreferrer">github.com/yuanyu1016/picture-backend-ddd ↗</a>
+            </div>
+            <p class="scope"><strong>系统范围：</strong>基于 Spring Boot 的云图库系统，通过 DDD 领域驱动设计，结合分库分表、多级缓存与异步任务优化，实现图片资源的高并发存储与检索，并支持多端实时协同编辑及多用户团队空间管理。</p>
+            <ul>
+              <li><strong>分布式数据治理：</strong>基于 ShardingSphere 实现可动态扩容分库分表方案，面向多用户团队空间数据隔离治理；结合 Elasticsearch 自动打标与多维全文检索能力，并构建 Redis + Caffeine 多级缓存，提高复杂条件检索和热门图片访问的查询性能。</li>
+              <li><strong>实时协同引擎：</strong>基于 WebSocket 通信协议与 Sa-Token 细粒度 RBAC 权限控制，构建支持多端状态同步的团队协同编辑空间；引入 Disruptor 无锁队列优化异步处理流水线，提升高并发协作场景下的系统吞吐量。</li>
+            </ul>
+            <p class="stack"><strong>技术链</strong>　Spring Boot · ShardingSphere · Elasticsearch · Redis · RabbitMQ · Redisson · Caffeine · WebSocket · Disruptor</p>
+          </article>
+        </section>
+      </div>
+
+      <aside class="sidebar" aria-label="教育、论文、技术能力、荣誉与技术愿景">
+        <section class="section" aria-labelledby="education-title">
+          <div class="section-heading">
+            <span class="section-index">A</span>
+            <h2 id="education-title" class="section-title">教育背景</h2>
+          </div>
+          <article class="edu-item">
+            <div class="edu-head">
+              <h3 class="school">中国科学技术大学</h3>
+              <time class="date" datetime="2022-09/2026-10">2022.09 – 2026.10</time>
+            </div>
+            <p class="edu-detail">信息与通信工程 · 硕士（推荐免试）<br>类脑智能技术及应用国家工程实验室<br>师从长江学者、IEEE Fellow 陈勋教授</p>
+          </article>
+          <article class="edu-item">
+            <div class="edu-head">
+              <h3 class="school">中国科学技术大学</h3>
+              <time class="date" datetime="2018-09/2022-07">2018.09 – 2022.07</time>
+            </div>
+            <p class="edu-detail">自动化 · 学士<br>优秀毕业生</p>
+          </article>
+        </section>
+        <section class="section" aria-labelledby="publication-title">
+          <div class="section-heading">
+            <span class="section-index">B</span>
+            <h2 id="publication-title" class="section-title">论文成果</h2>
+          </div>
+          <article class="publication">
+            <h3 class="publication-title">Enhancing SEEG-Based Speech Decoding via Convolutional Encoder-Decoder and Scale-Recursive Reconstructor</h3>
+            <p class="publication-meta"><strong>Vincent Yuanyu He</strong>; Aiping Liu; Shengcai Duan; Yikai Gao; Ruobing Qian; Xun Chen.<br><em>IEEE Sensors Journal（SCI Q1 / IF 4.5）</em>.</p>
+          </article>
+        </section>
+        <section class="section" aria-labelledby="skills-title">
+          <div class="section-heading">
+            <span class="section-index">C</span>
+            <h2 id="skills-title" class="section-title">技术能力</h2>
+          </div>
+          <div class="skill-group">
+            <h3 class="skill-label">AI 应用</h3>
+            <p class="skill-list">Spring AI, LangChain4j, RAG, Agent Workflow, ReAct, Tool Calling, MCP, Prompt Engineering, PyTorch</p>
+          </div>
+          <div class="skill-group">
+            <h3 class="skill-label">Agentic 工程</h3>
+            <p class="skill-list">Codex, Claude Code, 任务拆解, 多 Agent 编排, Harness Engineering, Loop Harness Engineering, 循环迭代</p>
+          </div>
+          <div class="skill-group">
+            <h3 class="skill-label">后端系统</h3>
+            <p class="skill-list">Spring Boot（IoC / AOP）, MySQL, Redis, Elasticsearch, RabbitMQ, WebSocket</p>
+          </div>
+          <div class="skill-group">
+            <h3 class="skill-label">工程基础</h3>
+            <p class="skill-list">Java, Python, C/C++, Linux, Git, TCP/IP, 数据结构与算法</p>
+          </div>
+        </section>
+        <section class="section" aria-labelledby="honors-title">
+          <div class="section-heading">
+            <span class="section-index">D</span>
+            <h2 id="honors-title" class="section-title">荣誉与实践</h2>
+          </div>
+          <ul>
+            <li><strong>教育部港澳台学生奖学金</strong> · 2 次</li>
+            <li><strong>研究生学业奖学金</strong> · 3 次</li>
+            <li><strong>优秀学生奖学金</strong> · 2 次</li>
+            <li><strong>第十九届 RoboGame 机器人大赛</strong> · 亚军</li>
+            <li><strong>学生工作：</strong>本科连续四年担任班委</li>
+            <li><strong>教学：</strong>《微机原理和嵌入式系统》课程助教</li>
+          </ul>
+        </section>
+        <section class="section" aria-labelledby="vision-title">
+          <div class="section-heading">
+            <span class="section-index">E</span>
+            <h2 id="vision-title" class="section-title">技术愿景</h2>
+          </div>
+          <div class="vision-item">
+            <p class="vision-text">关注 AI Agent 的可靠落地与工程化演进；</p>
+            <p class="vision-text">连接模型能力、后端系统与真实业务场景。</p>
+          </div>
+        </section>
+
+      </aside>
+    </div>
+
+    <footer class="footer">HE YUANYU · RESUME · 2026</footer>
+  </main>
+</body>
+</html>

@@ -25,9 +25,9 @@ https://github.com/mmistakes/minimal-mistakes
 - AI 原生：`ai-native.md`
 - 经历：`experience.md`
 - 理想：`dreams.md`
-- 简历：`resume.md`
-- 视觉版简历：`resume/v15/index.html`
-- 简历 PDF：`assets/resume/Yuanyu_He_Resume_v15.pdf`
+- 简历：`resume/index.html`
+- 单页简历 HTML：`assets/resume/Yuanyu_He_Resume.html`
+- 简历 PDF：`assets/resume/Yuanyu_He_Resume.pdf`
 - 联系：`contact.md`
 - 导航：`_data/navigation.yml`
 - 站点配置：`_config.yml`

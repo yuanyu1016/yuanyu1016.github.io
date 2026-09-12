@@ -15,7 +15,7 @@ author_profile: false
       <a class="hyy-link" href="/projects/">Projects</a>
       <a class="hyy-link" href="/projects/#research">Research</a>
       <a class="hyy-link" href="/posts/">Writing</a>
-      <a class="hyy-link" href="/resume/v15/">Resume</a>
+      <a class="hyy-link" href="/resume/">Resume</a>
       <a class="hyy-link" href="mailto:heyuanyu@mail.ustc.edu.cn">Email</a>
     </nav>
   </section>

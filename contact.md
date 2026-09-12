@@ -25,7 +25,7 @@ author_profile: false
         <strong>Social</strong>
         <span>微信 YUANYU_1016<br>小红书 2873623288<br>Instagram yuanyu_1016<br>LINE yuanyu_1016</span>
       </div>
-      <a href="/resume/v15/">
+      <a href="/resume/">
         <strong>Resume</strong>
         <span>查看完整简历</span>
       </a>
