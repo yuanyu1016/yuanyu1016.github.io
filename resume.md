@@ -1,6 +1,6 @@
 ---
 title: "简历"
-permalink: /resume-entry/
+permalink: /resume/
 author_profile: false
 ---
 
