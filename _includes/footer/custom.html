@@ -11,7 +11,11 @@
     const pageCleanups = [];
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const themeTransitionMs = 900;
+    const languageTransitionMs = 900;
+    const languageTransitionPhaseMs = languageTransitionMs / 2;
     let themeTransitionTimer = 0;
+    let languageTransitionTimer = 0;
+    let languageTransitioning = false;
     const languageTextNodes = new WeakMap();
 
     const languageText = {
@@ -281,6 +285,13 @@
       }
     }
 
+    function endLanguageTransition() {
+      window.clearTimeout(languageTransitionTimer);
+      document.documentElement.classList.remove("hyy-language-transitioning", "hyy-language-fading");
+      languageTransitionTimer = 0;
+      languageTransitioning = false;
+    }
+
     function translateElement(element, language) {
       if (!(element instanceof HTMLElement)) {
         return;
@@ -384,6 +395,38 @@
 
         toggle.setAttribute("aria-label", nextLanguage === "en" ? "Switch to Chinese" : "切换到英文");
       }
+    }
+
+    async function transitionLanguage(language) {
+      const nextLanguage = language === "en" ? "en" : "zh";
+
+      if (document.documentElement.dataset.language === nextLanguage || reduceMotion.matches) {
+        applyLanguage(nextLanguage);
+        return;
+      }
+
+      if (languageTransitioning) {
+        return;
+      }
+
+      languageTransitioning = true;
+      window.clearTimeout(languageTransitionTimer);
+      document.documentElement.classList.add("hyy-language-transitioning");
+
+      await new Promise((resolve) => {
+        window.requestAnimationFrame(() => {
+          document.documentElement.classList.add("hyy-language-fading");
+          resolve();
+        });
+      });
+
+      await wait(languageTransitionPhaseMs);
+      applyLanguage(nextLanguage);
+      document.documentElement.classList.remove("hyy-language-fading");
+
+      languageTransitionTimer = window.setTimeout(() => {
+        endLanguageTransition();
+      }, languageTransitionPhaseMs + 80);
     }
 
     function ensureSiteControls() {
@@ -831,10 +874,14 @@
       if (!toggle.dataset.initialized) {
         toggle.dataset.initialized = "true";
         toggle.addEventListener("click", () => {
+          if (languageTransitioning) {
+            return;
+          }
+
           const currentLanguage = document.documentElement.dataset.language === "en" ? "en" : "zh";
           const nextLanguage = currentLanguage === "en" ? "zh" : "en";
           saveLanguage(nextLanguage);
-          applyLanguage(nextLanguage);
+          void transitionLanguage(nextLanguage);
         });
       }
 

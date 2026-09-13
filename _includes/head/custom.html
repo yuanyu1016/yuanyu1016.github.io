@@ -40,6 +40,7 @@
     --hyy-wave-filter: none;
     --hyy-theme-transition: 900ms;
     --hyy-theme-easing: linear;
+    --hyy-language-phase-transition: 450ms;
     --hyy-frame-x: clamp(1.5rem, 5vw, 4.75rem);
     --hyy-frame-y: clamp(1.25rem, 4.6vw, 4.5rem);
     --hyy-nav-space: clamp(5rem, 7vw, 6rem);
@@ -127,6 +128,20 @@
     transition-property: color, background-color, border-color, opacity, filter, fill, stroke, text-decoration-color !important;
     transition-duration: var(--hyy-theme-transition) !important;
     transition-timing-function: var(--hyy-theme-easing) !important;
+  }
+
+  html.hyy-language-transitioning .masthead__inner-wrap,
+  html.hyy-language-transitioning .page__content,
+  html.hyy-language-transitioning .page__footer,
+  html.hyy-language-transitioning .hyy-language-toggle {
+    transition: opacity var(--hyy-language-phase-transition) var(--hyy-theme-easing) !important;
+  }
+
+  html.hyy-language-fading .masthead__inner-wrap,
+  html.hyy-language-fading .page__content,
+  html.hyy-language-fading .page__footer,
+  html.hyy-language-fading .hyy-language-toggle {
+    opacity: 0.18;
   }
 
   ::selection {
@@ -1025,6 +1040,10 @@
       transform 180ms ease;
   }
 
+  .hyy-language-toggle {
+    min-width: 2.4rem;
+  }
+
   .hyy-language-toggle:hover,
   .hyy-language-toggle:focus-visible,
   .hyy-theme-toggle:hover,
@@ -1063,7 +1082,11 @@
     .hyy-theme-toggle,
     html.hyy-theme-transitioning *,
     html.hyy-theme-transitioning *::before,
-    html.hyy-theme-transitioning *::after {
+    html.hyy-theme-transitioning *::after,
+    html.hyy-language-transitioning .masthead__inner-wrap,
+    html.hyy-language-transitioning .page__content,
+    html.hyy-language-transitioning .page__footer,
+    html.hyy-language-transitioning .hyy-language-toggle {
       transition: none !important;
     }
   }
