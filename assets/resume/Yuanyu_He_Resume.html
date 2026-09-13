@@ -24,7 +24,8 @@
       --canvas: #e8eeed;
       --focus: #287687;
       --shadow: rgb(19 56 63 / 16%);
-      --z-skip: 20;
+      --z-nav: 40;
+      --z-skip: 50;
       --z-texture: 30;
     }
 
@@ -45,7 +46,7 @@
     body {
       min-width: 320px;
       margin: 0;
-      padding: 12mm 0;
+      padding: calc(12mm + 58px) 0 12mm;
     }
 
     body::before {
@@ -93,6 +94,69 @@
 
     a:active {
       transform: translateY(1px);
+    }
+
+    .site-nav {
+      position: fixed;
+      z-index: var(--z-nav);
+      top: 0;
+      right: 0;
+      left: 0;
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 10px 18px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px clamp(24px, 5vw, 76px) 14px;
+      border-bottom: 1px solid rgb(24 40 45 / 10%);
+      background:
+        linear-gradient(rgb(253 253 251 / 94%), rgb(253 253 251 / 86%)),
+        var(--paper);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .site-title,
+    .site-links a {
+      color: var(--muted);
+      font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.25;
+      text-transform: uppercase;
+    }
+
+    .site-title {
+      flex: 0 0 auto;
+      color: var(--ink);
+    }
+
+    .site-links {
+      display: flex;
+      flex: 1 1 auto;
+      flex-wrap: nowrap;
+      gap: 10px 14px;
+      align-items: center;
+      justify-content: flex-end;
+      min-width: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+      white-space: nowrap;
+    }
+
+    .site-links::-webkit-scrollbar {
+      display: none;
+    }
+
+    .site-title:hover,
+    .site-links a:hover,
+    .site-title:focus-visible,
+    .site-links a:focus-visible {
+      color: var(--accent);
+      text-decoration-line: underline;
+      text-decoration-style: dotted;
+      text-decoration-thickness: 0.06em;
+      text-underline-offset: 0.16em;
     }
 
     .skip-link {
@@ -710,11 +774,20 @@
       }
 
       body {
-        padding: 0;
+        padding: 58px 0 0;
       }
 
       body::before {
         display: none;
+      }
+
+      .site-nav {
+        gap: 10px 14px;
+        padding: 14px 18px 12px;
+      }
+
+      .site-links {
+        justify-content: flex-start;
       }
 
       .page {
@@ -980,6 +1053,7 @@
       }
 
       body::before,
+      .site-nav,
       .skip-link {
         display: none;
       }
@@ -995,6 +1069,19 @@
   </style>
 </head>
 <body>
+  <nav class="site-nav" aria-label="站点导航">
+    <a class="site-title" href="/">Yuanyu He</a>
+    <div class="site-links">
+      <a href="/about/">关于</a>
+      <a href="/projects/">项目</a>
+      <a href="/ai-native/">AI 原生</a>
+      <a href="/posts/">文章</a>
+      <a href="/experience/">经历</a>
+      <a href="/dreams/">理想</a>
+      <a href="/resume/">简历</a>
+      <a href="/contact/">联系</a>
+    </div>
+  </nav>
   <a class="skip-link" href="#resume-content">跳到简历正文</a>
   <main id="resume-content" class="page" aria-label="何元玉一页简历">
     <header class="hero">
