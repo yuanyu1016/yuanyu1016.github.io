@@ -82,7 +82,15 @@
   }
 
   .masthead {
-    padding: var(--hyy-frame-y) var(--hyy-frame-x) 0;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    padding: clamp(1rem, 2.2vw, 1.5rem) var(--hyy-frame-x) clamp(0.85rem, 1.8vw, 1.15rem);
+    background:
+      linear-gradient(rgba(250, 249, 245, 0.94), rgba(250, 249, 245, 0.86)),
+      var(--hyy-paper);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
 
   .masthead__inner-wrap {
