@@ -212,16 +212,12 @@
 
   .page__content {
     color: var(--hyy-ink);
-    transition:
-      opacity 210ms ease,
-      transform 210ms ease;
-    will-change: opacity, transform;
+    transition: opacity 210ms ease;
   }
 
   .hyy-page-exit,
   .hyy-page-enter {
     opacity: 0;
-    transform: translateY(0.45rem);
   }
 
   .hyy-pjax-loading {
@@ -230,6 +226,7 @@
 
   .hyy-pjax-loading .page__content {
     pointer-events: none;
+    will-change: opacity;
   }
 
   .hyy-site {
@@ -903,11 +900,6 @@
   @media (prefers-reduced-motion: reduce) {
     .page__content {
       transition: none;
-    }
-
-    .hyy-page-exit,
-    .hyy-page-enter {
-      transform: none;
     }
   }
 
