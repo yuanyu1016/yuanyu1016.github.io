@@ -38,7 +38,8 @@
     --hyy-noise-blend: multiply;
     --hyy-focus: rgba(122, 63, 43, 0.55);
     --hyy-wave-filter: none;
-    --hyy-theme-transition: 800ms;
+    --hyy-theme-transition: 900ms;
+    --hyy-theme-easing: linear;
     --hyy-frame-x: clamp(1.5rem, 5vw, 4.75rem);
     --hyy-frame-y: clamp(1.25rem, 4.6vw, 4.5rem);
     --hyy-nav-space: clamp(5rem, 7vw, 6rem);
@@ -80,7 +81,7 @@
     letter-spacing: 0;
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
-    transition: background-color var(--hyy-theme-transition) ease, color var(--hyy-theme-transition) ease;
+    transition: background-color var(--hyy-theme-transition) var(--hyy-theme-easing), color var(--hyy-theme-transition) var(--hyy-theme-easing);
   }
 
   body {
@@ -92,7 +93,7 @@
     font-family: var(--hyy-serif);
     font-size: 16px;
     letter-spacing: 0;
-    transition: background-color var(--hyy-theme-transition) ease, color var(--hyy-theme-transition) ease;
+    transition: background-color var(--hyy-theme-transition) var(--hyy-theme-easing), color var(--hyy-theme-transition) var(--hyy-theme-easing);
   }
 
   body::before {
@@ -125,7 +126,7 @@
   html.hyy-theme-transitioning *::after {
     transition-property: color, background-color, border-color, opacity, filter, fill, stroke, text-decoration-color !important;
     transition-duration: var(--hyy-theme-transition) !important;
-    transition-timing-function: ease !important;
+    transition-timing-function: var(--hyy-theme-easing) !important;
   }
 
   ::selection {
@@ -168,7 +169,7 @@
     padding: clamp(1rem, 2.2vw, 1.5rem) var(--hyy-frame-x) clamp(0.85rem, 1.8vw, 1.15rem);
     background: var(--hyy-surface-background);
     background-attachment: fixed;
-    transition: background-color var(--hyy-theme-transition) ease, color var(--hyy-theme-transition) ease;
+    transition: background-color var(--hyy-theme-transition) var(--hyy-theme-easing), color var(--hyy-theme-transition) var(--hyy-theme-easing);
   }
 
   .masthead::before,
@@ -360,7 +361,7 @@
     pointer-events: none;
     opacity: 0.72;
     filter: var(--hyy-wave-filter);
-    transition: filter var(--hyy-theme-transition) ease, opacity var(--hyy-theme-transition) ease;
+    transition: filter var(--hyy-theme-transition) var(--hyy-theme-easing), opacity var(--hyy-theme-transition) var(--hyy-theme-easing);
   }
 
   .hyy-home-hero,
@@ -1011,8 +1012,8 @@
     box-shadow: none;
     cursor: pointer;
     transition:
-      color var(--hyy-theme-transition) ease,
-      opacity var(--hyy-theme-transition) ease,
+      color var(--hyy-theme-transition) var(--hyy-theme-easing),
+      opacity var(--hyy-theme-transition) var(--hyy-theme-easing),
       transform 180ms ease;
   }
 
