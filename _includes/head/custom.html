@@ -990,11 +990,19 @@
     text-decoration-style: solid;
   }
 
-  .hyy-theme-toggle {
+  .hyy-site-controls {
     position: fixed;
     right: clamp(1rem, 3vw, 2rem);
     bottom: clamp(1rem, 3vw, 2rem);
     z-index: 30;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .hyy-language-toggle,
+  .hyy-theme-toggle {
+    position: static;
     padding: 0.35rem 0;
     border: 0;
     border-radius: 0;
@@ -1017,17 +1025,22 @@
       transform 180ms ease;
   }
 
+  .hyy-language-toggle:hover,
+  .hyy-language-toggle:focus-visible,
   .hyy-theme-toggle:hover,
   .hyy-theme-toggle:focus-visible {
     color: var(--hyy-accent);
   }
 
+  .hyy-language-toggle:focus,
+  .hyy-language-toggle:focus-visible,
   .hyy-theme-toggle:focus,
   .hyy-theme-toggle:focus-visible {
     outline: 0;
     box-shadow: none;
   }
 
+  .hyy-language-toggle:active,
   .hyy-theme-toggle:active {
     transform: translateY(1px);
   }
@@ -1046,6 +1059,7 @@
     body,
     .masthead,
     .hyy-wave-canvas,
+    .hyy-language-toggle,
     .hyy-theme-toggle,
     html.hyy-theme-transitioning *,
     html.hyy-theme-transitioning *::before,
@@ -1179,6 +1193,8 @@
   @media print {
     .masthead,
     .page__footer,
+    .hyy-site-controls,
+    .hyy-language-toggle,
     .hyy-theme-toggle,
     .hyy-resume .actions {
       display: none;
