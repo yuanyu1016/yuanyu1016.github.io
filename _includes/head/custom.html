@@ -15,6 +15,7 @@
     --hyy-accent: #7a3f2b;
     --hyy-frame-x: clamp(1.5rem, 5vw, 4.75rem);
     --hyy-frame-y: clamp(1.25rem, 4.6vw, 4.5rem);
+    --hyy-nav-space: clamp(5rem, 7vw, 6rem);
     --hyy-prose: min(100%, 46rem);
     --hyy-wide: min(100%, 58rem);
     --hyy-ui: "IBM Plex Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
@@ -71,6 +72,21 @@
 
   ::selection {
     background: rgba(122, 63, 43, 0.18);
+  }
+
+  html.hyy-fullpage-active,
+  html:has([data-hyy-fullpage]) {
+    scroll-snap-type: y proximity;
+  }
+
+  html.hyy-fullpage-active body,
+  body:has([data-hyy-fullpage]) {
+    overscroll-behavior-y: contain;
+  }
+
+  html.hyy-fullpage-active .page__footer,
+  body:has([data-hyy-fullpage]) .page__footer {
+    display: none;
   }
 
   .masthead,
@@ -221,6 +237,19 @@
     min-height: calc(100dvh - 7rem);
   }
 
+  .hyy-home--fullpage {
+    display: block;
+    gap: 0;
+    min-height: auto;
+    padding: 0;
+  }
+
+  .hyy-home--fullpage .hyy-fullpage-panel {
+    min-height: 100dvh;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
   .hyy-wave-canvas {
     position: fixed;
     inset: 0;
@@ -250,6 +279,20 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
+  }
+
+  .hyy-home--fullpage .hyy-home-hero {
+    min-height: 100dvh;
+    padding: var(--hyy-nav-space) 0 clamp(2.75rem, 7vw, 5rem);
+  }
+
+  .hyy-home--fullpage .hyy-home-index {
+    display: flex;
+    min-height: 100dvh;
+    padding: var(--hyy-nav-space) 0 clamp(2.5rem, 6vw, 4.5rem);
+    flex-direction: column;
+    justify-content: center;
+    border-top: 0;
   }
 
   .hyy-kicker,
@@ -836,6 +879,10 @@
       padding-top: 4.5rem;
     }
 
+    .hyy-home--fullpage {
+      padding: 0;
+    }
+
     .hyy-home-hero {
       min-height: auto;
       text-align: left;
@@ -843,6 +890,12 @@
 
     .hyy-home--wave .hyy-home-hero {
       min-height: min(58dvh, 34rem);
+    }
+
+    .hyy-home--fullpage .hyy-home-hero,
+    .hyy-home--fullpage .hyy-home-index {
+      min-height: 100dvh;
+      padding-top: var(--hyy-nav-space);
     }
 
     .hyy-wave-canvas {
@@ -882,6 +935,10 @@
       gap: 0.55rem;
     }
 
+    .hyy-home--fullpage .hyy-index-row {
+      padding: clamp(0.82rem, 2.4vh, 1.1rem) 0;
+    }
+
     .hyy-row-meta,
     .hyy-meta,
     .hyy-tagline,
@@ -904,6 +961,16 @@
     .hyy-email-meta p {
       grid-template-columns: 1fr;
       gap: 0.1rem;
+    }
+  }
+
+  @media (max-height: 720px) and (min-width: 681px) {
+    .hyy-home--fullpage .hyy-home-index {
+      justify-content: flex-start;
+    }
+
+    .hyy-home--fullpage .hyy-index-row {
+      padding: clamp(0.95rem, 2.6vh, 1.35rem) 0;
     }
   }
 

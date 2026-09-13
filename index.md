@@ -4,10 +4,10 @@ layout: single
 author_profile: false
 ---
 
-<main class="hyy-site hyy-home hyy-home--wave">
+<main class="hyy-site hyy-home hyy-home--wave hyy-home--fullpage" data-hyy-fullpage>
   <canvas class="hyy-wave-canvas" data-hyy-wave aria-hidden="true"></canvas>
 
-  <section class="hyy-home-hero" aria-label="Yuanyu He">
+  <section class="hyy-home-hero hyy-fullpage-panel" data-hyy-panel aria-label="Yuanyu He">
     <p class="hyy-kicker">Yuanyu He</p>
     <h1>我把 AI Agent、后端系统与研究工程放在同一条可验证的链路里。</h1>
     <p class="hyy-home-note">关注模型如何接入数据、工具、状态、权限与反馈机制，并最终变成稳定可交付的产品系统。</p>
@@ -20,7 +20,7 @@ author_profile: false
     </nav>
   </section>
 
-  <section class="hyy-home-index" aria-label="站点索引">
+  <section class="hyy-home-index hyy-fullpage-panel" data-hyy-panel aria-label="站点索引">
     <a class="hyy-index-row" href="/projects/">
       <span class="hyy-row-meta">01 Projects</span>
       <div>
