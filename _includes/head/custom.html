@@ -212,6 +212,24 @@
 
   .page__content {
     color: var(--hyy-ink);
+    transition:
+      opacity 210ms ease,
+      transform 210ms ease;
+    will-change: opacity, transform;
+  }
+
+  .hyy-page-exit,
+  .hyy-page-enter {
+    opacity: 0;
+    transform: translateY(0.45rem);
+  }
+
+  .hyy-pjax-loading {
+    cursor: progress;
+  }
+
+  .hyy-pjax-loading .page__content {
+    pointer-events: none;
   }
 
   .hyy-site {
@@ -880,6 +898,17 @@
   :focus-visible {
     outline: 2px solid rgba(122, 63, 43, 0.55);
     outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .page__content {
+      transition: none;
+    }
+
+    .hyy-page-exit,
+    .hyy-page-enter {
+      transform: none;
+    }
   }
 
   @media (max-width: 900px) {

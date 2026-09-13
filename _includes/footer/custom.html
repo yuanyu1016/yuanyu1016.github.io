@@ -8,307 +8,550 @@
 
 <script>
   (() => {
-    const canvas = document.querySelector("[data-hyy-wave]");
-
-    if (!canvas) {
-      return;
-    }
-
-    const ctx = canvas.getContext("2d", { alpha: true });
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const state = {
-      width: 0,
-      height: 0,
-      dpr: 1,
-      raf: 0,
-      start: performance.now()
-    };
-
-    function resize() {
-      state.dpr = Math.min(window.devicePixelRatio || 1, 2);
-      state.width = window.innerWidth;
-      state.height = window.innerHeight;
-      canvas.width = Math.round(state.width * state.dpr);
-      canvas.height = Math.round(state.height * state.dpr);
-      canvas.style.width = `${state.width}px`;
-      canvas.style.height = `${state.height}px`;
-      ctx.setTransform(state.dpr, 0, 0, state.dpr, 0, 0);
-    }
-
-    function waveY(x, base, amplitude, frequency, phase) {
-      return base
-        + Math.sin((x * frequency) + phase) * amplitude
-        + Math.sin((x * frequency * 0.42) - phase * 0.7) * amplitude * 0.42;
-    }
-
-    function drawBand(base, amplitude, frequency, phase, color, width) {
-      ctx.beginPath();
-      ctx.moveTo(-24, waveY(-24, base, amplitude, frequency, phase));
-
-      for (let x = -24; x <= state.width + 24; x += 18) {
-        ctx.lineTo(x, waveY(x, base, amplitude, frequency, phase));
-      }
-
-      ctx.strokeStyle = color;
-      ctx.lineWidth = width;
-      ctx.lineCap = "round";
-      ctx.lineJoin = "round";
-      ctx.stroke();
-    }
-
-    function draw(now) {
-      const elapsed = reduceMotion ? 0 : (now - state.start) / 1000;
-      const horizon = state.height * 0.58;
-      const lower = ctx.createLinearGradient(0, horizon - 120, 0, state.height);
-      lower.addColorStop(0, "rgba(122, 63, 43, 0)");
-      lower.addColorStop(0.42, "rgba(122, 63, 43, 0.055)");
-      lower.addColorStop(1, "rgba(54, 52, 47, 0.085)");
-
-      ctx.clearRect(0, 0, state.width, state.height);
-      ctx.fillStyle = lower;
-      ctx.fillRect(0, horizon - 140, state.width, state.height - horizon + 140);
-
-      drawBand(
-        horizon,
-        Math.max(8, state.height * 0.014),
-        0.010,
-        elapsed * 0.22,
-        "rgba(54, 52, 47, 0.18)",
-        1
-      );
-
-      const bands = [
-        [0.10, 18, 0.0080, 0.30, "rgba(122, 63, 43, 0.105)", 1.1],
-        [0.18, 24, 0.0062, 0.22, "rgba(54, 52, 47, 0.100)", 1.0],
-        [0.28, 32, 0.0054, 0.18, "rgba(122, 63, 43, 0.082)", 1.0],
-        [0.40, 42, 0.0047, 0.15, "rgba(54, 52, 47, 0.075)", 0.9],
-        [0.54, 54, 0.0040, 0.12, "rgba(122, 63, 43, 0.064)", 0.9]
-      ];
-
-      bands.forEach(([offset, amp, freq, speed, color, width], index) => {
-        drawBand(
-          horizon + state.height * offset,
-          Math.max(10, amp * (state.width / 1440)),
-          freq,
-          elapsed * speed + index * 1.7,
-          color,
-          width
-        );
-      });
-
-      if (!reduceMotion) {
-        state.raf = requestAnimationFrame(draw);
-      }
-    }
-
-    resize();
-    draw(performance.now());
-
-    if (!reduceMotion) {
-      window.addEventListener("resize", resize, { passive: true });
-    }
-  })();
-
-  (() => {
-    const root = document.querySelector("[data-hyy-fullpage]");
-
-    if (!root) {
-      return;
-    }
-
-    document.documentElement.classList.add("hyy-fullpage-active");
-
-    const panels = Array.from(root.querySelectorAll("[data-hyy-panel]"));
-
-    if (panels.length < 2) {
-      return;
-    }
-
+    const pageCleanups = [];
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const state = {
-      locked: false,
-      lockTimer: 0,
-      lastWheelAt: 0,
-      wheelTotal: 0,
-      touchX: 0,
-      touchY: 0
-    };
 
-    const wheelThreshold = 86;
-    const touchThreshold = 64;
+    function addCleanup(cleanup) {
+      if (typeof cleanup === "function") {
+        pageCleanups.push(cleanup);
+      }
+    }
 
-    function nearestIndex() {
-      const y = window.scrollY;
-      let closest = 0;
-      let closestDistance = Number.POSITIVE_INFINITY;
+    function cleanupPageEffects() {
+      while (pageCleanups.length) {
+        const cleanup = pageCleanups.pop();
 
-      panels.forEach((panel, index) => {
-        const distance = Math.abs(panel.offsetTop - y);
-
-        if (distance < closestDistance) {
-          closest = index;
-          closestDistance = distance;
+        try {
+          cleanup();
+        } catch (error) {
+          console.warn("Page effect cleanup failed", error);
         }
-      });
+      }
 
-      return closest;
+      document.documentElement.classList.remove("hyy-fullpage-active");
     }
 
-    function lock() {
-      window.clearTimeout(state.lockTimer);
-      state.locked = true;
-      state.lockTimer = window.setTimeout(() => {
-        state.locked = false;
-      }, reduceMotion.matches ? 80 : 880);
-    }
+    function initWave() {
+      const canvas = document.querySelector("[data-hyy-wave]");
 
-    function goTo(index) {
-      const targetIndex = Math.max(0, Math.min(index, panels.length - 1));
-      const target = panels[targetIndex];
-
-      if (!target) {
+      if (!canvas) {
         return;
       }
 
-      state.wheelTotal = 0;
-      lock();
-      target.scrollIntoView({
-        block: "start",
+      const ctx = canvas.getContext("2d", { alpha: true });
+
+      if (!ctx) {
+        return;
+      }
+
+      const state = {
+        width: 0,
+        height: 0,
+        dpr: 1,
+        raf: 0,
+        start: performance.now()
+      };
+
+      function resize() {
+        state.dpr = Math.min(window.devicePixelRatio || 1, 2);
+        state.width = window.innerWidth;
+        state.height = window.innerHeight;
+        canvas.width = Math.round(state.width * state.dpr);
+        canvas.height = Math.round(state.height * state.dpr);
+        canvas.style.width = `${state.width}px`;
+        canvas.style.height = `${state.height}px`;
+        ctx.setTransform(state.dpr, 0, 0, state.dpr, 0, 0);
+      }
+
+      function waveY(x, base, amplitude, frequency, phase) {
+        return base
+          + Math.sin((x * frequency) + phase) * amplitude
+          + Math.sin((x * frequency * 0.42) - phase * 0.7) * amplitude * 0.42;
+      }
+
+      function drawBand(base, amplitude, frequency, phase, color, width) {
+        ctx.beginPath();
+        ctx.moveTo(-24, waveY(-24, base, amplitude, frequency, phase));
+
+        for (let x = -24; x <= state.width + 24; x += 18) {
+          ctx.lineTo(x, waveY(x, base, amplitude, frequency, phase));
+        }
+
+        ctx.strokeStyle = color;
+        ctx.lineWidth = width;
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
+        ctx.stroke();
+      }
+
+      function draw(now) {
+        const elapsed = reduceMotion.matches ? 0 : (now - state.start) / 1000;
+        const horizon = state.height * 0.58;
+        const lower = ctx.createLinearGradient(0, horizon - 120, 0, state.height);
+        lower.addColorStop(0, "rgba(122, 63, 43, 0)");
+        lower.addColorStop(0.42, "rgba(122, 63, 43, 0.055)");
+        lower.addColorStop(1, "rgba(54, 52, 47, 0.085)");
+
+        ctx.clearRect(0, 0, state.width, state.height);
+        ctx.fillStyle = lower;
+        ctx.fillRect(0, horizon - 140, state.width, state.height - horizon + 140);
+
+        drawBand(
+          horizon,
+          Math.max(8, state.height * 0.014),
+          0.010,
+          elapsed * 0.22,
+          "rgba(54, 52, 47, 0.18)",
+          1
+        );
+
+        const bands = [
+          [0.10, 18, 0.0080, 0.30, "rgba(122, 63, 43, 0.105)", 1.1],
+          [0.18, 24, 0.0062, 0.22, "rgba(54, 52, 47, 0.100)", 1.0],
+          [0.28, 32, 0.0054, 0.18, "rgba(122, 63, 43, 0.082)", 1.0],
+          [0.40, 42, 0.0047, 0.15, "rgba(54, 52, 47, 0.075)", 0.9],
+          [0.54, 54, 0.0040, 0.12, "rgba(122, 63, 43, 0.064)", 0.9]
+        ];
+
+        bands.forEach(([offset, amp, freq, speed, color, width], index) => {
+          drawBand(
+            horizon + state.height * offset,
+            Math.max(10, amp * (state.width / 1440)),
+            freq,
+            elapsed * speed + index * 1.7,
+            color,
+            width
+          );
+        });
+
+        if (!reduceMotion.matches) {
+          state.raf = requestAnimationFrame(draw);
+        }
+      }
+
+      resize();
+      draw(performance.now());
+      window.addEventListener("resize", resize, { passive: true });
+
+      addCleanup(() => {
+        cancelAnimationFrame(state.raf);
+        window.removeEventListener("resize", resize);
+      });
+    }
+
+    function initFullpageScroll() {
+      const root = document.querySelector("[data-hyy-fullpage]");
+
+      if (!root) {
+        return;
+      }
+
+      document.documentElement.classList.add("hyy-fullpage-active");
+
+      const panels = Array.from(root.querySelectorAll("[data-hyy-panel]"));
+
+      if (panels.length < 2) {
+        return;
+      }
+
+      const state = {
+        locked: false,
+        lockTimer: 0,
+        lastWheelAt: 0,
+        wheelTotal: 0,
+        touchX: 0,
+        touchY: 0
+      };
+
+      const wheelThreshold = 86;
+      const touchThreshold = 64;
+
+      function nearestIndex() {
+        const y = window.scrollY;
+        let closest = 0;
+        let closestDistance = Number.POSITIVE_INFINITY;
+
+        panels.forEach((panel, index) => {
+          const distance = Math.abs(panel.offsetTop - y);
+
+          if (distance < closestDistance) {
+            closest = index;
+            closestDistance = distance;
+          }
+        });
+
+        return closest;
+      }
+
+      function lock() {
+        window.clearTimeout(state.lockTimer);
+        state.locked = true;
+        state.lockTimer = window.setTimeout(() => {
+          state.locked = false;
+        }, reduceMotion.matches ? 80 : 880);
+      }
+
+      function goTo(index) {
+        const targetIndex = Math.max(0, Math.min(index, panels.length - 1));
+        const target = panels[targetIndex];
+
+        if (!target) {
+          return;
+        }
+
+        state.wheelTotal = 0;
+        lock();
+        target.scrollIntoView({
+          block: "start",
+          behavior: reduceMotion.matches ? "auto" : "smooth"
+        });
+      }
+
+      function atPanel(index) {
+        return Math.abs(window.scrollY - panels[index].offsetTop) < 18;
+      }
+
+      function wheelPixels(event) {
+        if (event.deltaMode === 1) {
+          return event.deltaY * 16;
+        }
+
+        if (event.deltaMode === 2) {
+          return event.deltaY * window.innerHeight;
+        }
+
+        return event.deltaY;
+      }
+
+      function isEditable(target) {
+        return target instanceof HTMLElement
+          && Boolean(target.closest("input, textarea, select, [contenteditable='true']"));
+      }
+
+      function onWheel(event) {
+        if (event.ctrlKey || event.metaKey || Math.abs(event.deltaX) > Math.abs(event.deltaY)) {
+          return;
+        }
+
+        const index = nearestIndex();
+
+        if (state.locked) {
+          event.preventDefault();
+          return;
+        }
+
+        if (!atPanel(index)) {
+          return;
+        }
+
+        const delta = wheelPixels(event);
+        const direction = delta > 0 ? 1 : -1;
+
+        if ((direction > 0 && index === panels.length - 1) || (direction < 0 && index === 0)) {
+          event.preventDefault();
+          state.wheelTotal = 0;
+          return;
+        }
+
+        event.preventDefault();
+
+        const now = performance.now();
+
+        if (now - state.lastWheelAt > 220) {
+          state.wheelTotal = 0;
+        }
+
+        state.lastWheelAt = now;
+        state.wheelTotal += delta;
+
+        if (Math.abs(state.wheelTotal) >= wheelThreshold) {
+          goTo(index + direction);
+        }
+      }
+
+      function onKeydown(event) {
+        if (event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey || isEditable(event.target)) {
+          return;
+        }
+
+        const forwardKeys = new Set(["ArrowDown", "PageDown", " "]);
+        const backwardKeys = new Set(["ArrowUp", "PageUp"]);
+        let direction = 0;
+
+        if (forwardKeys.has(event.key)) {
+          direction = event.shiftKey && event.key === " " ? -1 : 1;
+        } else if (backwardKeys.has(event.key)) {
+          direction = -1;
+        } else if (event.key === "Home") {
+          event.preventDefault();
+          goTo(0);
+          return;
+        } else if (event.key === "End") {
+          event.preventDefault();
+          goTo(panels.length - 1);
+          return;
+        }
+
+        if (!direction || state.locked) {
+          return;
+        }
+
+        const index = nearestIndex();
+
+        if ((direction > 0 && index === panels.length - 1) || (direction < 0 && index === 0)) {
+          event.preventDefault();
+          return;
+        }
+
+        event.preventDefault();
+        goTo(index + direction);
+      }
+
+      function onTouchstart(event) {
+        if (event.touches.length !== 1) {
+          return;
+        }
+
+        state.touchX = event.touches[0].clientX;
+        state.touchY = event.touches[0].clientY;
+      }
+
+      function onTouchend(event) {
+        const touch = event.changedTouches[0];
+
+        if (!touch || state.locked) {
+          return;
+        }
+
+        const deltaX = touch.clientX - state.touchX;
+        const deltaY = state.touchY - touch.clientY;
+
+        if (Math.abs(deltaY) < touchThreshold || Math.abs(deltaY) < Math.abs(deltaX) * 1.2) {
+          return;
+        }
+
+        const index = nearestIndex();
+        const direction = deltaY > 0 ? 1 : -1;
+
+        if ((direction > 0 && index === panels.length - 1) || (direction < 0 && index === 0)) {
+          return;
+        }
+
+        goTo(index + direction);
+      }
+
+      window.addEventListener("wheel", onWheel, { passive: false });
+      window.addEventListener("keydown", onKeydown);
+      window.addEventListener("touchstart", onTouchstart, { passive: true });
+      window.addEventListener("touchend", onTouchend, { passive: true });
+
+      addCleanup(() => {
+        window.clearTimeout(state.lockTimer);
+        window.removeEventListener("wheel", onWheel);
+        window.removeEventListener("keydown", onKeydown);
+        window.removeEventListener("touchstart", onTouchstart);
+        window.removeEventListener("touchend", onTouchend);
+      });
+    }
+
+    function enhancePage() {
+      cleanupPageEffects();
+      initWave();
+      initFullpageScroll();
+    }
+
+    function wait(ms) {
+      return new Promise((resolve) => {
+        window.setTimeout(resolve, ms);
+      });
+    }
+
+    function contentSelector() {
+      return ".page__content";
+    }
+
+    function transitionDuration() {
+      return reduceMotion.matches ? 0 : 210;
+    }
+
+    function shouldHandleLink(link, event) {
+      if (!link || event.defaultPrevented || event.button !== 0) {
+        return false;
+      }
+
+      if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) {
+        return false;
+      }
+
+      if (link.target && link.target !== "_self") {
+        return false;
+      }
+
+      if (link.hasAttribute("download")) {
+        return false;
+      }
+
+      const href = link.getAttribute("href");
+
+      if (!href || href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:")) {
+        return false;
+      }
+
+      const url = new URL(href, window.location.href);
+
+      if (url.origin !== window.location.origin) {
+        return false;
+      }
+
+      if (url.pathname.startsWith("/assets/")) {
+        return false;
+      }
+
+      if (/\.(pdf|png|jpe?g|gif|webp|svg|zip|html)$/i.test(url.pathname)) {
+        return false;
+      }
+
+      return true;
+    }
+
+    function scrollToTarget(url) {
+      if (url.hash) {
+        const target = document.getElementById(decodeURIComponent(url.hash.slice(1)));
+
+        if (target) {
+          target.scrollIntoView({
+            block: "start",
+            behavior: reduceMotion.matches ? "auto" : "smooth"
+          });
+          return;
+        }
+      }
+
+      window.scrollTo({
+        top: 0,
         behavior: reduceMotion.matches ? "auto" : "smooth"
       });
     }
 
-    function atPanel(index) {
-      return Math.abs(window.scrollY - panels[index].offsetTop) < 18;
+    function syncHead(nextDocument) {
+      const nextDescription = nextDocument.querySelector("meta[name='description']");
+      const currentDescription = document.querySelector("meta[name='description']");
+
+      if (nextDescription && currentDescription) {
+        currentDescription.setAttribute("content", nextDescription.getAttribute("content") || "");
+      }
     }
 
-    function wheelPixels(event) {
-      if (event.deltaMode === 1) {
-        return event.deltaY * 16;
+    async function navigate(url, options = {}) {
+      if (window.hyyPjaxState.busy) {
+        return;
       }
 
-      if (event.deltaMode === 2) {
-        return event.deltaY * window.innerHeight;
+      const currentUrl = new URL(window.location.href);
+      const nextUrl = new URL(url, window.location.href);
+
+      if (currentUrl.pathname === nextUrl.pathname && currentUrl.search === nextUrl.search && currentUrl.hash !== nextUrl.hash) {
+        if (options.push !== false) {
+          history.pushState({ hyyPjax: true }, "", nextUrl.href);
+        }
+
+        scrollToTarget(nextUrl);
+        return;
       }
 
-      return event.deltaY;
+      const container = document.querySelector(contentSelector());
+
+      if (!container) {
+        window.location.href = nextUrl.href;
+        return;
+      }
+
+      window.hyyPjaxState.busy = true;
+      document.documentElement.classList.add("hyy-pjax-loading");
+      container.classList.add("hyy-page-exit");
+      await wait(transitionDuration());
+
+      try {
+        const response = await fetch(nextUrl.href, {
+          credentials: "same-origin",
+          headers: {
+            "X-Requested-With": "fetch"
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error(`Navigation failed: ${response.status}`);
+        }
+
+        const html = await response.text();
+        const nextDocument = new DOMParser().parseFromString(html, "text/html");
+        const nextContent = nextDocument.querySelector(contentSelector());
+
+        if (!nextContent) {
+          throw new Error("Next page content not found");
+        }
+
+        cleanupPageEffects();
+        document.title = nextDocument.title;
+        syncHead(nextDocument);
+        container.innerHTML = nextContent.innerHTML;
+
+        if (options.push !== false) {
+          history.pushState({ hyyPjax: true }, "", nextUrl.href);
+        }
+
+        enhancePage();
+        scrollToTarget(nextUrl);
+        container.classList.remove("hyy-page-exit");
+        container.classList.add("hyy-page-enter");
+
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            container.classList.remove("hyy-page-enter");
+          });
+        });
+      } catch (error) {
+        console.warn("PJAX navigation fell back to full load", error);
+        window.location.href = nextUrl.href;
+      } finally {
+        await wait(transitionDuration());
+        container.classList.remove("hyy-page-exit", "hyy-page-enter");
+        document.documentElement.classList.remove("hyy-pjax-loading");
+        window.hyyPjaxState.busy = false;
+      }
     }
 
-    function isEditable(target) {
-      return target instanceof HTMLElement
-        && Boolean(target.closest("input, textarea, select, [contenteditable='true']"));
+    function initPjax() {
+      if (window.hyyPjaxState.ready) {
+        return;
+      }
+
+      window.hyyPjaxState.ready = true;
+
+      document.addEventListener("click", (event) => {
+        const link = event.target instanceof Element ? event.target.closest("a") : null;
+
+        if (!shouldHandleLink(link, event)) {
+          return;
+        }
+
+        event.preventDefault();
+        navigate(link.href);
+      });
+
+      window.addEventListener("popstate", () => {
+        navigate(window.location.href, { push: false });
+      });
     }
 
-    window.addEventListener("wheel", (event) => {
-      if (event.ctrlKey || event.metaKey || Math.abs(event.deltaX) > Math.abs(event.deltaY)) {
-        return;
-      }
+    window.hyyPjaxState = window.hyyPjaxState || {
+      busy: false,
+      ready: false
+    };
 
-      const index = nearestIndex();
+    window.hyyEnhancePage = enhancePage;
 
-      if (state.locked) {
-        event.preventDefault();
-        return;
-      }
-
-      if (!atPanel(index)) {
-        return;
-      }
-
-      const delta = wheelPixels(event);
-      const direction = delta > 0 ? 1 : -1;
-
-      if ((direction > 0 && index === panels.length - 1) || (direction < 0 && index === 0)) {
-        event.preventDefault();
-        state.wheelTotal = 0;
-        return;
-      }
-
-      event.preventDefault();
-
-      const now = performance.now();
-
-      if (now - state.lastWheelAt > 220) {
-        state.wheelTotal = 0;
-      }
-
-      state.lastWheelAt = now;
-      state.wheelTotal += delta;
-
-      if (Math.abs(state.wheelTotal) >= wheelThreshold) {
-        goTo(index + direction);
-      }
-    }, { passive: false });
-
-    window.addEventListener("keydown", (event) => {
-      if (event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey || isEditable(event.target)) {
-        return;
-      }
-
-      const forwardKeys = new Set(["ArrowDown", "PageDown", " "]);
-      const backwardKeys = new Set(["ArrowUp", "PageUp"]);
-      let direction = 0;
-
-      if (forwardKeys.has(event.key)) {
-        direction = event.shiftKey && event.key === " " ? -1 : 1;
-      } else if (backwardKeys.has(event.key)) {
-        direction = -1;
-      } else if (event.key === "Home") {
-        event.preventDefault();
-        goTo(0);
-        return;
-      } else if (event.key === "End") {
-        event.preventDefault();
-        goTo(panels.length - 1);
-        return;
-      }
-
-      if (!direction || state.locked) {
-        return;
-      }
-
-      const index = nearestIndex();
-
-      if ((direction > 0 && index === panels.length - 1) || (direction < 0 && index === 0)) {
-        event.preventDefault();
-        return;
-      }
-
-      event.preventDefault();
-      goTo(index + direction);
-    });
-
-    window.addEventListener("touchstart", (event) => {
-      if (event.touches.length !== 1) {
-        return;
-      }
-
-      state.touchX = event.touches[0].clientX;
-      state.touchY = event.touches[0].clientY;
-    }, { passive: true });
-
-    window.addEventListener("touchend", (event) => {
-      const touch = event.changedTouches[0];
-
-      if (!touch || state.locked) {
-        return;
-      }
-
-      const deltaX = touch.clientX - state.touchX;
-      const deltaY = state.touchY - touch.clientY;
-
-      if (Math.abs(deltaY) < touchThreshold || Math.abs(deltaY) < Math.abs(deltaX) * 1.2) {
-        return;
-      }
-
-      const index = nearestIndex();
-      const direction = deltaY > 0 ? 1 : -1;
-
-      if ((direction > 0 && index === panels.length - 1) || (direction < 0 && index === 0)) {
-        return;
-      }
-
-      goTo(index + direction);
-    }, { passive: true });
+    enhancePage();
+    initPjax();
   })();
 </script>
