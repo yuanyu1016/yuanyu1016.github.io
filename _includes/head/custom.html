@@ -38,7 +38,7 @@
     --hyy-noise-blend: multiply;
     --hyy-focus: rgba(122, 63, 43, 0.55);
     --hyy-wave-filter: none;
-    --hyy-theme-transition: 900ms;
+    --hyy-theme-transition: 800ms;
     --hyy-frame-x: clamp(1.5rem, 5vw, 4.75rem);
     --hyy-frame-y: clamp(1.25rem, 4.6vw, 4.5rem);
     --hyy-nav-space: clamp(5rem, 7vw, 6rem);
@@ -1019,6 +1019,12 @@
   .hyy-theme-toggle:hover,
   .hyy-theme-toggle:focus-visible {
     color: var(--hyy-accent);
+  }
+
+  .hyy-theme-toggle:focus,
+  .hyy-theme-toggle:focus-visible {
+    outline: 0;
+    box-shadow: none;
   }
 
   .hyy-theme-toggle:active {
