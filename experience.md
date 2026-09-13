@@ -38,7 +38,7 @@ author_profile: false
       </article>
 
       <article class="hyy-entry">
-        <p class="hyy-meta">2022.09 - 2027.03</p>
+        <p class="hyy-meta">2022.09 - 2026.10</p>
         <div>
           <h2>中国科学技术大学 · 信息与通信工程硕士</h2>
           <p>推免进入硕士阶段，在类脑智能技术及应用国家工程实验室开展 SEEG 语音解码研究。</p>

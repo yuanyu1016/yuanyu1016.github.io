@@ -38,7 +38,7 @@ author_profile: false
       <div class="two-column">
         <article class="mini">
           <h3 id="education-title">中国科学技术大学</h3>
-          <p class="meta">2022.09 - 2027.03</p>
+          <p class="meta">2022.09 - 2026.10</p>
           <p>信息与通信工程 · 硕士（推免）<br>类脑智能技术及应用国家工程实验室</p>
         </article>
         <article class="mini">
