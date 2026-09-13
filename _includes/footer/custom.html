@@ -374,6 +374,68 @@
       return reduceMotion.matches ? 0 : 210;
     }
 
+    function storedTheme() {
+      try {
+        return window.localStorage.getItem("hyy-theme") === "dark" ? "dark" : "light";
+      } catch (error) {
+        return "light";
+      }
+    }
+
+    function saveTheme(theme) {
+      try {
+        window.localStorage.setItem("hyy-theme", theme);
+      } catch (error) {
+        console.warn("Unable to save theme preference", error);
+      }
+    }
+
+    function applyTheme(theme) {
+      const nextTheme = theme === "dark" ? "dark" : "light";
+      document.documentElement.dataset.theme = nextTheme;
+
+      const toggle = document.querySelector("[data-hyy-theme-toggle]");
+
+      if (!toggle) {
+        return;
+      }
+
+      const label = toggle.querySelector("[data-hyy-theme-label]");
+      const nextLabel = nextTheme === "dark" ? "DARK" : "LIGHT";
+
+      if (label) {
+        label.textContent = nextLabel;
+      }
+
+      toggle.setAttribute("aria-pressed", nextTheme === "dark" ? "true" : "false");
+      toggle.setAttribute("aria-label", nextTheme === "dark" ? "Switch to light theme" : "Switch to dark theme");
+    }
+
+    function initThemeToggle() {
+      let toggle = document.querySelector("[data-hyy-theme-toggle]");
+
+      if (!toggle) {
+        toggle = document.createElement("button");
+        toggle.type = "button";
+        toggle.className = "hyy-theme-toggle";
+        toggle.setAttribute("data-hyy-theme-toggle", "");
+        toggle.innerHTML = "<span data-hyy-theme-label></span>";
+        document.body.appendChild(toggle);
+      }
+
+      if (!toggle.dataset.initialized) {
+        toggle.dataset.initialized = "true";
+        toggle.addEventListener("click", () => {
+          const currentTheme = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+          const nextTheme = currentTheme === "dark" ? "light" : "dark";
+          saveTheme(nextTheme);
+          applyTheme(nextTheme);
+        });
+      }
+
+      applyTheme(storedTheme());
+    }
+
     function shouldHandleLink(link, event) {
       if (!link || event.defaultPrevented || event.button !== 0) {
         return false;
@@ -551,6 +613,7 @@
 
     window.hyyEnhancePage = enhancePage;
 
+    initThemeToggle();
     enhancePage();
     initPjax();
   })();
