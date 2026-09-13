@@ -15,7 +15,6 @@
     --hyy-accent: #7a3f2b;
     --hyy-frame-x: clamp(1.5rem, 5vw, 4.75rem);
     --hyy-frame-y: clamp(1.25rem, 4.6vw, 4.5rem);
-    --hyy-nav-space: clamp(4.8rem, 7vw, 5.7rem);
     --hyy-prose: min(100%, 46rem);
     --hyy-wide: min(100%, 58rem);
     --hyy-ui: "IBM Plex Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
@@ -222,25 +221,6 @@
     min-height: calc(100dvh - 7rem);
   }
 
-  .hyy-home--snap {
-    display: block;
-    height: 100dvh;
-    min-height: 100dvh;
-    padding: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
-    scroll-behavior: smooth;
-    scroll-padding-top: 0;
-    scroll-snap-type: y mandatory;
-    scrollbar-width: thin;
-  }
-
-  .hyy-home--snap .hyy-snap-panel {
-    min-height: 100dvh;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-  }
-
   .hyy-wave-canvas {
     position: fixed;
     inset: 0;
@@ -270,19 +250,6 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
-  }
-
-  .hyy-home--snap .hyy-home-hero {
-    min-height: 100dvh;
-    padding: var(--hyy-nav-space) 0 clamp(2.5rem, 7vw, 5.5rem);
-  }
-
-  .hyy-home--snap .hyy-home-index {
-    min-height: 100dvh;
-    padding: var(--hyy-nav-space) 0 clamp(2.5rem, 6vw, 4.5rem);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
   }
 
   .hyy-kicker,
@@ -856,12 +823,6 @@
     outline-offset: 3px;
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .hyy-home--snap {
-      scroll-behavior: auto;
-    }
-  }
-
   @media (max-width: 900px) {
     .masthead {
       padding-top: 1.25rem;
@@ -875,12 +836,6 @@
       padding-top: 4.5rem;
     }
 
-    .hyy-home--snap {
-      height: 100dvh;
-      min-height: 100dvh;
-      padding: 0;
-    }
-
     .hyy-home-hero {
       min-height: auto;
       text-align: left;
@@ -888,16 +843,6 @@
 
     .hyy-home--wave .hyy-home-hero {
       min-height: min(58dvh, 34rem);
-    }
-
-    .hyy-home--snap .hyy-home-hero {
-      min-height: 100dvh;
-      padding-top: var(--hyy-nav-space);
-    }
-
-    .hyy-home--snap .hyy-home-index {
-      min-height: 100dvh;
-      padding-top: var(--hyy-nav-space);
     }
 
     .hyy-wave-canvas {
@@ -935,10 +880,6 @@
     .hyy-resume .two-column {
       grid-template-columns: 1fr;
       gap: 0.55rem;
-    }
-
-    .hyy-home--snap .hyy-index-row {
-      padding: 1rem 0;
     }
 
     .hyy-row-meta,
