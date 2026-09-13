@@ -12,6 +12,7 @@
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const themeTransitionMs = 900;
     let themeTransitionTimer = 0;
+    const languageTextNodes = new WeakMap();
 
     const languageText = {
       "关于": "About",
@@ -38,6 +39,12 @@
       "记录正在形成的想法，也留出一条和读者开始通信的入口。": "A place for ideas in progress, and an opening for correspondence with readers.",
       "我更关心系统如何被交付、验证和维护。": "I care most about how systems are delivered, verified, and maintained.",
       "我的背景横跨自动化、信息与通信工程、深度学习研究和后端工程。模型能力本身只是起点，真正困难的是让它进入可靠链路。": "My background spans automation, information and communication engineering, deep learning research, and backend engineering. Model capability is only the starting point; the harder part is putting it into a reliable chain.",
+      "AI Agent 与工作流。": "AI agents and workflows.",
+      "关注意图识别、任务拆解、工具选择、过程状态、失败回退和结果验证。相比一次回答，我更关心一件复杂任务如何被拆开、执行、观察并继续推进。": "I focus on intent recognition, task decomposition, tool selection, process state, failure fallback, and result verification. More than one-off answers, I care about how complex tasks are split, executed, observed, and continued.",
+      "后端系统。": "Backend systems.",
+      "使用 Spring Boot、缓存、队列、权限、限流、存储和部署机制承接产品真实运行压力。AI 功能只有进入工程边界，才会成为可以依赖的能力。": "I use Spring Boot, caching, queues, permissions, rate limits, storage, and deployment mechanisms to absorb real product pressure. AI features become dependable only when they enter engineering boundaries.",
+      "研究工程。": "Research engineering.",
+      "从 SEEG 语音解码到论文写作，我习惯把实验假设、模型实现、结果记录和复现路径整理成可复查产物。": "From SEEG speech decoding to paper writing, I organize hypotheses, model implementations, result records, and reproduction paths into reviewable artifacts.",
       "我倾向于先澄清约束，再设计可以验证的最小闭环。需求、数据、模型、工具、接口、日志和测试都应该在同一张图里，而不是分散成互相解释不清的片段。": "I prefer to clarify constraints first, then design the smallest verifiable loop. Requirements, data, models, tools, APIs, logs, and tests should live in the same mental model, not in disconnected fragments.",
       "这个网站也按同样原则整理：项目看交付证据，研究产物并入项目脉络，经历看时间线，简历保留完整内容。": "This site follows the same principle: projects show delivery evidence, research outputs sit inside the project thread, experience is shown as a timeline, and the resume keeps the full record.",
       "项目不是陈列品，而是能力边界的证据。": "Projects are not exhibits; they are evidence of capability boundaries.",
@@ -53,10 +60,18 @@
       "基于深度学习的脑电语音解码研究": "Deep learning-based EEG speech decoding research",
       "设计 ConvED-SR 和 Scale-Recursive Reconstructor，面向 SEEG 语音解码解决稀疏数据、过拟合和频谱重建问题，MCD 降低 2.38 dB。": "Designed ConvED-SR and a Scale-Recursive Reconstructor for SEEG speech decoding, addressing sparse data, overfitting, and spectral reconstruction; reduced MCD by 2.38 dB.",
       "第一作者论文 Enhancing SEEG-Based Speech Decoding via Convolutional Encoder-Decoder and Scale-Recursive Reconstructor 被 IEEE Sensors Journal 接收。作者包括 Vincent Yuanyu He、Aiping Liu、Shengcai Duan、Yikai Gao、Ruobing Qian 和 Xun Chen。": "My first-author paper, Enhancing SEEG-Based Speech Decoding via Convolutional Encoder-Decoder and Scale-Recursive Reconstructor, was accepted by IEEE Sensors Journal. Coauthors include Vincent Yuanyu He, Aiping Liu, Shengcai Duan, Yikai Gao, Ruobing Qian, and Xun Chen.",
+      "第一作者论文": "My first-author paper",
+      "被 IEEE Sensors Journal 接收。作者包括 Vincent Yuanyu He、Aiping Liu、Shengcai Duan、Yikai Gao、Ruobing Qian 和 Xun Chen。": "was accepted by IEEE Sensors Journal. Coauthors include Vincent Yuanyu He, Aiping Liu, Shengcai Duan, Yikai Gao, Ruobing Qian, and Xun Chen.",
       "查看研究实现": "View research implementation",
       "更多背景集中在简历页，避免同一经历在多个页面重复展开。": "More background is kept on the resume page to avoid repeating the same experience across pages.",
       "AI 原生不是工具清单，而是工作流结构。": "AI-native work is not a tool list; it is workflow structure.",
       "我把 AI 原生理解为：把信息获取、任务拆解、内容生成、代码实现、验证反馈和长期沉淀组织成同一条链路。": "I understand AI-native work as organizing information retrieval, task decomposition, content generation, code implementation, verification feedback, and long-term memory into one chain.",
+      "个人生产力。": "Personal productivity.",
+      "AI 的价值不只在于更快生成文本或代码，而在于把模糊问题拆成能执行、能验证、能复盘的工作单元。": "The value of AI is not only faster text or code generation, but turning fuzzy problems into executable, verifiable, reviewable work units.",
+      "研究与创造。": "Research and creation.",
+      "阅读、比较、假设、试错、总结和表达都适合引入 AI 协作，但需要保留证据、边界和人工判断。": "Reading, comparison, hypothesis, trial and error, synthesis, and expression can all benefit from AI collaboration, as long as evidence, boundaries, and human judgment remain.",
+      "人与人的连接。": "Human connection.",
+      "自动化不应只追求替代，也应该帮助复杂想法更容易被表达、被理解、被延续。": "Automation should not only pursue replacement; it should also help complex ideas become easier to express, understand, and continue.",
       "上下文系统": "Context systems",
       "个人知识、项目资料、经历和长期目标需要被组织成可持续更新的上下文系统。": "Personal knowledge, project materials, experience, and long-term goals need to become a context system that can keep evolving.",
       "工具执行": "Tool execution",
@@ -99,6 +114,8 @@
       "如果方向匹配，直接发邮件给我。": "If the direction matches, email me directly.",
       "欢迎讨论 AI Agent、RAG、工作流编排、后端工程、科研工程和技术写作相关机会。": "I am open to discussions around AI agents, RAG, workflow orchestration, backend engineering, research engineering, and technical writing.",
       "微信 YUANYU_1016小红书 2873623288Instagram yuanyu_1016LINE yuanyu_1016": "WeChat YUANYU_1016Xiaohongshu 2873623288Instagram yuanyu_1016LINE yuanyu_1016",
+      "微信 YUANYU_1016": "WeChat YUANYU_1016",
+      "小红书 2873623288": "Xiaohongshu 2873623288",
       "文章是慢一点的通信。": "Posts are slower correspondence.",
       "这里放不适合塞进简历的想法：关于 AI Agent、工程系统、研究、写作，以及人与人之间如何保持清晰连接。": "This is where I keep ideas that do not fit into a resume: AI agents, engineering systems, research, writing, and how people keep clear connections.",
       "开始一段通信的邀请": "Invitation to start a correspondence",
@@ -116,12 +133,15 @@
       "下载 PDF": "Download PDF",
       "个人简介": "Profile",
       "擅长把模型、工具、数据、状态和反馈机制组织为可追踪、可验证、可复用的产品链路。核心方向包括 Agent 工作流、RAG、工具调用、后端可靠性和研究工程。": "Skilled at organizing models, tools, data, state, and feedback mechanisms into traceable, verifiable, and reusable product chains. Core directions include Agent workflows, RAG, tool calling, backend reliability, and research engineering.",
+      "信息与通信工程 · 硕士（推免）": "Information and Communication Engineering · M.S. (recommended admission)",
+      "类脑智能技术及应用国家工程实验室": "National Engineering Laboratory for Brain-inspired Intelligence Technology and Application",
       "实习经历": "Experience",
       "智学星途｜AI 教育 B/C 端产品研发": "Zhixue Xingtu | AI education B/C product development",
       "Agent 开发实习生 · 教师 Agent / AI 教案 / AI 课件 / 工具开放能力": "Agent development intern · Teacher Agent / AI lesson plans / AI courseware / tool access",
       "负责 MAIC PPT Agent 模块，拆分需求解析、大纲确认、页面规划、图片生成、预览编辑、结构化输出、重试、任务队列与工作节点调度。": "Owned the MAIC PPT Agent module, decomposing requirement parsing, outline confirmation, page planning, image generation, preview editing, structured output, retries, task queues, and worker-node scheduling.",
       "参与普通教案、目标驱动教案、新教材理解等场景，串联意图识别、任务路由、资料上传、过程状态与历史管理。": "Worked on scenarios including standard lesson plans, objective-driven lesson plans, and new textbook understanding, connecting intent recognition, task routing, material uploads, process state, and history management.",
       "接入可信源、用户/平台资料、网页回退与事实核验；参与 MCP / Skill、API 密钥、Token 审核、附件工具及接入文档建设。": "Integrated trusted sources, user/platform materials, web fallback, and fact checking; contributed to MCP / Skill, API keys, token review, attachment tools, and integration docs.",
+      "Java · Spring Boot · Next.js · Agent 工作流 · Tool Calling · MCP · Skill · MySQL · Redis": "Java · Spring Boot · Next.js · Agent workflows · Tool Calling · MCP · Skill · MySQL · Redis",
       "代表项目": "Selected projects",
       "0→1 核心模块负责人 · RAG / Agent 规划 / 工具体系": "0-to-1 core module owner · RAG / Agent planning / tool system",
       "基于 PGvector 设计检索链路，以查询重写和多维过滤优化准确度与召回率，有效应答率提升 37%。": "Designed retrieval flows with PGvector, using query rewriting and multidimensional filtering to improve accuracy and recall; increased effective response rate by 37%.",
@@ -143,11 +163,22 @@
       "Linux, Docker, Git, Serverless, 任务拆解, 状态管理, 执行反馈, 循环验证": "Linux, Docker, Git, Serverless, task decomposition, state management, execution feedback, iterative verification",
       "荣誉与实践": "Honors and practice",
       "教育部港澳台学生奖学金 · 2 次": "Ministry of Education Scholarship for Hong Kong, Macao, and Taiwan Students · 2 times",
+      "教育部港澳台学生奖学金": "Ministry of Education Scholarship for Hong Kong, Macao, and Taiwan Students",
+      "· 2 次": "· 2 times",
       "研究生学业奖学金 · 3 次": "Graduate Academic Scholarship · 3 times",
+      "研究生学业奖学金": "Graduate Academic Scholarship",
+      "· 3 次": "· 3 times",
       "优秀学生奖学金 · 2 次": "Outstanding Student Scholarship · 2 times",
+      "优秀学生奖学金": "Outstanding Student Scholarship",
       "第十九届 RoboGame 机器人大赛 · 亚军": "19th RoboGame Robotics Competition · Runner-up",
+      "第十九届 RoboGame 机器人大赛": "19th RoboGame Robotics Competition",
+      "· 亚军": "· Runner-up",
       "学生工作：本科连续四年担任班委": "Student service: class committee member for four consecutive undergraduate years",
+      "学生工作：": "Student service:",
+      "本科连续四年担任班委": "class committee member for four consecutive undergraduate years",
       "教学：《微机原理和嵌入式系统》课程助教": "Teaching: TA for Microcomputer Principles and Embedded Systems",
+      "教学：": "Teaching:",
+      "《微机原理和嵌入式系统》课程助教": "TA for Microcomputer Principles and Embedded Systems",
       "需要一个能把 AI 应用落到工程系统的人，欢迎联系我讨论 AI Agent、RAG、工作流编排、后端工程和科研工程相关机会。": "If you need someone who can bring AI applications into engineering systems, feel free to contact me about AI agents, RAG, workflow orchestration, backend engineering, and research engineering."
     };
 
@@ -203,6 +234,37 @@
       return (value || "").replace(/\s+/g, " ").trim();
     }
 
+    function translateDirectTextNodes(element, language) {
+      Array.from(element.childNodes).forEach((node) => {
+        if (node.nodeType !== Node.TEXT_NODE) {
+          return;
+        }
+
+        if (!languageTextNodes.has(node)) {
+          languageTextNodes.set(node, node.nodeValue);
+        }
+
+        const originalValue = languageTextNodes.get(node);
+        const key = normalizeLanguageCopy(originalValue);
+        const translation = languageText[key];
+
+        if (!translation) {
+          if (language !== "en") {
+            node.nodeValue = originalValue;
+          }
+          return;
+        }
+
+        if (language === "en") {
+          const leadingSpace = originalValue.match(/^\s*/)[0];
+          const trailingSpace = originalValue.match(/\s*$/)[0];
+          node.nodeValue = `${leadingSpace}${translation}${trailingSpace}`;
+        } else {
+          node.nodeValue = originalValue;
+        }
+      });
+    }
+
     function storedLanguage() {
       try {
         return window.localStorage.getItem("hyy-language") === "en" ? "en" : "zh";
@@ -229,10 +291,12 @@
       const textTranslation = languageText[key];
 
       if (!htmlTranslation && !textTranslation) {
+        translateDirectTextNodes(element, language);
         return;
       }
 
       if (!htmlTranslation && element.children.length > 0) {
+        translateDirectTextNodes(element, language);
         return;
       }
 
@@ -285,6 +349,7 @@
       document.querySelectorAll([
         ".masthead a",
         ".greedy-nav a",
+        ".page__title",
         ".page__content h1",
         ".page__content h2",
         ".page__content h3",
@@ -293,11 +358,14 @@
         ".page__content a",
         ".page__content span",
         ".page__content strong",
+        ".page__content em",
         ".page__content small",
         ".page__footer a",
         ".page__footer li",
         ".page__footer p",
-        ".page__footer span"
+        ".page__footer span",
+        ".page__footer strong",
+        ".page__footer small"
       ].join(",")).forEach((element) => {
         translateElement(element, nextLanguage);
       });
@@ -314,7 +382,7 @@
           label.textContent = nextLanguage === "en" ? "EN" : "中文";
         }
 
-        toggle.setAttribute("aria-label", nextLanguage === "en" ? "切换到中文" : "Switch to English");
+        toggle.setAttribute("aria-label", nextLanguage === "en" ? "Switch to Chinese" : "切换到英文");
       }
     }
 
