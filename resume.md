@@ -33,6 +33,22 @@ author_profile: false
       </div>
     </section>
 
+    <section class="section" aria-labelledby="education-title">
+      <p class="label">Education</p>
+      <div class="two-column">
+        <article class="mini">
+          <h3 id="education-title">中国科学技术大学</h3>
+          <p class="meta">2022.09 - 2027.03</p>
+          <p>信息与通信工程 · 硕士（推免）<br>类脑智能技术及应用国家工程实验室</p>
+        </article>
+        <article class="mini">
+          <h3>中国科学技术大学</h3>
+          <p class="meta">2018.09 - 2022.06</p>
+          <p>自动化 · 学士 · 优秀毕业生</p>
+        </article>
+      </div>
+    </section>
+
     <section class="section" aria-labelledby="experience-title">
       <p class="label">Experience</p>
       <div>
@@ -94,22 +110,6 @@ author_profile: false
             <li>探索 Hifi-Codec + Transformer 脑电-语音特征对齐；第一作者论文被 IEEE Sensors Journal 接收。</li>
           </ul>
           <p class="stack"><a href="https://github.com/yuanyu1016/ConvED-SR" target="_blank" rel="noopener noreferrer">github.com/yuanyu1016/ConvED-SR</a></p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="education-title">
-      <p class="label">Education</p>
-      <div class="two-column">
-        <article class="mini">
-          <h3 id="education-title">中国科学技术大学</h3>
-          <p class="meta">2022.09 - 2027.03</p>
-          <p>信息与通信工程 · 硕士（推免）<br>类脑智能技术及应用国家工程实验室</p>
-        </article>
-        <article class="mini">
-          <h3>中国科学技术大学</h3>
-          <p class="meta">2018.09 - 2022.06</p>
-          <p>自动化 · 学士 · 优秀毕业生</p>
         </article>
       </div>
     </section>
