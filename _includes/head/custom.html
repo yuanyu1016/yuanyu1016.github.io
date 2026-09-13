@@ -867,16 +867,31 @@
   }
 
   .page__footer footer {
+    width: var(--hyy-wide);
+    max-width: 100%;
     margin-top: 0;
+    margin-inline: auto;
+    text-align: left;
   }
 
   .page__footer-follow,
   .page__footer-copyright {
-    width: var(--hyy-wide);
+    width: 100%;
     max-width: 100%;
-    margin-inline: auto;
+    margin-inline: 0;
     color: var(--hyy-muted);
     text-align: left;
+  }
+
+  .page__footer-follow ul,
+  .page__footer-follow li {
+    margin-left: 0;
+    padding-left: 0;
+    text-align: left;
+  }
+
+  .page__footer-follow .social-icons {
+    justify-content: flex-start;
   }
 
   .page__footer a {
